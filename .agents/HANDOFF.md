@@ -23,3 +23,10 @@ Arqueologia W-1..W10 executada (tier COMPLETO, 2405 fontes Go/143k linhas). HEAD
 - Provider CLIProxyAPI no ZCode picker (12 modelos antigravity). Nomes com sufixo -high/-tiered/-xhigh são os IDs reais do catálogo.
 - E2E: 3 classes testadas com resposta. Receipts W11-*.
 - Rota B (decisão gemini-zcode 261122): este provider serve testes/uso pontual — NÃO propõe substituir elenco ZCode.
+
+## W16 (2026-11-22 noite) — provider ZCode FUNCIONANDO
+- Chat do ZCode responde via CLIProxyAPI/gemini-4-argon (E2E real, print do dono).
+- Se o proxy parar: `powershell -File .agents/scripts/start-proxy.ps1` (detached; nao pode ser filho do shell do host).
+- Se voltar Reconnecting: ler `auths/logs/error-v1-*.log` (body real) antes de qualquer teoria.
+- Camadas ja aplicadas no config.yaml: model-alias(fork), cooldown disabled, sensitive-patterns-replace, request-log+logging-to-file. user_agent no auth JSON.
+- Ressalva: o filtro do Google e por conteudo — mensagens sobre seguranca/CTF podem dar 429.

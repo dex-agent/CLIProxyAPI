@@ -1,0 +1,69 @@
+{
+  "contract": "dex.memory.route.journal.v2",
+  "state": "COMMITTED",
+  "request_hash": "4ae75399cea35828b5a3009191e06746d6e2b4d3747a7ae707252b78eddf7900",
+  "route": {
+    "scope": "project",
+    "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "operation_id": "remember-0eb8978e5785a9019fb19923",
+    "idempotency_key": "dex-memoria:remember-0eb8978e5785a9019fb19923:project",
+    "transaction_id": "82811fbf182ef65fa4a754ce",
+    "receipt_id": "b82f7547d171c1949954d816"
+  },
+  "candidate": {
+    "contract": "dex.memory.write.candidate.v2",
+    "target_layer": "L2",
+    "slug": "suite-go-test-vermelha-no-windows-cliproxyapi-0eb8978e5785",
+    "trigger": "rodar go test ./... e ver 9 falhas / 6 pacotes",
+    "title": "Suite go test ./... vermelha no Windows (CLIProxyAPI)",
+    "body": "Em 2026-11-22 (HEAD 6eb8554f): 9 falhas em 6 pacotes. 8 sao ambiente-Windows: file-lock de cleanup TempDir (bolt/shadow: internal/home x2, internal/kvstore x1, internal/pluginhost x1), TUI/TTY com timeout 30s (cmd/server main_exit_test.go:122 x2), links POSIX git_workspace_test.go:166 e :444 (internal/store). 1 e drift REAL de golden: TestToolSearchDisabledMatchesDevGolden. Nao re-abrir sem ler .agents/receipts/W6-build-test.json. Build VERDE (exit 0).",
+    "tags": [
+      "#build/go-tests",
+      "#plataforma/windows"
+    ]
+  },
+  "paths": {
+    "l1": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\lembranca.md",
+    "destination": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\memorias\\suite-go-test-vermelha-no-windows-cliproxyapi-0eb8978e5785.md",
+    "receipt": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\82811fbf182ef65fa4a754ce\\receipt.json"
+  },
+  "before": {
+    "l1": {
+      "exists": true,
+      "bytes_base64": "IyBMZW1icmFuw6dhcwoKCi0gcm9kYXIgYnVpbGQvdGVzdGUgR28gbm8gQ0xJUHJveHlBUEkgLT4gW0dvIHRvb2xjaGFpbiBmb3JhIGRvIFBBVEggKENMSVByb3h5QVBJKV0obWVtb3JpYXMvZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmYubWQpIFtbbWVtb3JpYXMvZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmZ8R28gdG9vbGNoYWluIGZvcmEgZG8gUEFUSCAoQ0xJUHJveHlBUEkpXV0gI3Rvb2xjaGFpbi9nbyAjYnVpbGQvd2luZG93cyBeZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmYK"
+    },
+    "destination": {
+      "exists": false,
+      "bytes_base64": ""
+    }
+  },
+  "receipt": {
+    "contract": "dex.memory.route.receipt.v2",
+    "status": "COMMITTED",
+    "scope": "project",
+    "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "operation_id": "remember-0eb8978e5785a9019fb19923",
+    "idempotency_key": "dex-memoria:remember-0eb8978e5785a9019fb19923:project",
+    "transaction_id": "82811fbf182ef65fa4a754ce",
+    "receipt_id": "b82f7547d171c1949954d816",
+    "receipt_path": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\82811fbf182ef65fa4a754ce\\receipt.json",
+    "validation_receipt_path": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\82811fbf182ef65fa4a754ce\\validation.json",
+    "validation_receipt_hash": "20955090f5b384e3a97f41979844dcb5e8a4335eb48bc1ecb6ab944ccf333bd9",
+    "validation_contract": "dex.memory.capability.unit-receipt.v2",
+    "validation_ok": true,
+    "candidate_id": "bbf7bf364d8ccdd71ff559b51ee440c31642b5aad63b1f13cba250a820d5eda0",
+    "content_hash": "f0aa9457a9c8143eda0eef34301e54d19220c63de675c75b0e92defff3196ff2",
+    "route_identity": "ef02daf7b8b7b1b66330ff3e9d4d247a55a69301dd4a83f42f58da8c57f9f9ee",
+    "deduplicated": false,
+    "write_set_hash": "86ba6f03588d3eb203b4e7a8a8f138cea357ac2eb2eb655155c1715745a852b0",
+    "target_hashes": {
+      "l1": "6781c4c717d7d8f038c1df833f88cea64f863b67ff270afc7ae60bb4f8154547",
+      "destination": "f0aa9457a9c8143eda0eef34301e54d19220c63de675c75b0e92defff3196ff2"
+    },
+    "receipt_revision": 2,
+    "producer_provenance": {
+      "entrypoint_realpath": "C:\\CodexProjetos\\dex-memoria\\bin\\dex-memoria.js",
+      "entrypoint_sha256": "bb53fb76bd55872e83dbac3118a014630462f49dc542d410f6ce4a4160adb842"
+    }
+  }
+}

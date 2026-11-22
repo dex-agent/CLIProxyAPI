@@ -1,0 +1,74 @@
+{
+  "contract": "dex.memory.capability.unit-receipt.v2",
+  "capability": "v2-obsidian",
+  "require_obsidian": true,
+  "expected_require_obsidian": true,
+  "ok": true,
+  "errors": [],
+  "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+  "touched_files": [
+    {
+      "path": "lembranca.md",
+      "sha256": "5b9931b9688d52c7027a7c29a10a0404af557ee2c5d56a1fd1e4e0f1d17e8517",
+      "tags": [
+        "#toolchain/go",
+        "#build/windows"
+      ]
+    },
+    {
+      "path": "memorias/go-toolchain-fora-do-path-cliproxyapi-bd32bbd03dff.md",
+      "sha256": "27b1789e70277d1fd632b09103c83c471830652434fd7e2eeadbd96abe643fa7",
+      "tags": [
+        "#toolchain/go",
+        "#build/windows"
+      ]
+    }
+  ],
+  "evidence": {
+    "root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "files": [
+      {
+        "path": "lembranca.md",
+        "sha256": "5b9931b9688d52c7027a7c29a10a0404af557ee2c5d56a1fd1e4e0f1d17e8517",
+        "tags": [
+          "#toolchain/go",
+          "#build/windows"
+        ]
+      },
+      {
+        "path": "memorias/go-toolchain-fora-do-path-cliproxyapi-bd32bbd03dff.md",
+        "sha256": "27b1789e70277d1fd632b09103c83c471830652434fd7e2eeadbd96abe643fa7",
+        "tags": [
+          "#toolchain/go",
+          "#build/windows"
+        ]
+      }
+    ],
+    "block_ids": [
+      "go-toolchain-fora-do-path-cliproxyapi-bd32bbd03dff",
+      "go-toolchain-fora-do-path-cliproxyapi-bd32bbd03dff-content"
+    ],
+    "markdown_links": [
+      "lembranca.md -> memorias/go-toolchain-fora-do-path-cliproxyapi-bd32bbd03dff.md",
+      "memorias/go-toolchain-fora-do-path-cliproxyapi-bd32bbd03dff.md -> ../lembranca.md"
+    ],
+    "wikilinks": [
+      "lembranca.md -> [[memorias/go-toolchain-fora-do-path-cliproxyapi-bd32bbd03dff]]",
+      "memorias/go-toolchain-fora-do-path-cliproxyapi-bd32bbd03dff.md -> [[lembranca]]"
+    ],
+    "backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "required_backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "unresolved_markdown_links": [],
+    "unresolved_wikilinks": [],
+    "cross_vault_links": []
+  },
+  "warnings": [
+    "cross-unit block-id collision audit is separate from this write-unit verdict"
+  ]
+}

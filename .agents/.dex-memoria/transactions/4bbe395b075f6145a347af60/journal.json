@@ -1,0 +1,70 @@
+{
+  "contract": "dex.memory.route.journal.v2",
+  "state": "COMMITTED",
+  "request_hash": "58ef929925d2b85557d6928b0ad64c97a5fc744be49b4e0f1a243fa9973ae535",
+  "route": {
+    "scope": "project",
+    "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "operation_id": "remember-e98196bf049193846b42b17c",
+    "idempotency_key": "dex-memoria:remember-e98196bf049193846b42b17c:project",
+    "transaction_id": "4bbe395b075f6145a347af60",
+    "receipt_id": "7473de07210adfb786adcfa8"
+  },
+  "candidate": {
+    "contract": "dex.memory.write.candidate.v2",
+    "target_layer": "L2",
+    "slug": "provider-cliproxyapi-no-zcode-5-camadas-empilhadas-e98196bf0491",
+    "trigger": "reconfigurar/diagnosticar o provider CLIProxyAPI no ZCode; chat do ZCode falhando com Reconnecting; 429 mesmo com quota; modelo nao listado",
+    "title": "Provider CLIProxyAPI no ZCode: 5 camadas empilhadas até o E2E verde",
+    "body": "E2E PROVADO 2026-11-22 (chat do ZCode respondeu 'gemini-4-argon via CLIProxyAPI'). O funcionamento exigiu 5 camadas SIMULTANEAS — cada uma mascarava a seguinte: (1) reasoningLevel: agent/model rule de claude-* exige config.optionSpecs.reasoningLevel.values=['high'] no providerModelRules do provider_config.json (serie Claude exige nivel; gemini cai em toggle on/off). (2) ID normalizado: a UI do ZCode tira o sufixo de esforco do modelId (-high vira 'Effort: High'); o proxy recebia 'gemini-4-argon' e devolvia model_not_found. Cura: oauth.model-alias.antigravity com fork:true + force-mapping:true (SEM fork o alias SUBSTITUI o ID original e quebra os que ja funcionavam). (3) cooldown: cada 429 semeia cooldown de credencial em memoria -> blackout em cascata. Cura: routing.cooldown.disable-cooling: true. (4) user_agent: o proxy manda 'antigravity/hub/<v> (aidev_client; os_type=darwin; arch=arm64)' fixo — mentira em maquina Windows e versao distinta da desktop. Cura: campo user_agent no auth JSON (auths/antigravity-*.json): 'antigravity/hub/2.24.0 (aidev_client; os_type=win32; arch=x64; cl=963137146)' (formato que o OpenBot usa e o que faz o Google servir o grupo correto a planos Pro — fonte: mentor-documental-openbot, antigravity-usage.ts). (5) CONTEUDO do system prompt: o do ZCode contem vocabulario de seguranca ofensiva (CTF/pentesting/C2/DoS) e o Antigravity responde 429 RESOURCE_EXHAUSTED enganoso. Cura: oauth.providers.antigravity.sensitive-patterns-replace removendo o paragrafo. PROCESSO: rodar o proxy com observability.logs.request-log:true + logging-to-file:true e ler os bodies reais em auths/logs/error-v1-*.log (o stdout nao traz body). Start desacoplado: .agents/scripts/start-proxy.ps1 (Start-Process; o proxy NAO pode ser filho do shell do host — morre junto). Diagnostico final: proxy 127.0.0.1:8317, key <PROXY-KEY>, config.yaml gitignored.",
+    "tags": [
+      "#instalacao/cliproxyapi-provider",
+      "#zcode/provider",
+      "#antigravity/e2e"
+    ]
+  },
+  "paths": {
+    "l1": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\lembranca.md",
+    "destination": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\memorias\\provider-cliproxyapi-no-zcode-5-camadas-empilhadas-e98196bf0491.md",
+    "receipt": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\4bbe395b075f6145a347af60\\receipt.json"
+  },
+  "before": {
+    "l1": {
+      "exists": true,
+      "bytes_base64": "IyBMZW1icmFuw6dhcwoKCi0gcm9kYXIgYnVpbGQvdGVzdGUgR28gbm8gQ0xJUHJveHlBUEkgLT4gW0dvIHRvb2xjaGFpbiBmb3JhIGRvIFBBVEggKENMSVByb3h5QVBJKV0obWVtb3JpYXMvZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmYubWQpIFtbbWVtb3JpYXMvZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmZ8R28gdG9vbGNoYWluIGZvcmEgZG8gUEFUSCAoQ0xJUHJveHlBUEkpXV0gI3Rvb2xjaGFpbi9nbyAjYnVpbGQvd2luZG93cyBeZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmYKCi0gcm9kYXIgZ28gdGVzdCAuLy4uLiBlIHZlciA5IGZhbGhhcyAvIDYgcGFjb3RlcyAtPiBbU3VpdGUgZ28gdGVzdCAuLy4uLiB2ZXJtZWxoYSBubyBXaW5kb3dzIChDTElQcm94eUFQSSldKG1lbW9yaWFzL3N1aXRlLWdvLXRlc3QtdmVybWVsaGEtbm8td2luZG93cy1jbGlwcm94eWFwaS0wZWI4OTc4ZTU3ODUubWQpIFtbbWVtb3JpYXMvc3VpdGUtZ28tdGVzdC12ZXJtZWxoYS1uby13aW5kb3dzLWNsaXByb3h5YXBpLTBlYjg5NzhlNTc4NXxTdWl0ZSBnbyB0ZXN0IC4vLi4uIHZlcm1lbGhhIG5vIFdpbmRvd3MgKENMSVByb3h5QVBJKV1dICNidWlsZC9nby10ZXN0cyAjcGxhdGFmb3JtYS93aW5kb3dzIF5zdWl0ZS1nby10ZXN0LXZlcm1lbGhhLW5vLXdpbmRvd3MtY2xpcHJveHlhcGktMGViODk3OGU1Nzg1CgotIGRlYnVnIGRlIGZhbGhhIFRlc3RUb29sU2VhcmNoRGlzYWJsZWRNYXRjaGVzRGV2R29sZGVuIC0+IFtHb2xkZW4gZHJpZnQgcmVhbCBubyB0cmFuc2xhdG9yIGNsYXVkZS9vcGVuYWktcmVzcG9uc2VzXShtZW1vcmlhcy9nb2xkZW4tZHJpZnQtcmVhbC1uby10cmFuc2xhdG9yLWNsYXVkZS1vcGVuYWktcmVzcG8tOWJhNzg4ZjEyNTc3Lm1kKSBbW21lbW9yaWFzL2dvbGRlbi1kcmlmdC1yZWFsLW5vLXRyYW5zbGF0b3ItY2xhdWRlLW9wZW5haS1yZXNwby05YmE3ODhmMTI1Nzd8R29sZGVuIGRyaWZ0IHJlYWwgbm8gdHJhbnNsYXRvciBjbGF1ZGUvb3BlbmFpLXJlc3BvbnNlc11dICNidWlsZC9nb2xkZW4tZHJpZnQgI3RyYW5zbGF0b3IvY2xhdWRlIF5nb2xkZW4tZHJpZnQtcmVhbC1uby10cmFuc2xhdG9yLWNsYXVkZS1vcGVuYWktcmVzcG8tOWJhNzg4ZjEyNTc3CgotIHJldmlldyBlc3RydXR1cmFsIG91IGltcGFjdG8gbm8gQ0xJUHJveHlBUEkgLT4gW0dyYWZvIGVzdHJ1dHVyYWwgbG9jYWwgZG8gQ0xJUHJveHlBUEkgKENSRyldKG1lbW9yaWFzL2dyYWZvLWVzdHJ1dHVyYWwtbG9jYWwtZG8tY2xpcHJveHlhcGktY3JnLTY2ZTkwNDgyZTc0Ni5tZCkgW1ttZW1vcmlhcy9ncmFmby1lc3RydXR1cmFsLWxvY2FsLWRvLWNsaXByb3h5YXBpLWNyZy02NmU5MDQ4MmU3NDZ8R3JhZm8gZXN0cnV0dXJhbCBsb2NhbCBkbyBDTElQcm94eUFQSSAoQ1JHKV1dICNjb2RlLXJldmlldy1ncmFwaC9sb2NhbCAjYXJxdWVvbG9naWEvY2xpcHJveHlhcGkgXmdyYWZvLWVzdHJ1dHVyYWwtbG9jYWwtZG8tY2xpcHJveHlhcGktY3JnLTY2ZTkwNDgyZTc0NgoKLSBjb25maWFyIGVtIENJIHZlcmRlIGRvIENMSVByb3h5QVBJIC0+IFtDSSBkbyBDTElQcm94eUFQSSByb2RhIGFwZW5hcyBidWlsZCAoc2VtIHRlc3RlcyldKG1lbW9yaWFzL2NpLWRvLWNsaXByb3h5YXBpLXJvZGEtYXBlbmFzLWJ1aWxkLXNlbS10ZXN0ZXMtMmU5OGFmNTM0MGNkLm1kKSBbW21lbW9yaWFzL2NpLWRvLWNsaXByb3h5YXBpLXJvZGEtYXBlbmFzLWJ1aWxkLXNlbS10ZXN0ZXMtMmU5OGFmNTM0MGNkfENJIGRvIENMSVByb3h5QVBJIHJvZGEgYXBlbmFzIGJ1aWxkIChzZW0gdGVzdGVzKV1dICNjaS9nYXBzICNidWlsZC9nbyBeY2ktZG8tY2xpcHJveHlhcGktcm9kYS1hcGVuYXMtYnVpbGQtc2VtLXRlc3Rlcy0yZTk4YWY1MzQwY2QKCi0gZWRpdGFyIGZvbnRlIGRvIENMSVByb3h5QVBJIG91IGludmVzdGlnYXIgRU9MIC0+IFtFbmNvZGluZyBkbyByZXBvIENMSVByb3h5QVBJOiB3b3JraW5nIENSTEYgLyBsb2phIExGIHNlbSBwaW5dKG1lbW9yaWFzL2VuY29kaW5nLWRvLXJlcG8tY2xpcHJveHlhcGktd29ya2luZy1jcmxmLWxvamEtbGYtcy01Y2IzYzMwNTAzOTEubWQpIFtbbWVtb3JpYXMvZW5jb2RpbmctZG8tcmVwby1jbGlwcm94eWFwaS13b3JraW5nLWNybGYtbG9qYS1sZi1zLTVjYjNjMzA1MDM5MXxFbmNvZGluZyBkbyByZXBvIENMSVByb3h5QVBJOiB3b3JraW5nIENSTEYgLyBsb2phIExGIHNlbSBwaW5dXSAjZW5jb2RpbmcvcmVwbyAjZ2l0L3dpbmRvd3MgXmVuY29kaW5nLWRvLXJlcG8tY2xpcHJveHlhcGktd29ya2luZy1jcmxmLWxvamEtbGYtcy01Y2IzYzMwNTAzOTEKCi0gcmVmYXRvcmFyIHRyYW5zbGF0b3IgZ2VtaW5pIG91IGVzY29saGVyIGFsdm8gZGUgcmVmYWN0b3IgLT4gW0hvdHNwb3RzIGRlIHRveGljaWRhZGUgZG8gQ0xJUHJveHlBUEkgKHBvZGlvIFc4KV0obWVtb3JpYXMvaG90c3BvdHMtZGUtdG94aWNpZGFkZS1kby1jbGlwcm94eWFwaS1wb2Rpby13OC0xMDZiZTQxZTc2MDMubWQpIFtbbWVtb3JpYXMvaG90c3BvdHMtZGUtdG94aWNpZGFkZS1kby1jbGlwcm94eWFwaS1wb2Rpby13OC0xMDZiZTQxZTc2MDN8SG90c3BvdHMgZGUgdG94aWNpZGFkZSBkbyBDTElQcm94eUFQSSAocG9kaW8gVzgpXV0gI2FycXVlb2xvZ2lhL2hvdHNwb3QgI21ldHJpY2FzL2dvIF5ob3RzcG90cy1kZS10b3hpY2lkYWRlLWRvLWNsaXByb3h5YXBpLXBvZGlvLXc4LTEwNmJlNDFlNzYwMwoKLSB1c2FyL3JlaW5pY2lhciBvIHByb3h5IENMSVByb3h5QVBJOyBjb25zdW1pciBtb2RlbG9zIGFudGlncmF2aXR5IHBlbG8gWkNvZGU7IGRpYWdub3N0aWNvIGRlIHByb3ZpZGVyIENMSVByb3h5QVBJIG5vIFpDb2RlOyByb2RhciBvIHNlcnZlciBsb2NhbCBkbyBDTElQcm94eUFQSSAtPiBbQ0xJUHJveHlBUEkgaW5zdGFsYWRvIGUgc2VydmluZG8gYW50aWdyYXZpdHk7IHByb3ZpZGVyIGNhZGFzdHJhZG8gbm8gWkNvZGUgY29tIEUyRSBwcm92YWRvXShtZW1vcmlhcy9jbGlwcm94eWFwaS1pbnN0YWxhZG8tZS1zZXJ2aW5kby1hbnRpZ3Jhdml0eS1wcm92aWQtZTA5Zjg0M2QyZDgzLm1kKSBbW21lbW9yaWFzL2NsaXByb3h5YXBpLWluc3RhbGFkby1lLXNlcnZpbmRvLWFudGlncmF2aXR5LXByb3ZpZC1lMDlmODQzZDJkODN8Q0xJUHJveHlBUEkgaW5zdGFsYWRvIGUgc2VydmluZG8gYW50aWdyYXZpdHk7IHByb3ZpZGVyIGNhZGFzdHJhZG8gbm8gWkNvZGUgY29tIEUyRSBwcm92YWRvXV0gI2luc3RhbGFjYW8vY2xpcHJveHlhcGkgI3pjb2RlL3Byb3ZpZGVyICNhbnRpZ3Jhdml0eS9lMmUgXmNsaXByb3h5YXBpLWluc3RhbGFkby1lLXNlcnZpbmRvLWFudGlncmF2aXR5LXByb3ZpZC1lMDlmODQzZDJkODMK"
+    },
+    "destination": {
+      "exists": false,
+      "bytes_base64": ""
+    }
+  },
+  "receipt": {
+    "contract": "dex.memory.route.receipt.v2",
+    "status": "COMMITTED",
+    "scope": "project",
+    "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "operation_id": "remember-e98196bf049193846b42b17c",
+    "idempotency_key": "dex-memoria:remember-e98196bf049193846b42b17c:project",
+    "transaction_id": "4bbe395b075f6145a347af60",
+    "receipt_id": "7473de07210adfb786adcfa8",
+    "receipt_path": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\4bbe395b075f6145a347af60\\receipt.json",
+    "validation_receipt_path": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\4bbe395b075f6145a347af60\\validation.json",
+    "validation_receipt_hash": "72a5f2490b1fb892f3a8c9b445abf4cb804dcd60a84cd683ec9a7f3d6d478b1c",
+    "validation_contract": "dex.memory.capability.unit-receipt.v2",
+    "validation_ok": true,
+    "candidate_id": "6e494252aae09d21e7bfa0c3cbe0c3f0fa3af601cf2893fcf30e42e5c6348be2",
+    "content_hash": "75d5fdf387c851212eb04eb5debd9aa08be3bb8c941b70a5bf09fa830d982a35",
+    "route_identity": "10d49137dcb57b8f48045ba40863b2772c9bbd75a9fc91e96f9d50bf6dda0db5",
+    "deduplicated": false,
+    "write_set_hash": "19906d9d55e657fe65f32f8f0121e3b0cdb719880449bb49cbff1f07088c44dd",
+    "target_hashes": {
+      "l1": "626ca961e33c878164c94634d239806a28bceda57d5c9df438ac5f1b90045ed8",
+      "destination": "75d5fdf387c851212eb04eb5debd9aa08be3bb8c941b70a5bf09fa830d982a35"
+    },
+    "receipt_revision": 2,
+    "producer_provenance": {
+      "entrypoint_realpath": "C:\\CodexProjetos\\dex-memoria\\bin\\dex-memoria.js",
+      "entrypoint_sha256": "bb53fb76bd55872e83dbac3118a014630462f49dc542d410f6ce4a4160adb842"
+    }
+  }
+}

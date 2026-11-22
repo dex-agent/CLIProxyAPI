@@ -1,0 +1,74 @@
+{
+  "contract": "dex.memory.capability.unit-receipt.v2",
+  "capability": "v2-obsidian",
+  "require_obsidian": true,
+  "expected_require_obsidian": true,
+  "ok": true,
+  "errors": [],
+  "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+  "touched_files": [
+    {
+      "path": "lembranca.md",
+      "sha256": "610fd7ee4d8832724d022bfe0023aa034553a2f9f53a76f3febd861220c4fdda",
+      "tags": [
+        "#build/golden-drift",
+        "#translator/claude"
+      ]
+    },
+    {
+      "path": "memorias/golden-drift-real-no-translator-claude-openai-respo-9ba788f12577.md",
+      "sha256": "9c0bbe84b8b6483a0c1697de7117c897c7d0c2ecbc05939d6337cd9006d952e4",
+      "tags": [
+        "#build/golden-drift",
+        "#translator/claude"
+      ]
+    }
+  ],
+  "evidence": {
+    "root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "files": [
+      {
+        "path": "lembranca.md",
+        "sha256": "610fd7ee4d8832724d022bfe0023aa034553a2f9f53a76f3febd861220c4fdda",
+        "tags": [
+          "#build/golden-drift",
+          "#translator/claude"
+        ]
+      },
+      {
+        "path": "memorias/golden-drift-real-no-translator-claude-openai-respo-9ba788f12577.md",
+        "sha256": "9c0bbe84b8b6483a0c1697de7117c897c7d0c2ecbc05939d6337cd9006d952e4",
+        "tags": [
+          "#build/golden-drift",
+          "#translator/claude"
+        ]
+      }
+    ],
+    "block_ids": [
+      "golden-drift-real-no-translator-claude-openai-respo-9ba788f12577",
+      "golden-drift-real-no-translator-claude-openai-respo-9ba788f12577-content"
+    ],
+    "markdown_links": [
+      "lembranca.md -> memorias/golden-drift-real-no-translator-claude-openai-respo-9ba788f12577.md",
+      "memorias/golden-drift-real-no-translator-claude-openai-respo-9ba788f12577.md -> ../lembranca.md"
+    ],
+    "wikilinks": [
+      "lembranca.md -> [[memorias/golden-drift-real-no-translator-claude-openai-respo-9ba788f12577]]",
+      "memorias/golden-drift-real-no-translator-claude-openai-respo-9ba788f12577.md -> [[lembranca]]"
+    ],
+    "backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "required_backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "unresolved_markdown_links": [],
+    "unresolved_wikilinks": [],
+    "cross_vault_links": []
+  },
+  "warnings": [
+    "cross-unit block-id collision audit is separate from this write-unit verdict"
+  ]
+}

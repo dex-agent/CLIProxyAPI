@@ -1,0 +1,78 @@
+{
+  "contract": "dex.memory.capability.unit-receipt.v2",
+  "capability": "v2-obsidian",
+  "require_obsidian": true,
+  "expected_require_obsidian": true,
+  "ok": true,
+  "errors": [],
+  "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+  "touched_files": [
+    {
+      "path": "lembranca.md",
+      "sha256": "626ca961e33c878164c94634d239806a28bceda57d5c9df438ac5f1b90045ed8",
+      "tags": [
+        "#instalacao/cliproxyapi-provider",
+        "#zcode/provider",
+        "#antigravity/e2e"
+      ]
+    },
+    {
+      "path": "memorias/provider-cliproxyapi-no-zcode-5-camadas-empilhadas-e98196bf0491.md",
+      "sha256": "75d5fdf387c851212eb04eb5debd9aa08be3bb8c941b70a5bf09fa830d982a35",
+      "tags": [
+        "#instalacao/cliproxyapi-provider",
+        "#zcode/provider",
+        "#antigravity/e2e"
+      ]
+    }
+  ],
+  "evidence": {
+    "root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "files": [
+      {
+        "path": "lembranca.md",
+        "sha256": "626ca961e33c878164c94634d239806a28bceda57d5c9df438ac5f1b90045ed8",
+        "tags": [
+          "#instalacao/cliproxyapi-provider",
+          "#zcode/provider",
+          "#antigravity/e2e"
+        ]
+      },
+      {
+        "path": "memorias/provider-cliproxyapi-no-zcode-5-camadas-empilhadas-e98196bf0491.md",
+        "sha256": "75d5fdf387c851212eb04eb5debd9aa08be3bb8c941b70a5bf09fa830d982a35",
+        "tags": [
+          "#instalacao/cliproxyapi-provider",
+          "#zcode/provider",
+          "#antigravity/e2e"
+        ]
+      }
+    ],
+    "block_ids": [
+      "provider-cliproxyapi-no-zcode-5-camadas-empilhadas-e98196bf0491",
+      "provider-cliproxyapi-no-zcode-5-camadas-empilhadas-e98196bf0491-content"
+    ],
+    "markdown_links": [
+      "lembranca.md -> memorias/provider-cliproxyapi-no-zcode-5-camadas-empilhadas-e98196bf0491.md",
+      "memorias/provider-cliproxyapi-no-zcode-5-camadas-empilhadas-e98196bf0491.md -> ../lembranca.md"
+    ],
+    "wikilinks": [
+      "lembranca.md -> [[memorias/provider-cliproxyapi-no-zcode-5-camadas-empilhadas-e98196bf0491]]",
+      "memorias/provider-cliproxyapi-no-zcode-5-camadas-empilhadas-e98196bf0491.md -> [[lembranca]]"
+    ],
+    "backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "required_backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "unresolved_markdown_links": [],
+    "unresolved_wikilinks": [],
+    "cross_vault_links": []
+  },
+  "warnings": [
+    "cross-unit block-id collision audit is separate from this write-unit verdict"
+  ]
+}

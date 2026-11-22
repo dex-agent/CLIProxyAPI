@@ -1,0 +1,74 @@
+{
+  "contract": "dex.memory.capability.unit-receipt.v2",
+  "capability": "v2-obsidian",
+  "require_obsidian": true,
+  "expected_require_obsidian": true,
+  "ok": true,
+  "errors": [],
+  "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+  "touched_files": [
+    {
+      "path": "lembranca.md",
+      "sha256": "52f4173877c37e775826aefaaf21381d9846e28847e13c0dd72296fd1dce2dc1",
+      "tags": [
+        "#arqueologia/hotspot",
+        "#metricas/go"
+      ]
+    },
+    {
+      "path": "memorias/hotspots-de-toxicidade-do-cliproxyapi-podio-w8-106be41e7603.md",
+      "sha256": "b0a6801a09ae36de68cbfd6bd9b79b9968ec195913fe0d51e81356afca15a256",
+      "tags": [
+        "#arqueologia/hotspot",
+        "#metricas/go"
+      ]
+    }
+  ],
+  "evidence": {
+    "root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "files": [
+      {
+        "path": "lembranca.md",
+        "sha256": "52f4173877c37e775826aefaaf21381d9846e28847e13c0dd72296fd1dce2dc1",
+        "tags": [
+          "#arqueologia/hotspot",
+          "#metricas/go"
+        ]
+      },
+      {
+        "path": "memorias/hotspots-de-toxicidade-do-cliproxyapi-podio-w8-106be41e7603.md",
+        "sha256": "b0a6801a09ae36de68cbfd6bd9b79b9968ec195913fe0d51e81356afca15a256",
+        "tags": [
+          "#arqueologia/hotspot",
+          "#metricas/go"
+        ]
+      }
+    ],
+    "block_ids": [
+      "hotspots-de-toxicidade-do-cliproxyapi-podio-w8-106be41e7603",
+      "hotspots-de-toxicidade-do-cliproxyapi-podio-w8-106be41e7603-content"
+    ],
+    "markdown_links": [
+      "lembranca.md -> memorias/hotspots-de-toxicidade-do-cliproxyapi-podio-w8-106be41e7603.md",
+      "memorias/hotspots-de-toxicidade-do-cliproxyapi-podio-w8-106be41e7603.md -> ../lembranca.md"
+    ],
+    "wikilinks": [
+      "lembranca.md -> [[memorias/hotspots-de-toxicidade-do-cliproxyapi-podio-w8-106be41e7603]]",
+      "memorias/hotspots-de-toxicidade-do-cliproxyapi-podio-w8-106be41e7603.md -> [[lembranca]]"
+    ],
+    "backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "required_backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "unresolved_markdown_links": [],
+    "unresolved_wikilinks": [],
+    "cross_vault_links": []
+  },
+  "warnings": [
+    "cross-unit block-id collision audit is separate from this write-unit verdict"
+  ]
+}

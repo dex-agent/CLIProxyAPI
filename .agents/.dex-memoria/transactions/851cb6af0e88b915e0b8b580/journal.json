@@ -1,0 +1,69 @@
+{
+  "contract": "dex.memory.route.journal.v2",
+  "state": "COMMITTED",
+  "request_hash": "b2c0cc5000f45d7dd64c15fceac262f198bbf7995ec95675588baafea19ff388",
+  "route": {
+    "scope": "project",
+    "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "operation_id": "remember-106be41e76035216c0f2576e",
+    "idempotency_key": "dex-memoria:remember-106be41e76035216c0f2576e:project",
+    "transaction_id": "851cb6af0e88b915e0b8b580",
+    "receipt_id": "6d680dc215c710682127556a"
+  },
+  "candidate": {
+    "contract": "dex.memory.write.candidate.v2",
+    "target_layer": "L2",
+    "slug": "hotspots-de-toxicidade-do-cliproxyapi-podio-w8-106be41e7603",
+    "trigger": "refatorar translator gemini ou escolher alvo de refactor",
+    "title": "Hotspots de toxicidade do CLIProxyAPI (podio W8)",
+    "body": "Podio CC (gocyclo, 28660 rotinas, cobertura 100%): 1) ConvertGeminiResponseToOpenAIResponses CC348/1585L internal/translator/gemini/openai/responses/gemini_openai-responses_response.go:381 (duplo coroa com gate de span); 2) streamCodexDuplex CC325 codex_websockets_duplex.go:39; 3) (*Manager).MarkResult CC314 conductor_cooldown.go:1636. God files por LOC de funcoes: conductor_cooldown.go 4217L/150fn, conductor_execution.go 3958L/117fn. Hubs fan-in: internal/util 67, config/registry 39. 137 pacotes internos, 761 arestas, 0 ciclos.",
+    "tags": [
+      "#arqueologia/hotspot",
+      "#metricas/go"
+    ]
+  },
+  "paths": {
+    "l1": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\lembranca.md",
+    "destination": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\memorias\\hotspots-de-toxicidade-do-cliproxyapi-podio-w8-106be41e7603.md",
+    "receipt": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\851cb6af0e88b915e0b8b580\\receipt.json"
+  },
+  "before": {
+    "l1": {
+      "exists": true,
+      "bytes_base64": "IyBMZW1icmFuw6dhcwoKCi0gcm9kYXIgYnVpbGQvdGVzdGUgR28gbm8gQ0xJUHJveHlBUEkgLT4gW0dvIHRvb2xjaGFpbiBmb3JhIGRvIFBBVEggKENMSVByb3h5QVBJKV0obWVtb3JpYXMvZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmYubWQpIFtbbWVtb3JpYXMvZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmZ8R28gdG9vbGNoYWluIGZvcmEgZG8gUEFUSCAoQ0xJUHJveHlBUEkpXV0gI3Rvb2xjaGFpbi9nbyAjYnVpbGQvd2luZG93cyBeZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmYKCi0gcm9kYXIgZ28gdGVzdCAuLy4uLiBlIHZlciA5IGZhbGhhcyAvIDYgcGFjb3RlcyAtPiBbU3VpdGUgZ28gdGVzdCAuLy4uLiB2ZXJtZWxoYSBubyBXaW5kb3dzIChDTElQcm94eUFQSSldKG1lbW9yaWFzL3N1aXRlLWdvLXRlc3QtdmVybWVsaGEtbm8td2luZG93cy1jbGlwcm94eWFwaS0wZWI4OTc4ZTU3ODUubWQpIFtbbWVtb3JpYXMvc3VpdGUtZ28tdGVzdC12ZXJtZWxoYS1uby13aW5kb3dzLWNsaXByb3h5YXBpLTBlYjg5NzhlNTc4NXxTdWl0ZSBnbyB0ZXN0IC4vLi4uIHZlcm1lbGhhIG5vIFdpbmRvd3MgKENMSVByb3h5QVBJKV1dICNidWlsZC9nby10ZXN0cyAjcGxhdGFmb3JtYS93aW5kb3dzIF5zdWl0ZS1nby10ZXN0LXZlcm1lbGhhLW5vLXdpbmRvd3MtY2xpcHJveHlhcGktMGViODk3OGU1Nzg1CgotIGRlYnVnIGRlIGZhbGhhIFRlc3RUb29sU2VhcmNoRGlzYWJsZWRNYXRjaGVzRGV2R29sZGVuIC0+IFtHb2xkZW4gZHJpZnQgcmVhbCBubyB0cmFuc2xhdG9yIGNsYXVkZS9vcGVuYWktcmVzcG9uc2VzXShtZW1vcmlhcy9nb2xkZW4tZHJpZnQtcmVhbC1uby10cmFuc2xhdG9yLWNsYXVkZS1vcGVuYWktcmVzcG8tOWJhNzg4ZjEyNTc3Lm1kKSBbW21lbW9yaWFzL2dvbGRlbi1kcmlmdC1yZWFsLW5vLXRyYW5zbGF0b3ItY2xhdWRlLW9wZW5haS1yZXNwby05YmE3ODhmMTI1Nzd8R29sZGVuIGRyaWZ0IHJlYWwgbm8gdHJhbnNsYXRvciBjbGF1ZGUvb3BlbmFpLXJlc3BvbnNlc11dICNidWlsZC9nb2xkZW4tZHJpZnQgI3RyYW5zbGF0b3IvY2xhdWRlIF5nb2xkZW4tZHJpZnQtcmVhbC1uby10cmFuc2xhdG9yLWNsYXVkZS1vcGVuYWktcmVzcG8tOWJhNzg4ZjEyNTc3CgotIHJldmlldyBlc3RydXR1cmFsIG91IGltcGFjdG8gbm8gQ0xJUHJveHlBUEkgLT4gW0dyYWZvIGVzdHJ1dHVyYWwgbG9jYWwgZG8gQ0xJUHJveHlBUEkgKENSRyldKG1lbW9yaWFzL2dyYWZvLWVzdHJ1dHVyYWwtbG9jYWwtZG8tY2xpcHJveHlhcGktY3JnLTY2ZTkwNDgyZTc0Ni5tZCkgW1ttZW1vcmlhcy9ncmFmby1lc3RydXR1cmFsLWxvY2FsLWRvLWNsaXByb3h5YXBpLWNyZy02NmU5MDQ4MmU3NDZ8R3JhZm8gZXN0cnV0dXJhbCBsb2NhbCBkbyBDTElQcm94eUFQSSAoQ1JHKV1dICNjb2RlLXJldmlldy1ncmFwaC9sb2NhbCAjYXJxdWVvbG9naWEvY2xpcHJveHlhcGkgXmdyYWZvLWVzdHJ1dHVyYWwtbG9jYWwtZG8tY2xpcHJveHlhcGktY3JnLTY2ZTkwNDgyZTc0NgoKLSBjb25maWFyIGVtIENJIHZlcmRlIGRvIENMSVByb3h5QVBJIC0+IFtDSSBkbyBDTElQcm94eUFQSSByb2RhIGFwZW5hcyBidWlsZCAoc2VtIHRlc3RlcyldKG1lbW9yaWFzL2NpLWRvLWNsaXByb3h5YXBpLXJvZGEtYXBlbmFzLWJ1aWxkLXNlbS10ZXN0ZXMtMmU5OGFmNTM0MGNkLm1kKSBbW21lbW9yaWFzL2NpLWRvLWNsaXByb3h5YXBpLXJvZGEtYXBlbmFzLWJ1aWxkLXNlbS10ZXN0ZXMtMmU5OGFmNTM0MGNkfENJIGRvIENMSVByb3h5QVBJIHJvZGEgYXBlbmFzIGJ1aWxkIChzZW0gdGVzdGVzKV1dICNjaS9nYXBzICNidWlsZC9nbyBeY2ktZG8tY2xpcHJveHlhcGktcm9kYS1hcGVuYXMtYnVpbGQtc2VtLXRlc3Rlcy0yZTk4YWY1MzQwY2QKCi0gZWRpdGFyIGZvbnRlIGRvIENMSVByb3h5QVBJIG91IGludmVzdGlnYXIgRU9MIC0+IFtFbmNvZGluZyBkbyByZXBvIENMSVByb3h5QVBJOiB3b3JraW5nIENSTEYgLyBsb2phIExGIHNlbSBwaW5dKG1lbW9yaWFzL2VuY29kaW5nLWRvLXJlcG8tY2xpcHJveHlhcGktd29ya2luZy1jcmxmLWxvamEtbGYtcy01Y2IzYzMwNTAzOTEubWQpIFtbbWVtb3JpYXMvZW5jb2RpbmctZG8tcmVwby1jbGlwcm94eWFwaS13b3JraW5nLWNybGYtbG9qYS1sZi1zLTVjYjNjMzA1MDM5MXxFbmNvZGluZyBkbyByZXBvIENMSVByb3h5QVBJOiB3b3JraW5nIENSTEYgLyBsb2phIExGIHNlbSBwaW5dXSAjZW5jb2RpbmcvcmVwbyAjZ2l0L3dpbmRvd3MgXmVuY29kaW5nLWRvLXJlcG8tY2xpcHJveHlhcGktd29ya2luZy1jcmxmLWxvamEtbGYtcy01Y2IzYzMwNTAzOTEK"
+    },
+    "destination": {
+      "exists": false,
+      "bytes_base64": ""
+    }
+  },
+  "receipt": {
+    "contract": "dex.memory.route.receipt.v2",
+    "status": "COMMITTED",
+    "scope": "project",
+    "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "operation_id": "remember-106be41e76035216c0f2576e",
+    "idempotency_key": "dex-memoria:remember-106be41e76035216c0f2576e:project",
+    "transaction_id": "851cb6af0e88b915e0b8b580",
+    "receipt_id": "6d680dc215c710682127556a",
+    "receipt_path": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\851cb6af0e88b915e0b8b580\\receipt.json",
+    "validation_receipt_path": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\851cb6af0e88b915e0b8b580\\validation.json",
+    "validation_receipt_hash": "955ec24bdc64cc7f3b9fa2b9a266c813efc4f8db90c48859e47dc8b249abe585",
+    "validation_contract": "dex.memory.capability.unit-receipt.v2",
+    "validation_ok": true,
+    "candidate_id": "a06cb93392493131541e76358f2d764ce9ee76a35147cca7edc4988ba21db6d0",
+    "content_hash": "b0a6801a09ae36de68cbfd6bd9b79b9968ec195913fe0d51e81356afca15a256",
+    "route_identity": "6cfe6b8cca0e5c027a527d34bc01d21a55119cbf1da98e1ee9edca45a77181b9",
+    "deduplicated": false,
+    "write_set_hash": "38b9fba56cd9c990a61eeff4398a87e7ae1ce82583b4f2f0f3003959d054f67e",
+    "target_hashes": {
+      "l1": "52f4173877c37e775826aefaaf21381d9846e28847e13c0dd72296fd1dce2dc1",
+      "destination": "b0a6801a09ae36de68cbfd6bd9b79b9968ec195913fe0d51e81356afca15a256"
+    },
+    "receipt_revision": 2,
+    "producer_provenance": {
+      "entrypoint_realpath": "C:\\CodexProjetos\\dex-memoria\\bin\\dex-memoria.js",
+      "entrypoint_sha256": "bb53fb76bd55872e83dbac3118a014630462f49dc542d410f6ce4a4160adb842"
+    }
+  }
+}

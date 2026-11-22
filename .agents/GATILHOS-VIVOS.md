@@ -11,6 +11,7 @@
 | PIPE-EXIT-FALSO | sessão do repo | medir qualquer exit/gate/contagem nesta janela | [Fonte viva](<disciplina%20de%20execu%C3%A7%C3%A3o%20+%20.agents/GATILHOS-VIVOS.md%20%28esta%20ficha%29>) · 3 falsos na mesma sessão (iconv 125/125, find de fóssil, diff de branch) todos por pipe engolindo erro/código de exit |
 | MERGE-CHECK-HOOK-PRE-MERGE | Hook do repo (tools/hooks/pre-merge-commit, executado pelo git via core.hooksPath) | Todo git merge local; e merge remoto via PR (nesse caso o agente roda o merge-check completo ANTES do dono clicar em merge — hook local não cobre PR). | [Fonte viva](<tools/hooks/pre-merge-commit%20+%20tools/hooks/merge-check.conf%20%28SUITE%29%3B%20contracts/schemas%20do%20merge-check%20no%20fork%20code-review-graph%202.4.0+dex.3>) · Todo git merge passa pelo gate merge-check tres vias (texto + grafo + suíte) antes de gerar o commit de merge; escapes: MERGE_CHECK_SKIP=1 ou git merge --no-verify. |
 | STALENESS-ARTEFATOS-DERIVADOS | sessão do repo (leitor/citador de qualquer artefato derivado) | ANTES de qualquer leitura/citação do artefato: janela fria, re-arqueologia, decisão que cita "o grafo diz X", fechamento que conta métricas de derivado. | [Fonte viva](<invent%C3%A1rio%20vivo%20desta%20ficha%20%28comandos%20abaixo%29%20+%20.agents/GATILHOS-VIVOS.md%20+%20receipts%20.agents/receipts/>) · Artefatos derivados (grafo CRG, grafo rico graphify, INDEX.md, receipts/mapas datados) fotografam a fonte num instante; antes de LER/CITAR qualquer número deles, medir staleness com 3 números. |
+| ZCODE-ANTIGRAVITY-FILTRO-SYSTEM-PROMPT | sessão que operar o provider CLIProxyAPI no ZCode | provider custom Antigravity falha no chat do ZCode mas curl minimo responde 200 | [Fonte viva](<config.yaml%20-%3E%20oauth.providers.antigravity.sensitive-patterns-replace%3B%20bodies%20reais%20em%20auths/logs/error-v1-%2A.log%3B%20start%20.agents/scripts/start-proxy.ps1>) · 429 RESOURCE_EXHAUSTED do Antigravity em chat do ZCode mesmo com quota cheia = filtro de CONTEUDO no system prompt do ZCode, nao quota |
 
 
 Hub quente de retomada: gatilhos promovidos com validação (formato canônico 5W2H pelo helper `dex-5w2h-gatilhos-vivo`; mantém fonte viva; NÃO substitui L1/L2, Trilho, ACTIVE/HANDOFF).
@@ -128,3 +129,17 @@ Hub quente de retomada: gatilhos promovidos com validação (formato canônico 5
 - **E se??**: E se?? o regenerador não estiver instalado? → declarar o artefato NÃO CONSULTÁVEL (nunca citar número dele) e estacionar a instalação com owner/quando — não regenerar por improviso
 - **E se??**: E se?? check verde mas o conteúdo parecer errado? → verde de staleness não é prova de semântica: abrir a FONTE (fonte viva sempre vence memória) e conferir o número citado no código real
 - **E se??**: E se?? o commit mais recente só tocou arquivos fora do escopo indexado? → medido 261122: 8a3f9dd tocou só .agents (ignorado) — doctor CRG declarou "holds every file changed since"; staleness é por ESCOPO, não por HEAD bruto
+
+## 🔥 ZCODE-ANTIGRAVITY-FILTRO-SYSTEM-PROMPT
+
+<!-- dex.gatilho-vivo.v1 -->
+- **Quem**: sessão que operar o provider CLIProxyAPI no ZCode
+- **O quê**: 429 RESOURCE_EXHAUSTED do Antigravity em chat do ZCode mesmo com quota cheia = filtro de CONTEUDO no system prompt do ZCode, nao quota
+- **Por que**: A mensagem do Google e enganosa (diz quota); a causa real e o paragrafo IMPORTANT: Assist with authorized security testing, CTF challenges hardcoded em AppData/Local/Programs/ZCode/resources/glm/zcode.cjs (NAO esta no AGENTS.md, esta no binario do app)
+- **Onde**: [Fonte viva](<config.yaml%20-%3E%20oauth.providers.antigravity.sensitive-patterns-replace%3B%20bodies%20reais%20em%20auths/logs/error-v1-%2A.log%3B%20start%20.agents/scripts/start-proxy.ps1>)
+- **Quando**: provider custom Antigravity falha no chat do ZCode mas curl minimo responde 200
+- **Como**: (1) ligar observability.logs.request-log e logging-to-file; (2) ler o body real em auths/logs/error-v1-*.log (=== REQUEST BODY ===); (3) reproduzir com o body real via curl variando UM campo; (4) aplicar o pattern de remocao no proxy
+- **Quanto**: ~5 min com o log; horas sem ele (pago: 4h nesta sessao)
+- **E se??**: E se?? aparecer 400 model_not_found? → e a camada 2: oauth.model-alias sem fork:true substitui o ID original — adicionar fork:true
+- **E se??**: E se?? o cooldown persistir apos um 429? → camada 3: routing.cooldown.disable-cooling: true (com save-cooldown-status:false o restart tambem zera)
+- **E se??**: E se?? o usuario falar de seguranca/CTF na propria mensagem? → o filtro e por conteudo: mensagens do usuario tambem podem disparar 429 — diagnosticar pelo body em auths/logs, nao presumir quota

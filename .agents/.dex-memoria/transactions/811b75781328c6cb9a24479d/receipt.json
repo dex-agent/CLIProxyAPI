@@ -1,0 +1,29 @@
+{
+  "contract": "dex.memory.route.receipt.v2",
+  "status": "COMMITTED",
+  "scope": "project",
+  "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+  "operation_id": "remember-9ba788f1257741668420f4c4",
+  "idempotency_key": "dex-memoria:remember-9ba788f1257741668420f4c4:project",
+  "transaction_id": "811b75781328c6cb9a24479d",
+  "receipt_id": "b5a80bb307acd02f39716e98",
+  "receipt_path": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\811b75781328c6cb9a24479d\\receipt.json",
+  "validation_receipt_path": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\811b75781328c6cb9a24479d\\validation.json",
+  "validation_receipt_hash": "c5a686df40423e98cd02507c7dfa480b799ccb94b288038d5c4ec3128ed7cd5f",
+  "validation_contract": "dex.memory.capability.unit-receipt.v2",
+  "validation_ok": true,
+  "candidate_id": "462066caa31ef3b7faa2add1485c6640040f91677cf64511b06dfdf1477c55f3",
+  "content_hash": "9c0bbe84b8b6483a0c1697de7117c897c7d0c2ecbc05939d6337cd9006d952e4",
+  "route_identity": "1a5c1baca9cf83d2a3bdc7996b896eb77a2d4963cbf565a3fbddb2d44a33d587",
+  "deduplicated": false,
+  "write_set_hash": "56cf622df1ce19141be96bee05d4fd309cabf261a5877c42d6e3f488b131457d",
+  "target_hashes": {
+    "l1": "610fd7ee4d8832724d022bfe0023aa034553a2f9f53a76f3febd861220c4fdda",
+    "destination": "9c0bbe84b8b6483a0c1697de7117c897c7d0c2ecbc05939d6337cd9006d952e4"
+  },
+  "receipt_revision": 2,
+  "producer_provenance": {
+    "entrypoint_realpath": "C:\\CodexProjetos\\dex-memoria\\bin\\dex-memoria.js",
+    "entrypoint_sha256": "bb53fb76bd55872e83dbac3118a014630462f49dc542d410f6ce4a4160adb842"
+  }
+}

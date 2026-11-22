@@ -1,0 +1,69 @@
+{
+  "contract": "dex.memory.route.journal.v2",
+  "state": "COMMITTED",
+  "request_hash": "7f98ab6d3820fab2482528fb2d82d4ca7b717b71aa001553e0a45309e4e8ca35",
+  "route": {
+    "scope": "project",
+    "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "operation_id": "remember-9ba788f1257741668420f4c4",
+    "idempotency_key": "dex-memoria:remember-9ba788f1257741668420f4c4:project",
+    "transaction_id": "811b75781328c6cb9a24479d",
+    "receipt_id": "b5a80bb307acd02f39716e98"
+  },
+  "candidate": {
+    "contract": "dex.memory.write.candidate.v2",
+    "target_layer": "L2",
+    "slug": "golden-drift-real-no-translator-claude-openai-respo-9ba788f12577",
+    "trigger": "debug de falha TestToolSearchDisabledMatchesDevGolden",
+    "title": "Golden drift real no translator claude/openai-responses",
+    "body": "TestToolSearchDisabledMatchesDevGolden falha DETERMINISTICAMENTE (0.01s) em internal/translator/claude/openai/responses/claude_openai-responses_tool_search_disabled_test.go:90: request difere do golden dev no campo tools/tool_search. Causa provavel: builder claude_openai-responses_request.go mudou +176 linhas no pull 6eb8554f sem atualizar golden. Nao e ambiente: fixture e deterministico (DeriveClaudeUserID le do payload). Pendencia P1 no tracker upstream.",
+    "tags": [
+      "#build/golden-drift",
+      "#translator/claude"
+    ]
+  },
+  "paths": {
+    "l1": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\lembranca.md",
+    "destination": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\memorias\\golden-drift-real-no-translator-claude-openai-respo-9ba788f12577.md",
+    "receipt": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\811b75781328c6cb9a24479d\\receipt.json"
+  },
+  "before": {
+    "l1": {
+      "exists": true,
+      "bytes_base64": "IyBMZW1icmFuw6dhcwoKCi0gcm9kYXIgYnVpbGQvdGVzdGUgR28gbm8gQ0xJUHJveHlBUEkgLT4gW0dvIHRvb2xjaGFpbiBmb3JhIGRvIFBBVEggKENMSVByb3h5QVBJKV0obWVtb3JpYXMvZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmYubWQpIFtbbWVtb3JpYXMvZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmZ8R28gdG9vbGNoYWluIGZvcmEgZG8gUEFUSCAoQ0xJUHJveHlBUEkpXV0gI3Rvb2xjaGFpbi9nbyAjYnVpbGQvd2luZG93cyBeZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmYKCi0gcm9kYXIgZ28gdGVzdCAuLy4uLiBlIHZlciA5IGZhbGhhcyAvIDYgcGFjb3RlcyAtPiBbU3VpdGUgZ28gdGVzdCAuLy4uLiB2ZXJtZWxoYSBubyBXaW5kb3dzIChDTElQcm94eUFQSSldKG1lbW9yaWFzL3N1aXRlLWdvLXRlc3QtdmVybWVsaGEtbm8td2luZG93cy1jbGlwcm94eWFwaS0wZWI4OTc4ZTU3ODUubWQpIFtbbWVtb3JpYXMvc3VpdGUtZ28tdGVzdC12ZXJtZWxoYS1uby13aW5kb3dzLWNsaXByb3h5YXBpLTBlYjg5NzhlNTc4NXxTdWl0ZSBnbyB0ZXN0IC4vLi4uIHZlcm1lbGhhIG5vIFdpbmRvd3MgKENMSVByb3h5QVBJKV1dICNidWlsZC9nby10ZXN0cyAjcGxhdGFmb3JtYS93aW5kb3dzIF5zdWl0ZS1nby10ZXN0LXZlcm1lbGhhLW5vLXdpbmRvd3MtY2xpcHJveHlhcGktMGViODk3OGU1Nzg1Cg=="
+    },
+    "destination": {
+      "exists": false,
+      "bytes_base64": ""
+    }
+  },
+  "receipt": {
+    "contract": "dex.memory.route.receipt.v2",
+    "status": "COMMITTED",
+    "scope": "project",
+    "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "operation_id": "remember-9ba788f1257741668420f4c4",
+    "idempotency_key": "dex-memoria:remember-9ba788f1257741668420f4c4:project",
+    "transaction_id": "811b75781328c6cb9a24479d",
+    "receipt_id": "b5a80bb307acd02f39716e98",
+    "receipt_path": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\811b75781328c6cb9a24479d\\receipt.json",
+    "validation_receipt_path": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\811b75781328c6cb9a24479d\\validation.json",
+    "validation_receipt_hash": "c5a686df40423e98cd02507c7dfa480b799ccb94b288038d5c4ec3128ed7cd5f",
+    "validation_contract": "dex.memory.capability.unit-receipt.v2",
+    "validation_ok": true,
+    "candidate_id": "462066caa31ef3b7faa2add1485c6640040f91677cf64511b06dfdf1477c55f3",
+    "content_hash": "9c0bbe84b8b6483a0c1697de7117c897c7d0c2ecbc05939d6337cd9006d952e4",
+    "route_identity": "1a5c1baca9cf83d2a3bdc7996b896eb77a2d4963cbf565a3fbddb2d44a33d587",
+    "deduplicated": false,
+    "write_set_hash": "56cf622df1ce19141be96bee05d4fd309cabf261a5877c42d6e3f488b131457d",
+    "target_hashes": {
+      "l1": "610fd7ee4d8832724d022bfe0023aa034553a2f9f53a76f3febd861220c4fdda",
+      "destination": "9c0bbe84b8b6483a0c1697de7117c897c7d0c2ecbc05939d6337cd9006d952e4"
+    },
+    "receipt_revision": 2,
+    "producer_provenance": {
+      "entrypoint_realpath": "C:\\CodexProjetos\\dex-memoria\\bin\\dex-memoria.js",
+      "entrypoint_sha256": "bb53fb76bd55872e83dbac3118a014630462f49dc542d410f6ce4a4160adb842"
+    }
+  }
+}

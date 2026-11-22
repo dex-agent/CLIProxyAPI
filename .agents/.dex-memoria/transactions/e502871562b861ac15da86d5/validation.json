@@ -1,0 +1,78 @@
+{
+  "contract": "dex.memory.capability.unit-receipt.v2",
+  "capability": "v2-obsidian",
+  "require_obsidian": true,
+  "expected_require_obsidian": true,
+  "ok": true,
+  "errors": [],
+  "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+  "touched_files": [
+    {
+      "path": "lembranca.md",
+      "sha256": "54056bcec3f627cc53e4fbf8c79110b3b73c4dc10ba0390009ee12b89f525e27",
+      "tags": [
+        "#instalacao/cliproxyapi",
+        "#zcode/provider",
+        "#antigravity/e2e"
+      ]
+    },
+    {
+      "path": "memorias/cliproxyapi-instalado-e-servindo-antigravity-provid-e09f843d2d83.md",
+      "sha256": "8f47e95d8fbffa947f16e8a20e5b0e097562326b2de1ec1b44691f937f4a5abe",
+      "tags": [
+        "#instalacao/cliproxyapi",
+        "#zcode/provider",
+        "#antigravity/e2e"
+      ]
+    }
+  ],
+  "evidence": {
+    "root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "files": [
+      {
+        "path": "lembranca.md",
+        "sha256": "54056bcec3f627cc53e4fbf8c79110b3b73c4dc10ba0390009ee12b89f525e27",
+        "tags": [
+          "#instalacao/cliproxyapi",
+          "#zcode/provider",
+          "#antigravity/e2e"
+        ]
+      },
+      {
+        "path": "memorias/cliproxyapi-instalado-e-servindo-antigravity-provid-e09f843d2d83.md",
+        "sha256": "8f47e95d8fbffa947f16e8a20e5b0e097562326b2de1ec1b44691f937f4a5abe",
+        "tags": [
+          "#instalacao/cliproxyapi",
+          "#zcode/provider",
+          "#antigravity/e2e"
+        ]
+      }
+    ],
+    "block_ids": [
+      "cliproxyapi-instalado-e-servindo-antigravity-provid-e09f843d2d83",
+      "cliproxyapi-instalado-e-servindo-antigravity-provid-e09f843d2d83-content"
+    ],
+    "markdown_links": [
+      "lembranca.md -> memorias/cliproxyapi-instalado-e-servindo-antigravity-provid-e09f843d2d83.md",
+      "memorias/cliproxyapi-instalado-e-servindo-antigravity-provid-e09f843d2d83.md -> ../lembranca.md"
+    ],
+    "wikilinks": [
+      "lembranca.md -> [[memorias/cliproxyapi-instalado-e-servindo-antigravity-provid-e09f843d2d83]]",
+      "memorias/cliproxyapi-instalado-e-servindo-antigravity-provid-e09f843d2d83.md -> [[lembranca]]"
+    ],
+    "backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "required_backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "unresolved_markdown_links": [],
+    "unresolved_wikilinks": [],
+    "cross_vault_links": []
+  },
+  "warnings": [
+    "cross-unit block-id collision audit is separate from this write-unit verdict"
+  ]
+}
