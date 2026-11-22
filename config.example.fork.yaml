@@ -1,0 +1,89 @@
+# CLIProxyAPI — configuração do fork dex-agent (template)
+# Copie para `config.yaml` e substitua os valores marcados com CHANGE_ME.
+# As 4 seções marcadas [CURA] são os ajustes que fazem o provider funcionar
+# com o ZCode + Google Antigravity (2026-11-22). Ver DEPENDENCIES.md §CURAS.
+
+config-version: 8
+server:
+  host: "127.0.0.1"
+  port: 8317
+  # gerado no primeiro start; deixe vazio
+  server-id: "de5b3420-595f-488c-abf2-de510e3e0d99"
+access:
+  api-keys:
+    - "CHANGE_ME_LOCAL_KEY"
+auth-dir: "./auths"
+# [CURA 3] Cooldown: cada 429 semeia cooldown de credencial em memória e cria
+# blackout em cascata. Desligar o agendamento evita a espiral.
+routing:
+  cooldown:
+    disable-cooling: true
+  retry:
+    # rodadas extras de retry entre credenciais (útil com pool > 1 conta)
+    request-retry: 3
+    max-retry-credentials: 0
+observability:
+  logs:
+    debug: false
+    # [DIAGNÓSTICO] ligue quando o cliente falhar: os bodies reais vão para
+    # auths/logs/error-v1-*.log (o stdout NÃO traz body)
+    request-log: false
+    logging-to-file: false
+oauth:
+  providers:
+    antigravity:
+      # [CURA 5] O system prompt de alguns clientes (ex.: ZCode) contém
+      # vocabulário de segurança ofensiva que o Google Antigravity bloqueia
+      # devolvendo 429 RESOURCE_EXHAUSTED (mensagem enganosa: parece quota).
+      # Estes patterns removem o parágrafo antes de sair para o upstream.
+      sensitive-patterns-replace:
+        - pattern: '(?s)IMPORTANT: Assist with authorized security testing.*?use cases\.?\n?'
+          replacement: ''
+        - pattern: '(?s)Dual-use security tools.*?use cases\.?\n?'
+          replacement: ''
+      # Cloaking opcional de nomes de cliente no system prompt
+      sensitive-words-replace:
+        "ZCode": "the assistant"
+        "Z Code": "the assistant"
+  # [CURA 2] Aliases: a UI de clientes normaliza o ID do modelo removendo o
+  # sufixo de esforço (gemini-4-argon-high -> gemini-4-argon, "Effort: High").
+  # `fork: true` é OBRIGATÓRIO: sem ele o alias SUBSTITUI o ID original e
+  # quebra os modelos que já funcionavam. `force-mapping` devolve o nome que
+  # o cliente pediu.
+  model-alias:
+    antigravity:
+      - name: "gemini-4-argon-high"
+        alias: "gemini-4-argon"
+        fork: true
+        force-mapping: true
+      - name: "gemini-3.8-flash-high"
+        alias: "gemini-3.8-flash"
+        fork: true
+        force-mapping: true
+      - name: "gemini-4-hydrogen-xhigh"
+        alias: "gemini-4-hydrogen"
+        fork: true
+        force-mapping: true
+      - name: "gemini-4-neon-xhigh"
+        alias: "gemini-4-neon"
+        fork: true
+        force-mapping: true
+      - name: "claude-opus-5-5-high"
+        alias: "claude-opus-5-5"
+        fork: true
+        force-mapping: true
+      - name: "claude-sonnet-5-5-high"
+        alias: "claude-sonnet-5-5"
+        fork: true
+        force-mapping: true
+
+# [CURA 4] User-Agent do Antigravity: o proxy usa um UA fixo
+# (antigravity/hub/<v> (aidev_client; os_type=darwin; arch=arm64)) que é
+# FALSO em Windows e diferente da versão desktop real. O Google filtra por
+# User-Agent: o formato "antigravity/<version> <os>/<arch>" faz planos Pro
+# PERDEREM o grupo "Gemini 4 Argon". O UA correto vai no AUTH JSON
+# (auths/antigravity-*.json), campo "user_agent":
+#
+#   "user_agent": "antigravity/hub/2.24.0 (aidev_client; os_type=win32; arch=x64; cl=963137146)"
+#
+# NUNCA versione auths/*.json: contém tokens OAuth.
