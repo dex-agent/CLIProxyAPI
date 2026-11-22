@@ -70,3 +70,4 @@ go build -o test-output ./cmd/server && rm test-output # Verify compile (REQUIRE
 - Go toolchain (não no PATH): `source .agents/scripts/go-env.sh` (1.26.10 do module cache).
 - Grafo estrutural (CRG-LOCAL-STRUCTURAL-GRAPH): `.agents/CODE-REVIEW-GRAPH/` — consulte antes de review estrutural; refresh `code-review-graph update --data-dir .agents/CODE-REVIEW-GRAPH`; receipt `.agents/CODE-REVIEW-GRAPH-INDEX.md`.
 - Métricas: `.agents/receipts/W8-gocyclo.txt` (28.660 rotinas) · testes vermelhos conhecidos: `.agents/receipts/W6-build-test.json`.
+- Merge de branches é gated pelo hook pre-merge-commit (escape `MERGE_CHECK_SKIP=1` ou `--no-verify`; conf da suíte em `tools/hooks/merge-check.conf`); artefatos derivados citados só após staleness-check (fichas `MERGE-CHECK-HOOK-PRE-MERGE` e `STALENESS-ARTEFATOS-DERIVADOS` em `.agents/GATILHOS-VIVOS.md`).

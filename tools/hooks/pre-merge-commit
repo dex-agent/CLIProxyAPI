@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+# pre-merge-commit — merge-check gate (casa dex, padrão hook commitado + core.hooksPath)
+# Instalação: arqueologia CLIProxyAPI 2026-11-22 (merge-check tres vias via code-review-graph fork 2.4.0+dex.3)
+# Contrato: FICHA MERGE-CHECK-HOOK-PRE-MERGE em .agents/GATILHOS-VIVOS.md
+
+# (b) escape explícito no cabeçalho
+if [ "${MERGE_CHECK_SKIP:-}" = "1" ]; then
+  echo "merge-check gate: SKIP via MERGE_CHECK_SKIP=1"
+  exit 0
+fi
+
+# (a) não é merge → silencioso
+if [ ! -f "${GIT_DIR:-.git}/MERGE_HEAD" ] && ! git rev-parse -q --verify MERGE_HEAD >/dev/null 2>&1; then
+  exit 0
+fi
+
+CONF="$(dirname "$0")/merge-check.conf"
+SUITE=""
+if [ -f "$CONF" ]; then
+  # shellcheck disable=SC1090
+  . "$CONF"
+fi
+
+# (c) sem suíte usável → avisa, NÃO bloqueia
+if [ -z "$SUITE" ]; then
+  echo "merge-check gate: sem suíte declarada em tools/hooks/merge-check.conf — hook não bloqueia."
+  exit 0
+fi
+
+OURS=$(git rev-parse HEAD)
+THEIRS=$(git rev-parse MERGE_HEAD)
+BASE=$(git merge-base HEAD MERGE_HEAD)
+
+# (f) resolução manual: camada textual do merge-check refaria o merge sem a
+# resolução humana (falso-positivo) → roda a camada comportamental direto no
+# estado resolvido do worktree.
+if grep -q "^# Conflicts:" "${GIT_DIR:-.git}/MERGE_MSG" 2>/dev/null; then
+  echo "merge-check gate: resolved-merge, suíte no worktree"
+  if $SUITE; then
+    exit 0
+  fi
+  rc=$?
+  echo "merge-check gate: BLOQUEIO (resolved-merge)"
+  echo "o que falhou: suíte no worktree pós-resolução (exit $rc)"
+  echo "como inspecionar: rode '$SUITE' manualmente no worktree para ver as falhas"
+  exit 1
+fi
+
+# (e) gate completo: laboratório descartável do merge-check (texto + grafo + suíte)
+code-review-graph merge-check --repo . --base "$BASE" --ours "$OURS" --theirs "$THEIRS" \
+  --test-failure-exit 1 -- $SUITE
+rc=$?
+if [ $rc -eq 0 ]; then
+  echo "merge-check gate: VERDE (base/ours/theirs)"
+  exit 0
+elif [ $rc -eq 1 ]; then
+  echo "merge-check gate: BLOQUEIO"
+  echo "o que falhou: conflito textual OU SEMÂNTICO no merge (exit 1)"
+  echo "como inspecionar: rode manualmente 'code-review-graph merge-check --repo . --base $BASE --ours $OURS --theirs $THEIRS --test-failure-exit 1 -- $SUITE' fora do hook"
+  exit 1
+else
+  # (2 = execution_error) suíte doente não é veredito de integração
+  echo "merge-check gate: execution_error (exit $rc) — reporta e NÃO bloqueia"
+  echo "como inspecionar: rode o mesmo comando fora do hook para ver o erro de execução"
+  exit 0
+fi
