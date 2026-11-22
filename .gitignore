@@ -73,3 +73,7 @@ docker-compose.override.yml
 # Arqueologia 2026-11-22: grafos gerados (apontados pela fonte, nunca versionados)
 .agents/CODE-REVIEW-GRAPH/
 graphify-out/
+
+# Arqueologia 2026-11-22: logs de runtime do proxy (gerados)
+.agents/receipts/proxy-run.log
+.agents/receipts/proxy-run.err.log

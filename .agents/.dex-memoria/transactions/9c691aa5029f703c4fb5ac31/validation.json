@@ -1,0 +1,74 @@
+{
+  "contract": "dex.memory.capability.unit-receipt.v2",
+  "capability": "v2-obsidian",
+  "require_obsidian": true,
+  "expected_require_obsidian": true,
+  "ok": true,
+  "errors": [],
+  "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+  "touched_files": [
+    {
+      "path": "lembranca.md",
+      "sha256": "0690743acf805b8389a2862691531fcb87fd544b00989f731994dd344f712540",
+      "tags": [
+        "#zcode/provider-config",
+        "#agents/criacao"
+      ]
+    },
+    {
+      "path": "memorias/zcode-provider-config-e-agents-7ec527db9710.md",
+      "sha256": "8e72f18fe06652504058f870a898d8d7a4201c87c6b713d0ab8f341fe33b1d41",
+      "tags": [
+        "#zcode/provider-config",
+        "#agents/criacao"
+      ]
+    }
+  ],
+  "evidence": {
+    "root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "files": [
+      {
+        "path": "lembranca.md",
+        "sha256": "0690743acf805b8389a2862691531fcb87fd544b00989f731994dd344f712540",
+        "tags": [
+          "#zcode/provider-config",
+          "#agents/criacao"
+        ]
+      },
+      {
+        "path": "memorias/zcode-provider-config-e-agents-7ec527db9710.md",
+        "sha256": "8e72f18fe06652504058f870a898d8d7a4201c87c6b713d0ab8f341fe33b1d41",
+        "tags": [
+          "#zcode/provider-config",
+          "#agents/criacao"
+        ]
+      }
+    ],
+    "block_ids": [
+      "zcode-provider-config-e-agents-7ec527db9710",
+      "zcode-provider-config-e-agents-7ec527db9710-content"
+    ],
+    "markdown_links": [
+      "lembranca.md -> memorias/zcode-provider-config-e-agents-7ec527db9710.md",
+      "memorias/zcode-provider-config-e-agents-7ec527db9710.md -> ../lembranca.md"
+    ],
+    "wikilinks": [
+      "lembranca.md -> [[memorias/zcode-provider-config-e-agents-7ec527db9710]]",
+      "memorias/zcode-provider-config-e-agents-7ec527db9710.md -> [[lembranca]]"
+    ],
+    "backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "required_backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "unresolved_markdown_links": [],
+    "unresolved_wikilinks": [],
+    "cross_vault_links": []
+  },
+  "warnings": [
+    "cross-unit block-id collision audit is separate from this write-unit verdict"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "contract": "dex.memory.route.journal.v2",
+  "state": "COMMITTED",
+  "request_hash": "2b20b9dd92ba51c20f05ab315da2d9b655017ab4971b337ef616e490e4d0dead",
+  "route": {
+    "scope": "project",
+    "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "operation_id": "remember-d560df616516eaa34b7d45ab",
+    "idempotency_key": "dex-memoria:remember-d560df616516eaa34b7d45ab:project",
+    "transaction_id": "f0a2b118227060e4c97be38f",
+    "receipt_id": "1e38cb5e6676526453b3a2e9"
+  },
+  "candidate": {
+    "contract": "dex.memory.write.candidate.v2",
+    "target_layer": "L2",
+    "slug": "cliproxyapi-staleness-derivados-d560df616516",
+    "trigger": "citar numero de artefato derivado (grafo CRG, graphify, INDEX) no CLIProxyAPI",
+    "title": "CLIProxyAPI staleness derivados",
+    "body": "Antes de LER/CITAR qualquer artefato derivado, comparar 3 numeros: quando a FONTE mudou (git log -1 --format=%cI -- <escopo>), quando o ARTEFATO nasceu (CRG: code-review-graph doctor; graphify: built_at_commit em graphify-out/graph.json), e fonte>artefato => STALE => regenerar antes de citar. Inventario 2026-11-22: CRG .agents/CODE-REVIEW-GRAPH (regen: code-review-graph update --data-dir .agents/CODE-REVIEW-GRAPH); graphify-out/graph.json (regen: graphify update .); INDEX.md raiz e .agents (fiscal dex-fechamento-projeto-atualizado superficie 4); receipts datados no nome; PLAYBOOK/MAPAS inexistentes (n-a). Ficha STALENESS-ARTEFATOS-DERIVADOS no GATILHOS-VIVOS. Regenerador ausente => artefato NAO CONSULTAVEL, nunca citar numero dele.",
+    "tags": [
+      "#cliproxyapi/staleness",
+      "#artefatos/derivados"
+    ]
+  },
+  "paths": {
+    "l1": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\lembranca.md",
+    "destination": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\memorias\\cliproxyapi-staleness-derivados-d560df616516.md",
+    "receipt": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\f0a2b118227060e4c97be38f\\receipt.json"
+  },
+  "before": {
+    "l1": {
+      "exists": true,
+      "bytes_base64": "IyBMZW1icmFuw6dhcwoKCi0gcm9kYXIgYnVpbGQvdGVzdGUgR28gbm8gQ0xJUHJveHlBUEkgLT4gW0dvIHRvb2xjaGFpbiBmb3JhIGRvIFBBVEggKENMSVByb3h5QVBJKV0obWVtb3JpYXMvZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmYubWQpIFtbbWVtb3JpYXMvZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmZ8R28gdG9vbGNoYWluIGZvcmEgZG8gUEFUSCAoQ0xJUHJveHlBUEkpXV0gI3Rvb2xjaGFpbi9nbyAjYnVpbGQvd2luZG93cyBeZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmYKCi0gcm9kYXIgZ28gdGVzdCAuLy4uLiBlIHZlciA5IGZhbGhhcyAvIDYgcGFjb3RlcyAtPiBbU3VpdGUgZ28gdGVzdCAuLy4uLiB2ZXJtZWxoYSBubyBXaW5kb3dzIChDTElQcm94eUFQSSldKG1lbW9yaWFzL3N1aXRlLWdvLXRlc3QtdmVybWVsaGEtbm8td2luZG93cy1jbGlwcm94eWFwaS0wZWI4OTc4ZTU3ODUubWQpIFtbbWVtb3JpYXMvc3VpdGUtZ28tdGVzdC12ZXJtZWxoYS1uby13aW5kb3dzLWNsaXByb3h5YXBpLTBlYjg5NzhlNTc4NXxTdWl0ZSBnbyB0ZXN0IC4vLi4uIHZlcm1lbGhhIG5vIFdpbmRvd3MgKENMSVByb3h5QVBJKV1dICNidWlsZC9nby10ZXN0cyAjcGxhdGFmb3JtYS93aW5kb3dzIF5zdWl0ZS1nby10ZXN0LXZlcm1lbGhhLW5vLXdpbmRvd3MtY2xpcHJveHlhcGktMGViODk3OGU1Nzg1CgotIGRlYnVnIGRlIGZhbGhhIFRlc3RUb29sU2VhcmNoRGlzYWJsZWRNYXRjaGVzRGV2R29sZGVuIC0+IFtHb2xkZW4gZHJpZnQgcmVhbCBubyB0cmFuc2xhdG9yIGNsYXVkZS9vcGVuYWktcmVzcG9uc2VzXShtZW1vcmlhcy9nb2xkZW4tZHJpZnQtcmVhbC1uby10cmFuc2xhdG9yLWNsYXVkZS1vcGVuYWktcmVzcG8tOWJhNzg4ZjEyNTc3Lm1kKSBbW21lbW9yaWFzL2dvbGRlbi1kcmlmdC1yZWFsLW5vLXRyYW5zbGF0b3ItY2xhdWRlLW9wZW5haS1yZXNwby05YmE3ODhmMTI1Nzd8R29sZGVuIGRyaWZ0IHJlYWwgbm8gdHJhbnNsYXRvciBjbGF1ZGUvb3BlbmFpLXJlc3BvbnNlc11dICNidWlsZC9nb2xkZW4tZHJpZnQgI3RyYW5zbGF0b3IvY2xhdWRlIF5nb2xkZW4tZHJpZnQtcmVhbC1uby10cmFuc2xhdG9yLWNsYXVkZS1vcGVuYWktcmVzcG8tOWJhNzg4ZjEyNTc3CgotIHJldmlldyBlc3RydXR1cmFsIG91IGltcGFjdG8gbm8gQ0xJUHJveHlBUEkgLT4gW0dyYWZvIGVzdHJ1dHVyYWwgbG9jYWwgZG8gQ0xJUHJveHlBUEkgKENSRyldKG1lbW9yaWFzL2dyYWZvLWVzdHJ1dHVyYWwtbG9jYWwtZG8tY2xpcHJveHlhcGktY3JnLTY2ZTkwNDgyZTc0Ni5tZCkgW1ttZW1vcmlhcy9ncmFmby1lc3RydXR1cmFsLWxvY2FsLWRvLWNsaXByb3h5YXBpLWNyZy02NmU5MDQ4MmU3NDZ8R3JhZm8gZXN0cnV0dXJhbCBsb2NhbCBkbyBDTElQcm94eUFQSSAoQ1JHKV1dICNjb2RlLXJldmlldy1ncmFwaC9sb2NhbCAjYXJxdWVvbG9naWEvY2xpcHJveHlhcGkgXmdyYWZvLWVzdHJ1dHVyYWwtbG9jYWwtZG8tY2xpcHJveHlhcGktY3JnLTY2ZTkwNDgyZTc0NgoKLSBjb25maWFyIGVtIENJIHZlcmRlIGRvIENMSVByb3h5QVBJIC0+IFtDSSBkbyBDTElQcm94eUFQSSByb2RhIGFwZW5hcyBidWlsZCAoc2VtIHRlc3RlcyldKG1lbW9yaWFzL2NpLWRvLWNsaXByb3h5YXBpLXJvZGEtYXBlbmFzLWJ1aWxkLXNlbS10ZXN0ZXMtMmU5OGFmNTM0MGNkLm1kKSBbW21lbW9yaWFzL2NpLWRvLWNsaXByb3h5YXBpLXJvZGEtYXBlbmFzLWJ1aWxkLXNlbS10ZXN0ZXMtMmU5OGFmNTM0MGNkfENJIGRvIENMSVByb3h5QVBJIHJvZGEgYXBlbmFzIGJ1aWxkIChzZW0gdGVzdGVzKV1dICNjaS9nYXBzICNidWlsZC9nbyBeY2ktZG8tY2xpcHJveHlhcGktcm9kYS1hcGVuYXMtYnVpbGQtc2VtLXRlc3Rlcy0yZTk4YWY1MzQwY2QKCi0gZWRpdGFyIGZvbnRlIGRvIENMSVByb3h5QVBJIG91IGludmVzdGlnYXIgRU9MIC0+IFtFbmNvZGluZyBkbyByZXBvIENMSVByb3h5QVBJOiB3b3JraW5nIENSTEYgLyBsb2phIExGIHNlbSBwaW5dKG1lbW9yaWFzL2VuY29kaW5nLWRvLXJlcG8tY2xpcHJveHlhcGktd29ya2luZy1jcmxmLWxvamEtbGYtcy01Y2IzYzMwNTAzOTEubWQpIFtbbWVtb3JpYXMvZW5jb2RpbmctZG8tcmVwby1jbGlwcm94eWFwaS13b3JraW5nLWNybGYtbG9qYS1sZi1zLTVjYjNjMzA1MDM5MXxFbmNvZGluZyBkbyByZXBvIENMSVByb3h5QVBJOiB3b3JraW5nIENSTEYgLyBsb2phIExGIHNlbSBwaW5dXSAjZW5jb2RpbmcvcmVwbyAjZ2l0L3dpbmRvd3MgXmVuY29kaW5nLWRvLXJlcG8tY2xpcHJveHlhcGktd29ya2luZy1jcmxmLWxvamEtbGYtcy01Y2IzYzMwNTAzOTEKCi0gcmVmYXRvcmFyIHRyYW5zbGF0b3IgZ2VtaW5pIG91IGVzY29saGVyIGFsdm8gZGUgcmVmYWN0b3IgLT4gW0hvdHNwb3RzIGRlIHRveGljaWRhZGUgZG8gQ0xJUHJveHlBUEkgKHBvZGlvIFc4KV0obWVtb3JpYXMvaG90c3BvdHMtZGUtdG94aWNpZGFkZS1kby1jbGlwcm94eWFwaS1wb2Rpby13OC0xMDZiZTQxZTc2MDMubWQpIFtbbWVtb3JpYXMvaG90c3BvdHMtZGUtdG94aWNpZGFkZS1kby1jbGlwcm94eWFwaS1wb2Rpby13OC0xMDZiZTQxZTc2MDN8SG90c3BvdHMgZGUgdG94aWNpZGFkZSBkbyBDTElQcm94eUFQSSAocG9kaW8gVzgpXV0gI2FycXVlb2xvZ2lhL2hvdHNwb3QgI21ldHJpY2FzL2dvIF5ob3RzcG90cy1kZS10b3hpY2lkYWRlLWRvLWNsaXByb3h5YXBpLXBvZGlvLXc4LTEwNmJlNDFlNzYwMwoKLSB1c2FyL3JlaW5pY2lhciBvIHByb3h5IENMSVByb3h5QVBJOyBjb25zdW1pciBtb2RlbG9zIGFudGlncmF2aXR5IHBlbG8gWkNvZGU7IGRpYWdub3N0aWNvIGRlIHByb3ZpZGVyIENMSVByb3h5QVBJIG5vIFpDb2RlOyByb2RhciBvIHNlcnZlciBsb2NhbCBkbyBDTElQcm94eUFQSSAtPiBbQ0xJUHJveHlBUEkgaW5zdGFsYWRvIGUgc2VydmluZG8gYW50aWdyYXZpdHk7IHByb3ZpZGVyIGNhZGFzdHJhZG8gbm8gWkNvZGUgY29tIEUyRSBwcm92YWRvXShtZW1vcmlhcy9jbGlwcm94eWFwaS1pbnN0YWxhZG8tZS1zZXJ2aW5kby1hbnRpZ3Jhdml0eS1wcm92aWQtZTA5Zjg0M2QyZDgzLm1kKSBbW21lbW9yaWFzL2NsaXByb3h5YXBpLWluc3RhbGFkby1lLXNlcnZpbmRvLWFudGlncmF2aXR5LXByb3ZpZC1lMDlmODQzZDJkODN8Q0xJUHJveHlBUEkgaW5zdGFsYWRvIGUgc2VydmluZG8gYW50aWdyYXZpdHk7IHByb3ZpZGVyIGNhZGFzdHJhZG8gbm8gWkNvZGUgY29tIEUyRSBwcm92YWRvXV0gI2luc3RhbGFjYW8vY2xpcHJveHlhcGkgI3pjb2RlL3Byb3ZpZGVyICNhbnRpZ3Jhdml0eS9lMmUgXmNsaXByb3h5YXBpLWluc3RhbGFkby1lLXNlcnZpbmRvLWFudGlncmF2aXR5LXByb3ZpZC1lMDlmODQzZDJkODMKCi0gcmVjb25maWd1cmFyL2RpYWdub3N0aWNhciBvIHByb3ZpZGVyIENMSVByb3h5QVBJIG5vIFpDb2RlOyBjaGF0IGRvIFpDb2RlIGZhbGhhbmRvIGNvbSBSZWNvbm5lY3Rpbmc7IDQyOSBtZXNtbyBjb20gcXVvdGE7IG1vZGVsbyBuYW8gbGlzdGFkbyAtPiBbUHJvdmlkZXIgQ0xJUHJveHlBUEkgbm8gWkNvZGU6IDUgY2FtYWRhcyBlbXBpbGhhZGFzIGF0w6kgbyBFMkUgdmVyZGVdKG1lbW9yaWFzL3Byb3ZpZGVyLWNsaXByb3h5YXBpLW5vLXpjb2RlLTUtY2FtYWRhcy1lbXBpbGhhZGFzLWU5ODE5NmJmMDQ5MS5tZCkgW1ttZW1vcmlhcy9wcm92aWRlci1jbGlwcm94eWFwaS1uby16Y29kZS01LWNhbWFkYXMtZW1waWxoYWRhcy1lOTgxOTZiZjA0OTF8UHJvdmlkZXIgQ0xJUHJveHlBUEkgbm8gWkNvZGU6IDUgY2FtYWRhcyBlbXBpbGhhZGFzIGF0w6kgbyBFMkUgdmVyZGVdXSAjaW5zdGFsYWNhby9jbGlwcm94eWFwaS1wcm92aWRlciAjemNvZGUvcHJvdmlkZXIgI2FudGlncmF2aXR5L2UyZSBecHJvdmlkZXItY2xpcHJveHlhcGktbm8temNvZGUtNS1jYW1hZGFzLWVtcGlsaGFkYXMtZTk4MTk2YmYwNDkxCgotIGZhemVyIG1lcmdlIGRlIGJyYW5jaGVzIG5vIENMSVByb3h5QVBJIC0+IFtDTElQcm94eUFQSSBtZXJnZS1jaGVjayBnYXRlXShtZW1vcmlhcy9jbGlwcm94eWFwaS1tZXJnZS1jaGVjay1nYXRlLWQwMGVhNjFlMjI0NS5tZCkgW1ttZW1vcmlhcy9jbGlwcm94eWFwaS1tZXJnZS1jaGVjay1nYXRlLWQwMGVhNjFlMjI0NXxDTElQcm94eUFQSSBtZXJnZS1jaGVjayBnYXRlXV0gI2NsaXByb3h5YXBpL21lcmdlLWdhdGUgI2dpdC9ob29rcyBeY2xpcHJveHlhcGktbWVyZ2UtY2hlY2stZ2F0ZS1kMDBlYTYxZTIyNDUK"
+    },
+    "destination": {
+      "exists": false,
+      "bytes_base64": ""
+    }
+  },
+  "receipt": {
+    "contract": "dex.memory.route.receipt.v2",
+    "status": "COMMITTED",
+    "scope": "project",
+    "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "operation_id": "remember-d560df616516eaa34b7d45ab",
+    "idempotency_key": "dex-memoria:remember-d560df616516eaa34b7d45ab:project",
+    "transaction_id": "f0a2b118227060e4c97be38f",
+    "receipt_id": "1e38cb5e6676526453b3a2e9",
+    "receipt_path": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\f0a2b118227060e4c97be38f\\receipt.json",
+    "validation_receipt_path": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\f0a2b118227060e4c97be38f\\validation.json",
+    "validation_receipt_hash": "d660095f5c1ca3567d70a5c367e5df66416778693f935667c3c838beec86d637",
+    "validation_contract": "dex.memory.capability.unit-receipt.v2",
+    "validation_ok": true,
+    "candidate_id": "0fc09392a28085f0a45e1179a9a21e01152c68c64199d912eddc39880166f2cc",
+    "content_hash": "571d9fca5cbb45e04f8cb1a0c1068a112e04596cb47c03ddcd816849d2ca3220",
+    "route_identity": "ec5a50090cda4bee532258140a34baf5b6ba7f61194b3c3ab6abd7071f21ff52",
+    "deduplicated": false,
+    "write_set_hash": "eeaf1b7bd584999e1551860581bb1a7363403bad8cff904a3e1f44ab1df238ea",
+    "target_hashes": {
+      "l1": "8cee53285716c6d55b27bafa72f0dca1efc33bad93484e1620adfcd76817fbdf",
+      "destination": "571d9fca5cbb45e04f8cb1a0c1068a112e04596cb47c03ddcd816849d2ca3220"
+    },
+    "receipt_revision": 2,
+    "producer_provenance": {
+      "entrypoint_realpath": "C:\\CodexProjetos\\dex-memoria\\bin\\dex-memoria.js",
+      "entrypoint_sha256": "bb53fb76bd55872e83dbac3118a014630462f49dc542d410f6ce4a4160adb842"
+    }
+  }
+}

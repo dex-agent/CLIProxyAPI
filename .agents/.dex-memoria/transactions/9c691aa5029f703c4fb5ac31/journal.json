@@ -1,0 +1,69 @@
+{
+  "contract": "dex.memory.route.journal.v2",
+  "state": "COMMITTED",
+  "request_hash": "f0d11541b4d94ec0d1c18b3e1f8e2006bd8b067a522da7b46b27c388fee05602",
+  "route": {
+    "scope": "project",
+    "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "operation_id": "remember-7ec527db971076362c545ca2",
+    "idempotency_key": "dex-memoria:remember-7ec527db971076362c545ca2:project",
+    "transaction_id": "9c691aa5029f703c4fb5ac31",
+    "receipt_id": "5f4043299bb2d5bd20d5faae"
+  },
+  "candidate": {
+    "contract": "dex.memory.write.candidate.v2",
+    "target_layer": "L2",
+    "slug": "zcode-provider-config-e-agents-7ec527db9710",
+    "trigger": "criar ou editar provider/modelos/agents do ZCode para o CLIProxyAPI",
+    "title": "ZCode provider config e agents",
+    "body": "provider_config.json v2 do ZCode: providers moram em config.providerConfigRules.providerRules (NAO no array providers, que existe vazio) com {providerId, providerName, config:{access, api, group, modelOrder, personalModelIds}}; propriedades por modelo em config.modelConfigRules.providerModelRules. Agent de claude-* exige optionSpecs.reasoningLevel.values na regra do modelo (serie Claude exige nivel; gemini cai em toggle on/off). Frontmatter de agent usa model: \"<providerId>/<modelId>\" e thoughtLevel nao se copia entre modelos. A UI normaliza o ID tirando o sufixo de esforco (-high vira Effort), entao o proxy precisa de model-alias com fork:true para aceitar os dois nomes. Molde canonico de agent: agent-gemma4-31b-free.md em ~/.zcode/agents.",
+    "tags": [
+      "#zcode/provider-config",
+      "#agents/criacao"
+    ]
+  },
+  "paths": {
+    "l1": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\lembranca.md",
+    "destination": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\memorias\\zcode-provider-config-e-agents-7ec527db9710.md",
+    "receipt": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\9c691aa5029f703c4fb5ac31\\receipt.json"
+  },
+  "before": {
+    "l1": {
+      "exists": true,
+      "bytes_base64": "IyBMZW1icmFuw6dhcwoKCi0gcm9kYXIgYnVpbGQvdGVzdGUgR28gbm8gQ0xJUHJveHlBUEkgLT4gW0dvIHRvb2xjaGFpbiBmb3JhIGRvIFBBVEggKENMSVByb3h5QVBJKV0obWVtb3JpYXMvZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmYubWQpIFtbbWVtb3JpYXMvZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmZ8R28gdG9vbGNoYWluIGZvcmEgZG8gUEFUSCAoQ0xJUHJveHlBUEkpXV0gI3Rvb2xjaGFpbi9nbyAjYnVpbGQvd2luZG93cyBeZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmYKCi0gcm9kYXIgZ28gdGVzdCAuLy4uLiBlIHZlciA5IGZhbGhhcyAvIDYgcGFjb3RlcyAtPiBbU3VpdGUgZ28gdGVzdCAuLy4uLiB2ZXJtZWxoYSBubyBXaW5kb3dzIChDTElQcm94eUFQSSldKG1lbW9yaWFzL3N1aXRlLWdvLXRlc3QtdmVybWVsaGEtbm8td2luZG93cy1jbGlwcm94eWFwaS0wZWI4OTc4ZTU3ODUubWQpIFtbbWVtb3JpYXMvc3VpdGUtZ28tdGVzdC12ZXJtZWxoYS1uby13aW5kb3dzLWNsaXByb3h5YXBpLTBlYjg5NzhlNTc4NXxTdWl0ZSBnbyB0ZXN0IC4vLi4uIHZlcm1lbGhhIG5vIFdpbmRvd3MgKENMSVByb3h5QVBJKV1dICNidWlsZC9nby10ZXN0cyAjcGxhdGFmb3JtYS93aW5kb3dzIF5zdWl0ZS1nby10ZXN0LXZlcm1lbGhhLW5vLXdpbmRvd3MtY2xpcHJveHlhcGktMGViODk3OGU1Nzg1CgotIGRlYnVnIGRlIGZhbGhhIFRlc3RUb29sU2VhcmNoRGlzYWJsZWRNYXRjaGVzRGV2R29sZGVuIC0+IFtHb2xkZW4gZHJpZnQgcmVhbCBubyB0cmFuc2xhdG9yIGNsYXVkZS9vcGVuYWktcmVzcG9uc2VzXShtZW1vcmlhcy9nb2xkZW4tZHJpZnQtcmVhbC1uby10cmFuc2xhdG9yLWNsYXVkZS1vcGVuYWktcmVzcG8tOWJhNzg4ZjEyNTc3Lm1kKSBbW21lbW9yaWFzL2dvbGRlbi1kcmlmdC1yZWFsLW5vLXRyYW5zbGF0b3ItY2xhdWRlLW9wZW5haS1yZXNwby05YmE3ODhmMTI1Nzd8R29sZGVuIGRyaWZ0IHJlYWwgbm8gdHJhbnNsYXRvciBjbGF1ZGUvb3BlbmFpLXJlc3BvbnNlc11dICNidWlsZC9nb2xkZW4tZHJpZnQgI3RyYW5zbGF0b3IvY2xhdWRlIF5nb2xkZW4tZHJpZnQtcmVhbC1uby10cmFuc2xhdG9yLWNsYXVkZS1vcGVuYWktcmVzcG8tOWJhNzg4ZjEyNTc3CgotIHJldmlldyBlc3RydXR1cmFsIG91IGltcGFjdG8gbm8gQ0xJUHJveHlBUEkgLT4gW0dyYWZvIGVzdHJ1dHVyYWwgbG9jYWwgZG8gQ0xJUHJveHlBUEkgKENSRyldKG1lbW9yaWFzL2dyYWZvLWVzdHJ1dHVyYWwtbG9jYWwtZG8tY2xpcHJveHlhcGktY3JnLTY2ZTkwNDgyZTc0Ni5tZCkgW1ttZW1vcmlhcy9ncmFmby1lc3RydXR1cmFsLWxvY2FsLWRvLWNsaXByb3h5YXBpLWNyZy02NmU5MDQ4MmU3NDZ8R3JhZm8gZXN0cnV0dXJhbCBsb2NhbCBkbyBDTElQcm94eUFQSSAoQ1JHKV1dICNjb2RlLXJldmlldy1ncmFwaC9sb2NhbCAjYXJxdWVvbG9naWEvY2xpcHJveHlhcGkgXmdyYWZvLWVzdHJ1dHVyYWwtbG9jYWwtZG8tY2xpcHJveHlhcGktY3JnLTY2ZTkwNDgyZTc0NgoKLSBjb25maWFyIGVtIENJIHZlcmRlIGRvIENMSVByb3h5QVBJIC0+IFtDSSBkbyBDTElQcm94eUFQSSByb2RhIGFwZW5hcyBidWlsZCAoc2VtIHRlc3RlcyldKG1lbW9yaWFzL2NpLWRvLWNsaXByb3h5YXBpLXJvZGEtYXBlbmFzLWJ1aWxkLXNlbS10ZXN0ZXMtMmU5OGFmNTM0MGNkLm1kKSBbW21lbW9yaWFzL2NpLWRvLWNsaXByb3h5YXBpLXJvZGEtYXBlbmFzLWJ1aWxkLXNlbS10ZXN0ZXMtMmU5OGFmNTM0MGNkfENJIGRvIENMSVByb3h5QVBJIHJvZGEgYXBlbmFzIGJ1aWxkIChzZW0gdGVzdGVzKV1dICNjaS9nYXBzICNidWlsZC9nbyBeY2ktZG8tY2xpcHJveHlhcGktcm9kYS1hcGVuYXMtYnVpbGQtc2VtLXRlc3Rlcy0yZTk4YWY1MzQwY2QKCi0gZWRpdGFyIGZvbnRlIGRvIENMSVByb3h5QVBJIG91IGludmVzdGlnYXIgRU9MIC0+IFtFbmNvZGluZyBkbyByZXBvIENMSVByb3h5QVBJOiB3b3JraW5nIENSTEYgLyBsb2phIExGIHNlbSBwaW5dKG1lbW9yaWFzL2VuY29kaW5nLWRvLXJlcG8tY2xpcHJveHlhcGktd29ya2luZy1jcmxmLWxvamEtbGYtcy01Y2IzYzMwNTAzOTEubWQpIFtbbWVtb3JpYXMvZW5jb2RpbmctZG8tcmVwby1jbGlwcm94eWFwaS13b3JraW5nLWNybGYtbG9qYS1sZi1zLTVjYjNjMzA1MDM5MXxFbmNvZGluZyBkbyByZXBvIENMSVByb3h5QVBJOiB3b3JraW5nIENSTEYgLyBsb2phIExGIHNlbSBwaW5dXSAjZW5jb2RpbmcvcmVwbyAjZ2l0L3dpbmRvd3MgXmVuY29kaW5nLWRvLXJlcG8tY2xpcHJveHlhcGktd29ya2luZy1jcmxmLWxvamEtbGYtcy01Y2IzYzMwNTAzOTEKCi0gcmVmYXRvcmFyIHRyYW5zbGF0b3IgZ2VtaW5pIG91IGVzY29saGVyIGFsdm8gZGUgcmVmYWN0b3IgLT4gW0hvdHNwb3RzIGRlIHRveGljaWRhZGUgZG8gQ0xJUHJveHlBUEkgKHBvZGlvIFc4KV0obWVtb3JpYXMvaG90c3BvdHMtZGUtdG94aWNpZGFkZS1kby1jbGlwcm94eWFwaS1wb2Rpby13OC0xMDZiZTQxZTc2MDMubWQpIFtbbWVtb3JpYXMvaG90c3BvdHMtZGUtdG94aWNpZGFkZS1kby1jbGlwcm94eWFwaS1wb2Rpby13OC0xMDZiZTQxZTc2MDN8SG90c3BvdHMgZGUgdG94aWNpZGFkZSBkbyBDTElQcm94eUFQSSAocG9kaW8gVzgpXV0gI2FycXVlb2xvZ2lhL2hvdHNwb3QgI21ldHJpY2FzL2dvIF5ob3RzcG90cy1kZS10b3hpY2lkYWRlLWRvLWNsaXByb3h5YXBpLXBvZGlvLXc4LTEwNmJlNDFlNzYwMwoKLSB1c2FyL3JlaW5pY2lhciBvIHByb3h5IENMSVByb3h5QVBJOyBjb25zdW1pciBtb2RlbG9zIGFudGlncmF2aXR5IHBlbG8gWkNvZGU7IGRpYWdub3N0aWNvIGRlIHByb3ZpZGVyIENMSVByb3h5QVBJIG5vIFpDb2RlOyByb2RhciBvIHNlcnZlciBsb2NhbCBkbyBDTElQcm94eUFQSSAtPiBbQ0xJUHJveHlBUEkgaW5zdGFsYWRvIGUgc2VydmluZG8gYW50aWdyYXZpdHk7IHByb3ZpZGVyIGNhZGFzdHJhZG8gbm8gWkNvZGUgY29tIEUyRSBwcm92YWRvXShtZW1vcmlhcy9jbGlwcm94eWFwaS1pbnN0YWxhZG8tZS1zZXJ2aW5kby1hbnRpZ3Jhdml0eS1wcm92aWQtZTA5Zjg0M2QyZDgzLm1kKSBbW21lbW9yaWFzL2NsaXByb3h5YXBpLWluc3RhbGFkby1lLXNlcnZpbmRvLWFudGlncmF2aXR5LXByb3ZpZC1lMDlmODQzZDJkODN8Q0xJUHJveHlBUEkgaW5zdGFsYWRvIGUgc2VydmluZG8gYW50aWdyYXZpdHk7IHByb3ZpZGVyIGNhZGFzdHJhZG8gbm8gWkNvZGUgY29tIEUyRSBwcm92YWRvXV0gI2luc3RhbGFjYW8vY2xpcHJveHlhcGkgI3pjb2RlL3Byb3ZpZGVyICNhbnRpZ3Jhdml0eS9lMmUgXmNsaXByb3h5YXBpLWluc3RhbGFkby1lLXNlcnZpbmRvLWFudGlncmF2aXR5LXByb3ZpZC1lMDlmODQzZDJkODMKCi0gcmVjb25maWd1cmFyL2RpYWdub3N0aWNhciBvIHByb3ZpZGVyIENMSVByb3h5QVBJIG5vIFpDb2RlOyBjaGF0IGRvIFpDb2RlIGZhbGhhbmRvIGNvbSBSZWNvbm5lY3Rpbmc7IDQyOSBtZXNtbyBjb20gcXVvdGE7IG1vZGVsbyBuYW8gbGlzdGFkbyAtPiBbUHJvdmlkZXIgQ0xJUHJveHlBUEkgbm8gWkNvZGU6IDUgY2FtYWRhcyBlbXBpbGhhZGFzIGF0w6kgbyBFMkUgdmVyZGVdKG1lbW9yaWFzL3Byb3ZpZGVyLWNsaXByb3h5YXBpLW5vLXpjb2RlLTUtY2FtYWRhcy1lbXBpbGhhZGFzLWU5ODE5NmJmMDQ5MS5tZCkgW1ttZW1vcmlhcy9wcm92aWRlci1jbGlwcm94eWFwaS1uby16Y29kZS01LWNhbWFkYXMtZW1waWxoYWRhcy1lOTgxOTZiZjA0OTF8UHJvdmlkZXIgQ0xJUHJveHlBUEkgbm8gWkNvZGU6IDUgY2FtYWRhcyBlbXBpbGhhZGFzIGF0w6kgbyBFMkUgdmVyZGVdXSAjaW5zdGFsYWNhby9jbGlwcm94eWFwaS1wcm92aWRlciAjemNvZGUvcHJvdmlkZXIgI2FudGlncmF2aXR5L2UyZSBecHJvdmlkZXItY2xpcHJveHlhcGktbm8temNvZGUtNS1jYW1hZGFzLWVtcGlsaGFkYXMtZTk4MTk2YmYwNDkxCgotIGZhemVyIG1lcmdlIGRlIGJyYW5jaGVzIG5vIENMSVByb3h5QVBJIC0+IFtDTElQcm94eUFQSSBtZXJnZS1jaGVjayBnYXRlXShtZW1vcmlhcy9jbGlwcm94eWFwaS1tZXJnZS1jaGVjay1nYXRlLWQwMGVhNjFlMjI0NS5tZCkgW1ttZW1vcmlhcy9jbGlwcm94eWFwaS1tZXJnZS1jaGVjay1nYXRlLWQwMGVhNjFlMjI0NXxDTElQcm94eUFQSSBtZXJnZS1jaGVjayBnYXRlXV0gI2NsaXByb3h5YXBpL21lcmdlLWdhdGUgI2dpdC9ob29rcyBeY2xpcHJveHlhcGktbWVyZ2UtY2hlY2stZ2F0ZS1kMDBlYTYxZTIyNDUKCi0gY2l0YXIgbnVtZXJvIGRlIGFydGVmYXRvIGRlcml2YWRvIChncmFmbyBDUkcsIGdyYXBoaWZ5LCBJTkRFWCkgbm8gQ0xJUHJveHlBUEkgLT4gW0NMSVByb3h5QVBJIHN0YWxlbmVzcyBkZXJpdmFkb3NdKG1lbW9yaWFzL2NsaXByb3h5YXBpLXN0YWxlbmVzcy1kZXJpdmFkb3MtZDU2MGRmNjE2NTE2Lm1kKSBbW21lbW9yaWFzL2NsaXByb3h5YXBpLXN0YWxlbmVzcy1kZXJpdmFkb3MtZDU2MGRmNjE2NTE2fENMSVByb3h5QVBJIHN0YWxlbmVzcyBkZXJpdmFkb3NdXSAjY2xpcHJveHlhcGkvc3RhbGVuZXNzICNhcnRlZmF0b3MvZGVyaXZhZG9zIF5jbGlwcm94eWFwaS1zdGFsZW5lc3MtZGVyaXZhZG9zLWQ1NjBkZjYxNjUxNgo="
+    },
+    "destination": {
+      "exists": false,
+      "bytes_base64": ""
+    }
+  },
+  "receipt": {
+    "contract": "dex.memory.route.receipt.v2",
+    "status": "COMMITTED",
+    "scope": "project",
+    "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "operation_id": "remember-7ec527db971076362c545ca2",
+    "idempotency_key": "dex-memoria:remember-7ec527db971076362c545ca2:project",
+    "transaction_id": "9c691aa5029f703c4fb5ac31",
+    "receipt_id": "5f4043299bb2d5bd20d5faae",
+    "receipt_path": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\9c691aa5029f703c4fb5ac31\\receipt.json",
+    "validation_receipt_path": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\9c691aa5029f703c4fb5ac31\\validation.json",
+    "validation_receipt_hash": "984d4b770669a3ca855a66c9ed3a82874d22ba8e5215f6e8d591a609f19279ab",
+    "validation_contract": "dex.memory.capability.unit-receipt.v2",
+    "validation_ok": true,
+    "candidate_id": "8388b3270afe423803dacc0efbd0b3d0041c94f09cd1ab7e3befff1ed8358490",
+    "content_hash": "8e72f18fe06652504058f870a898d8d7a4201c87c6b713d0ab8f341fe33b1d41",
+    "route_identity": "c25583e003391ad630205e59539bd83a971575b7f3549fa9d5628785e8118dcf",
+    "deduplicated": false,
+    "write_set_hash": "ca6c36868bf15dc63d7c1c208817fafcf8672a1f0f205f1a2a5b04f3566c2481",
+    "target_hashes": {
+      "l1": "0690743acf805b8389a2862691531fcb87fd544b00989f731994dd344f712540",
+      "destination": "8e72f18fe06652504058f870a898d8d7a4201c87c6b713d0ab8f341fe33b1d41"
+    },
+    "receipt_revision": 2,
+    "producer_provenance": {
+      "entrypoint_realpath": "C:\\CodexProjetos\\dex-memoria\\bin\\dex-memoria.js",
+      "entrypoint_sha256": "bb53fb76bd55872e83dbac3118a014630462f49dc542d410f6ce4a4160adb842"
+    }
+  }
+}
