@@ -1,0 +1,6 @@
+# Arqueologia: evidência e infraestrutura fora do grafo estrutural do alvo
+.agents/
+.code-review-graph/
+__backups/
+LIXEIRA/
+test-output*

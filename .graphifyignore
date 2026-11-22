@@ -1,0 +1,8 @@
+# Evidência de arqueologia fora do grafo rico
+.agents/
+.code-review-graph/
+__backups/
+LIXEIRA/
+test-output*
+*.png
+*.svg

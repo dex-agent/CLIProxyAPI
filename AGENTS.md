@@ -62,3 +62,11 @@ go build -o test-output ./cmd/server && rm test-output # Verify compile (REQUIRE
 - Avoid wall-clock `time.Sleep` in TTL, expiration, ordering, or cache-eviction unit tests due to platform timer granularity (e.g. Windows default timer resolution of ~15.6ms) and CI jitter under load; prefer controllable clocks (`nowFunc` / mock clock), explicit timestamp manipulation, or deterministic synchronization primitives.
 - Note: if modifying features that involve CLIProxyAPIHome, check if corresponding updates are needed in the CLIProxyAPIHome repository.
 - Endpoints under the `/v0/management` base URL are deprecated and no longer maintained. For any feature changes, do not modify endpoints under `/v0/management` unless necessary to fix compilation errors.
+
+<!-- LOCAL ARQUEOLOGIA LAYER (não-pushed; divergência local declarada) -->
+## Painel de Ferramentas (arqueologia 2026-11-22)
+- Estado vivo: `.agents/` (GATILHOS-VIVOS, HANDOFF, PENDENTES, ESTACIONAMENTO, receipts `W1..W10`).
+- Retomada: `INDEX.md` raiz · grafo interno + 3rd-party: `DEPENDENCIES.md` · build exato + status: `DEPENDENCIES.md §Status de build`.
+- Go toolchain (não no PATH): `source .agents/scripts/go-env.sh` (1.26.10 do module cache).
+- Grafo estrutural (CRG-LOCAL-STRUCTURAL-GRAPH): `.agents/CODE-REVIEW-GRAPH/` — consulte antes de review estrutural; refresh `code-review-graph update --data-dir .agents/CODE-REVIEW-GRAPH`; receipt `.agents/CODE-REVIEW-GRAPH-INDEX.md`.
+- Métricas: `.agents/receipts/W8-gocyclo.txt` (28.660 rotinas) · testes vermelhos conhecidos: `.agents/receipts/W6-build-test.json`.
