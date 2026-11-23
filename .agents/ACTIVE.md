@@ -7,7 +7,7 @@
 - **Build do upstream**: verde. **Suíte nativa**: vermelha no Windows (9 falhas: 8 de ambiente, 1 golden drift real) — ver `PENDENTES.md`.
 - **Proxy local** (`127.0.0.1:8317`): liga com `powershell -NoProfile -ExecutionPolicy Bypass -File .agents\scripts\start-proxy.ps1` (idempotente) e desliga com `stop-proxy.ps1`; reiniciar é os dois nessa ordem. A chave de acesso é lida do `config.yaml`. Sobreviver a um restart do ZCode ainda não foi provado (estacionado).
 - **Providers no ZCode**: `CLIProxyAPI` (12, antigravity) · `xAI (CLIProxyAPI)` (8) · `OpenCode Go` + `(Anthropic)` + `(Responses)` (22, direto, sem proxy) · `Gratis (todos)` (14, via proxy) · `openrouter` (41).
-- **Fork**: recriado em 2026-11-23 como fork verdadeiro do upstream (só a `main`), 16 commits sobre `6eb8554f`. O upstream já avançou 51 commits (não mesclados). Histórico limpo: sem dado pessoal, sem credencial e sem ponteiro para o histórico antigo. Cite commits por data e assunto, nunca pelo SHA de um commit antigo.
+- **Fork**: recriado em 2026-11-23 como fork verdadeiro do upstream (só a `main`), com os commits da casa sobre `6eb8554f` (a contagem muda a cada fechamento; confira pela comparação da API). O upstream já avançou 51 commits (não mesclados). Histórico limpo: sem dado pessoal, sem credencial e sem ponteiro para o histórico antigo. Cite commits por data e assunto, nunca pelo SHA de um commit antigo.
 - **Antes de cada push**: rodar o gate da ficha `RECEIPTS-NAO-VERSIONADOS`.
 - **Toolchain Go**: fora do PATH. `source .agents/scripts/go-env.sh` (Go 1.26.10 no module cache).
 - **Grafo estrutural (CRG)**: `.agents/CODE-REVIEW-GRAPH/` (local, não versionado). Antes de citar número dele, aplicar a ficha `STALENESS-ARTEFATOS-DERIVADOS`.
@@ -41,6 +41,6 @@ chato · bruninha-agulha · critico-cetico · questionador · interrogador-docum
 
 ### W18 — Fork recriado limpo + alcance do histórico antigo medido (2026-11-23)
 - O dono apagou o fork. Antes de recriar, o gate achou a chave de acesso local do proxy fixa em 8 arquivos versionados: o histórico da casa foi reescrito só nos commits locais (`git filter-repo --refs 6eb8554f..main`), a chave saiu e os 4 scripts passaram a ler o `config.yaml`.
-- Fork recriado (fork verdadeiro, só a `main`), 16 commits sobre `6eb8554f`: sem dado pessoal, sem credencial e sem o ponteiro do commit antigo.
+- Fork recriado (fork verdadeiro, só a `main`), com o histórico limpo: sem dado pessoal, sem credencial e sem o ponteiro do commit antigo.
 - **Achado**: apagar o fork não removeu o histórico antigo. Ele responde 200 sem login pela API, pela página e pelo raw, na namespace do upstream e, com o fork novo, também na do fork. A rede de forks compartilha o armazém de objetos; a remoção depende de pedido ao suporte do GitHub.
 - `stop-proxy.ps1` criado e testado (o dono perguntou como desligar o proxy).

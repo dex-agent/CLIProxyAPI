@@ -16,6 +16,7 @@
 | OPENCODE-GO-CLIENTE-EXTERNO | sessao que for usar o plano OpenCode Go fora do cliente OpenCode (ZCode, proxy, curl) | cadastrar, renovar ou diagnosticar o acesso ao OpenCode Go | [Fonte viva](<scripts%20register_opencode_go_zcode.py,%20register_oc_go_multi_protocol.py%20e%20refresh_opencode_go_token.py%20em%20.agents/scripts/>) · o endpoint e https://opencode.ai/inference/go/openai/v1 (o /go/ e obrigatorio) com o token OAuth do opencode.db e os headers x-opencode-session, x-opencode-project, x-opencode-directory e x-opencode-client; o ZCode aceita isso direto em api.headers, sem proxy |
 | GRATIS-TODOS-RESSYNC | sessao que mantem o grupo de modelos gratuitos | quando um alias free-* devolver 404, ou depois de cada sync dos free do OpenRouter | [Fonte viva](<.agents/scripts/free_aggregator.py>) · o provider Gratis (todos) do ZCode so tem os modelos que o proxy expoe com alias free-or-* (OpenRouter) e free-oc-* (OpenCode Go); ele nao se atualiza sozinho |
 | PROXY-WMI-SEM-JANELA | sessao que precisar do CLIProxyAPI no ar | antes de usar os providers CLIProxyAPI, xAI (CLIProxyAPI) e Gratis (todos) do ZCode | [Fonte viva](<.agents/scripts/start-proxy.ps1>) · o proxy sobe por start-proxy.ps1, que cria o processo via WMI com ShowWindow=0: fora da job do ZCode e sem janela de console |
+| FORK-REDE-APAGAR-NAO-PURGA | dono do fork e sessao do repo que for publicar ou reescrever historico | antes de prometer que um historico exposto sumiu, antes de apagar ou recriar um fork e antes de citar um SHA antigo em arquivo versionado | [Fonte viva](<recibo%20local%20.agents/receipts/W18-old-history-reach.txt,%20texto%20do%20pedido%20em%20.agents/receipts/W18-support-ticket.txt%20e%20pendencia%20fork-dados-pessoais%20em%20.agents/PENDENTES.md>) · Apagar um fork nao remove os objetos inalcancaveis: a rede de forks compartilha o armazem com o upstream e o commit antigo segue acessivel pelas duas namespaces (medido em 2026-11-23: API, pagina e raw responderam 200 sem login) |
 
 
 Hub quente de retomada: gatilhos promovidos com validação (formato canônico 5W2H pelo helper `dex-5w2h-gatilhos-vivo`; mantém fonte viva; NÃO substitui L1/L2, Trilho, ACTIVE/HANDOFF).
@@ -195,3 +196,16 @@ Hub quente de retomada: gatilhos promovidos com validação (formato canônico 5
 - **Como**: powershell -NoProfile -ExecutionPolicy Bypass -File .agents\scripts\start-proxy.ps1 responde JA_ATIVO (ja esta no ar) ou INICIADO com o pid do proxy; stop-proxy.ps1 responde PARADO ou JA_PARADO; reiniciar e stop seguido de start; a chave de acesso e lida do config.yaml
 - **Quanto**: menos de 15 segundos
 - **E se??**: E se?? depois de um restart do ZCode responder INICIADO em vez de JA_ATIVO? → o proxy morreu no restart: a hipotese seguinte e tarefa agendada do Windows, que exige decisao do dono
+
+## 🔥 FORK-REDE-APAGAR-NAO-PURGA
+
+<!-- dex.gatilho-vivo.v1 -->
+- **Quem**: dono do fork e sessao do repo que for publicar ou reescrever historico
+- **O quê**: Apagar um fork nao remove os objetos inalcancaveis: a rede de forks compartilha o armazem com o upstream e o commit antigo segue acessivel pelas duas namespaces (medido em 2026-11-23: API, pagina e raw responderam 200 sem login)
+- **Por que**: Em 2026-11-23 o dono apagou o fork para remover o historico com dado pessoal e o commit continuou abrindo pelo namespace do upstream; o fork recriado voltou a servi-lo pela propria namespace. A afirmacao anterior de que apagar seria a remocao completa estava errada.
+- **Onde**: [Fonte viva](<recibo%20local%20.agents/receipts/W18-old-history-reach.txt,%20texto%20do%20pedido%20em%20.agents/receipts/W18-support-ticket.txt%20e%20pendencia%20fork-dados-pessoais%20em%20.agents/PENDENTES.md>)
+- **Quando**: antes de prometer que um historico exposto sumiu, antes de apagar ou recriar um fork e antes de citar um SHA antigo em arquivo versionado
+- **Como**: medir antes de afirmar (API anonima, pagina e raw, com controle positivo); nunca citar o SHA do commit exposto em arquivo publicado; reescrever so os commits da casa com git filter-repo --refs <base>..main, que preserva a ancestridade; pedir a remocao ao suporte do GitHub
+- **Quanto**: 4 pedidos HTTP para a medida; o pedido ao suporte e do dono
+- **E se??**: o dono quiser o endereco do proprio fork morto antes de o suporte responder? → um repositorio avulso (fora da rede de forks) devolve 404 na namespace do fork, mas a namespace do upstream segue servindo ate o suporte remover
+- **E se??**: o commit exposto ja tiver sido clonado por alguem? → o dado exposto e e-mail e texto de conversa, sem credencial; depois do pedido ao suporte, avaliar com o dono se algo precisa ser trocado

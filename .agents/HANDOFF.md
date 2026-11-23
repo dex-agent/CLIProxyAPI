@@ -3,7 +3,7 @@
 Última atualização: 2026-11-23
 
 ## Estado
-Arqueologia W-1..W10 executada (tier COMPLETO, 2405 fontes Go/143k linhas). O fork foi apagado pelo dono e recriado em 2026-11-23 com 16 commits sobre o upstream `6eb8554f` (o upstream já avançou; não mesclado). Estado vivo atual: `ACTIVE.md`.
+Arqueologia W-1..W10 executada (tier COMPLETO, 2405 fontes Go/143k linhas). O fork foi apagado pelo dono e recriado em 2026-11-23 com os commits da casa sobre o upstream `6eb8554f` (o upstream já avançou; não mesclado). Estado vivo atual: `ACTIVE.md`.
 
 ## Feito
 - W-1..W5 fechados com receipts em `.agents/receipts/` (W1 inventário, W2 encoding 3 camadas, W3 grafo Tarjan, W4 hidden, W5 segredos).
