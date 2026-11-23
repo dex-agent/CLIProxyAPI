@@ -1,20 +1,21 @@
 # -*- coding: utf-8 -*-
-"""Grupo "Gratis (todos)" - todos os modelos gratuitos num lugar so.
+"""Free-models group "Gratis (todos)" - every free model in one place.
 
-O ZCode agrupa modelos por provider, e um provider so tem uma base URL e uma chave.
-Os gratuitos moram em dois lugares (OpenRouter e OpenCode Go), entao quem os junta e o
-proxy: ele expoe aliases `free-or-*` (OpenRouter) e `free-oc-*` (OpenCode Go) e o ZCode
-aponta um unico provider para o proxy.
+ZCode groups models by provider, and one provider has a single base URL and key.
+The free models live in two places (OpenRouter and OpenCode Go), so the proxy is
+what joins them: it exposes `free-or-*` aliases (OpenRouter) and `free-oc-*` aliases
+(OpenCode Go), and ZCode points a single provider at the proxy.
 
-Rotas:
-  setup-proxy     reescreve o bloco api-keys.openai-compatibility do config.yaml do proxy
-  register-zcode  cria/atualiza o provider "Gratis (todos)" no provider_config.json do ZCode
-  test            testa cada alias free-* pelo proxy e grava status + veredito (para o vigia)
-  status | verdict  imprimem os arquivos que o vigia le
+Routes:
+  setup-proxy     rewrites the api-keys.openai-compatibility block of the proxy config.yaml
+  register-zcode  creates/updates the "Gratis (todos)" provider in the ZCode provider_config.json
+  test            tests each free-* alias through the proxy and writes status + verdict (for the watcher)
+  status | verdict  print the files the watcher reads
 """
 import datetime
 import json
 import pathlib
+import re
 import shutil
 import sqlite3
 import sys
@@ -34,7 +35,6 @@ ZCFG = pathlib.Path.home().joinpath(".zcode", "v2", "provider_config.json")
 OCDB = pathlib.Path.home() / ".local" / "share" / "opencode" / "opencode.db"
 
 PROXY_BASE = "http://127.0.0.1:8317/v1"
-PROXY_KEY = "<PROXY-KEY>"
 ZCODE_PROVIDER = "Gratis (todos)"
 OR_CATALOG = "https://openrouter.ai/api/v1/models"
 
@@ -43,16 +43,33 @@ END_MARK = "# FIM gratis-todos"
 OLD_HEADER = "# Provedor OpenAI-compat custom"
 TOKEN_MARK = "# opencode-go-token (renovado por refresh_opencode_go_token.py)"
 
-# modelos gratuitos do OpenCode Go que responderam 200 no mapeamento
+# OpenCode Go free models that answered 200 during mapping
 OC_FREE = [("hy4-flash-free", "free-oc-hy4-flash"), ("beam-free", "free-oc-beam")]
 
-# sufixos que a UI do ZCode transforma em nivel de esforco (some do nome do modelo)
+# suffixes the ZCode UI turns into effort levels (dropped from the model name)
 EFFORT_SUFFIXES = ("-high", "-low", "-medium", "-max", "-xhigh", "-min", "-nothink")
 
 
 def yaml_str(value):
     """String JSON e um escalar YAML valido entre aspas."""
     return json.dumps(value)
+
+
+def proxy_key(config=PROXY_CFG):
+    """First entry of access.api-keys in the proxy config; the value never lives in a script."""
+    lines = config.read_text(encoding="utf-8").splitlines()
+    for i, line in enumerate(lines):
+        if line.strip() == "access:":
+            for item in lines[i + 1:]:
+                found = re.match(r"""\s*-\s*["']?([^"'\s#]+)""", item)
+                if found:
+                    return found.group(1)
+                if item[:1] not in ("", " ", "\t", "#"):
+                    break
+    raise SystemExit("access.api-keys nao encontrado em " + str(config))
+
+
+PROXY_KEY = proxy_key()
 
 
 def or_alias(model_id):
@@ -72,7 +89,7 @@ def zcode_openrouter():
         raise SystemExit("esperava 1 provider 'openrouter' no ZCode, achei %d" % len(rules))
     cfg = rules[0]["config"]
     key = (cfg.get("access") or {}).get("apiKey")
-    # ":free" = modelo gratuito; "openrouter/free" = roteador dos gratuitos (sem o sufixo)
+    # ":free" = free model; "openrouter/free" = router of the free ones (no suffix)
     free = [m for m in cfg.get("personalModelIds", [])
             if m.endswith(":free") or m == "openrouter/free"]
     if not key:
@@ -151,7 +168,7 @@ def build_block(or_key, or_free, oc_token, oc_org):
 def setup_proxy():
     or_key, or_free = zcode_openrouter()
     oc_token, oc_org = opencode_token()
-    # a lista do ZCode guarda modelos que o OpenRouter ja retirou; so entram os vivos
+    # the ZCode list keeps models OpenRouter already retired; only live ones get in
     try:
         or_free, retired = openrouter_live(or_free)
     except Exception as exc:  # noqa: BLE001
@@ -159,7 +176,7 @@ def setup_proxy():
                          % (type(exc).__name__, exc))
 
     lines = PROXY_CFG.read_text(encoding="utf-8").splitlines()
-    # bloco antigo desta sessao: do cabecalho antigo ate o fim do arquivo
+    # block from an earlier run of this session: from the old header to the end of the file
     for i, line in enumerate(lines):
         if line.startswith(OLD_HEADER):
             lines = lines[:i]

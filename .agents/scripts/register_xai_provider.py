@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
-# Registra provider xAI no provider_config.json do ZCode v2 (mesmo protocolo da casa)
+# Registers the xAI provider in the ZCode v2 provider_config.json (same house protocol)
 import json, pathlib, uuid, shutil, sys
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from free_aggregator import proxy_key  # noqa: E402  (single source for the proxy access key)
+
 CFG = pathlib.Path.home().joinpath(".zcode", "v2", "provider_config.json")
-KEY = "<PROXY-KEY>"
+KEY = proxy_key()
 BASE = "http://127.0.0.1:8317/v1"
 NAME = "xAI (CLIProxyAPI)"
 # somente modelos de texto que responderam 200 no proxy

@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
-# Registra provider CLIProxyAPI (antigravity via proxy local) no provider_config.json do ZCode v2
-# Protocolo casa (nota zcode-provider-config-estrutura-v2 + sessao 132e1d87):
-# fresh-read -> backup mesmo dir -> menor delta -> revalidacao. Nunca ecoar access.
+# Registers the CLIProxyAPI provider (antigravity via the local proxy) in the ZCode v2 provider_config.json
+# House protocol (note zcode-provider-config-estrutura-v2 + session 132e1d87):
+# fresh-read -> backup in the same dir -> smallest delta -> revalidation. Never echo the key.
 import json, pathlib, uuid, shutil, sys, hashlib
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from free_aggregator import proxy_key  # noqa: E402  (single source for the proxy access key)
+
 CFG = pathlib.Path.home().joinpath(".zcode", "v2", "provider_config.json")
-KEY = "<PROXY-KEY>"
+KEY = proxy_key()
 BASE = "http://127.0.0.1:8317/v1"
 NAME = "CLIProxyAPI"
 MODELS = [
@@ -43,7 +46,7 @@ backup = CFG.with_name("provider_config.json.backup-20261122-cliproxyapi")
 shutil.copy2(CFG, backup)
 CFG.write_text(json.dumps(d, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-# revalidacao
+# revalidation
 d2 = json.loads(CFG.read_text(encoding="utf-8"))
 r2 = d2["config"]["providerConfigRules"]["providerRules"]
 assert len(r2) == len(rules) and any(x.get("providerName") == NAME for x in r2)

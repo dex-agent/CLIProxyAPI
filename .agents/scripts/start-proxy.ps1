@@ -1,14 +1,15 @@
-# start-proxy.ps1 - inicia o CLIProxyAPI por fora da arvore de processos do host e sem janela.
-# Uso: powershell -NoProfile -ExecutionPolicy Bypass -File .agents\scripts\start-proxy.ps1
+# start-proxy.ps1 - starts CLIProxyAPI outside the host's process tree and without a window.
+# Usage: powershell -NoProfile -ExecutionPolicy Bypass -File .agents\scripts\start-proxy.ps1
 #
-# Por que WMI e nao Start-Process: o processo criado por Start-Process herda a job do
-# shell/host que o lancou e morre junto quando o ZCode fecha (medido em 2026-11-22/23).
-# Win32_Process.Create nasce do servico WMI, fora dessa job.
-# Por que ShowWindow = 0: a instancia anterior, criada sem essa opcao, morreu junto com o
-# wrapper cmd.exe poucos minutos depois de subir, sem panico no stderr (2026-11-23). Janela
-# de console visivel sendo fechada e a causa PROVAVEL, nao provada. Sobreviver a um restart
-# do ZCode tambem ainda nao foi provado: confira com Test-ProxyUp depois do proximo restart.
-# Idempotente (R14): se a porta 8317 ja responde, nao cria segundo processo.
+# Why WMI instead of Start-Process: a process created by Start-Process inherits the job of the
+# shell/host that launched it and dies with it when ZCode closes (measured 2026-11-22/23).
+# Win32_Process.Create is born from the WMI service, outside that job.
+# Why ShowWindow = 0: the previous instance, created without it, died together with the
+# cmd.exe wrapper a few minutes after starting, with no panic in stderr (2026-11-23). A visible
+# console window being closed is the PROBABLE cause, not proven. Surviving a ZCode restart is
+# also not proven yet: check with Test-ProxyUp after the next restart.
+# Idempotent (R14): if port 8317 already answers, no second process is created.
+# The access key comes from access.api-keys in config.yaml; the value never lives in this script.
 
 $ProgressPreference = 'SilentlyContinue'
 
@@ -19,7 +20,19 @@ $logDir     = Join-Path $repoRoot '.agents\receipts'
 $logOut     = Join-Path $logDir 'proxy-run.log'
 $errLog     = Join-Path $logDir 'proxy-run.err.log'
 $probeUrl   = 'http://127.0.0.1:8317/v1/models'
-$probeHdr   = @{ Authorization = 'Bearer <PROXY-KEY>' }
+
+function Get-AccessKey {
+    # First list item under the top-level "access:" block of the proxy config.
+    $inAccess = $false
+    foreach ($line in (Get-Content -LiteralPath $configPath -Encoding UTF8)) {
+        if ($line -match '^access:\s*$') { $inAccess = $true; continue }
+        if ($inAccess -and $line -match '^\S') { break }
+        if ($inAccess -and $line -match '^\s*-\s*["'']?([^"''\s#]+)') { return $Matches[1] }
+    }
+    throw "chave de acesso ausente em $configPath (access.api-keys)"
+}
+
+$probeHdr   = @{ Authorization = ('Bearer ' + (Get-AccessKey)) }
 
 function Test-ProxyUp {
     try {
@@ -39,7 +52,7 @@ if (-not (Test-Path -LiteralPath $configPath)) { throw "config ausente: $configP
 if (Test-ProxyUp) { Write-Output ('JA_ATIVO http=200 pid=' + (Get-ProxyPid)); exit 0 }
 if (-not (Test-Path -LiteralPath $logDir)) { New-Item -ItemType Directory -Path $logDir | Out-Null }
 
-# /s: cmd remove as aspas externas; o resto fica com os caminhos entre aspas
+# /s: cmd strips the outer quotes; the paths stay quoted
 $cmdLine = 'cmd.exe /s /c ""{0}" --config "{1}" > "{2}" 2> "{3}""' -f $proxyPath, $configPath, $logOut, $errLog
 $startup = New-CimInstance -ClassName Win32_ProcessStartup -ClientOnly -Property @{ ShowWindow = [uint16]0 }
 $spawn = Invoke-CimMethod -ClassName Win32_Process -MethodName Create -Arguments @{
