@@ -12,6 +12,10 @@
 | MERGE-CHECK-HOOK-PRE-MERGE | Hook do repo (tools/hooks/pre-merge-commit, executado pelo git via core.hooksPath) | Todo git merge local; e merge remoto via PR (nesse caso o agente roda o merge-check completo ANTES do dono clicar em merge — hook local não cobre PR). | [Fonte viva](<tools/hooks/pre-merge-commit%20+%20tools/hooks/merge-check.conf%20%28SUITE%29%3B%20contracts/schemas%20do%20merge-check%20no%20fork%20code-review-graph%202.4.0+dex.3>) · Todo git merge passa pelo gate merge-check tres vias (texto + grafo + suíte) antes de gerar o commit de merge; escapes: MERGE_CHECK_SKIP=1 ou git merge --no-verify. |
 | STALENESS-ARTEFATOS-DERIVADOS | sessão do repo (leitor/citador de qualquer artefato derivado) | ANTES de qualquer leitura/citação do artefato: janela fria, re-arqueologia, decisão que cita "o grafo diz X", fechamento que conta métricas de derivado. | [Fonte viva](<invent%C3%A1rio%20vivo%20desta%20ficha%20%28comandos%20abaixo%29%20+%20.agents/GATILHOS-VIVOS.md%20+%20receipts%20.agents/receipts/>) · Artefatos derivados (grafo CRG, grafo rico graphify, INDEX.md, receipts/mapas datados) fotografam a fonte num instante; antes de LER/CITAR qualquer número deles, medir staleness com 3 números. |
 | ZCODE-ANTIGRAVITY-FILTRO-SYSTEM-PROMPT | sessão que operar o provider CLIProxyAPI no ZCode | provider custom Antigravity falha no chat do ZCode mas curl minimo responde 200 | [Fonte viva](<config.yaml%20-%3E%20oauth.providers.antigravity.sensitive-patterns-replace%3B%20bodies%20reais%20em%20auths/logs/error-v1-%2A.log%3B%20start%20.agents/scripts/start-proxy.ps1>) · 429 RESOURCE_EXHAUSTED do Antigravity em chat do ZCode mesmo com quota cheia = filtro de CONTEUDO no system prompt do ZCode, nao quota |
+| RECEIPTS-NAO-VERSIONADOS | sessao do repo que for commitar ou enviar | todo commit ou push deste repo, em especial depois de criar recibo de diagnostico | [Fonte viva](<.agents/receipts/%20%28local%29%20e%20.gitignore%20%28o%20upstream%20ja%20ignora%20.agents%29>) · .agents/receipts/ guarda corpo de requisicao, logs com e-mail e capturas de tela de contexto: nunca entra no git, porque o fork dex-agent/CLIProxyAPI e publico |
+| OPENCODE-GO-CLIENTE-EXTERNO | sessao que for usar o plano OpenCode Go fora do cliente OpenCode (ZCode, proxy, curl) | cadastrar, renovar ou diagnosticar o acesso ao OpenCode Go | [Fonte viva](<scripts%20register_opencode_go_zcode.py,%20register_oc_go_multi_protocol.py%20e%20refresh_opencode_go_token.py%20em%20.agents/scripts/>) · o endpoint e https://opencode.ai/inference/go/openai/v1 (o /go/ e obrigatorio) com o token OAuth do opencode.db e os headers x-opencode-session, x-opencode-project, x-opencode-directory e x-opencode-client; o ZCode aceita isso direto em api.headers, sem proxy |
+| GRATIS-TODOS-RESSYNC | sessao que mantem o grupo de modelos gratuitos | quando um alias free-* devolver 404, ou depois de cada sync dos free do OpenRouter | [Fonte viva](<.agents/scripts/free_aggregator.py>) · o provider Gratis (todos) do ZCode so tem os modelos que o proxy expoe com alias free-or-* (OpenRouter) e free-oc-* (OpenCode Go); ele nao se atualiza sozinho |
+| PROXY-WMI-SEM-JANELA | sessao que precisar do CLIProxyAPI no ar | antes de usar os providers CLIProxyAPI, xAI (CLIProxyAPI) e Gratis (todos) do ZCode | [Fonte viva](<.agents/scripts/start-proxy.ps1>) · o proxy sobe por start-proxy.ps1, que cria o processo via WMI com ShowWindow=0: fora da job do ZCode e sem janela de console |
 
 
 Hub quente de retomada: gatilhos promovidos com validação (formato canônico 5W2H pelo helper `dex-5w2h-gatilhos-vivo`; mantém fonte viva; NÃO substitui L1/L2, Trilho, ACTIVE/HANDOFF).
@@ -143,3 +147,51 @@ Hub quente de retomada: gatilhos promovidos com validação (formato canônico 5
 - **E se??**: E se?? aparecer 400 model_not_found? → e a camada 2: oauth.model-alias sem fork:true substitui o ID original — adicionar fork:true
 - **E se??**: E se?? o cooldown persistir apos um 429? → camada 3: routing.cooldown.disable-cooling: true (com save-cooldown-status:false o restart tambem zera)
 - **E se??**: E se?? o usuario falar de seguranca/CTF na propria mensagem? → o filtro e por conteudo: mensagens do usuario tambem podem disparar 429 — diagnosticar pelo body em auths/logs, nao presumir quota
+
+## 🔥 RECEIPTS-NAO-VERSIONADOS
+
+<!-- dex.gatilho-vivo.v1 -->
+- **Quem**: sessao do repo que for commitar ou enviar
+- **O quê**: .agents/receipts/ guarda corpo de requisicao, logs com e-mail e capturas de tela de contexto: nunca entra no git, porque o fork dex-agent/CLIProxyAPI e publico
+- **Por que**: Em 2026-11-22 um git add -f .agents/ no atacado publicou o e-mail do dono em 8 arquivos e 23 corpos de requisicao com conversa e o AGENTS.md global; o push foi feito sem olhar o conteudo
+- **Onde**: [Fonte viva](<.agents/receipts/%20%28local%29%20e%20.gitignore%20%28o%20upstream%20ja%20ignora%20.agents%29>)
+- **Quando**: todo commit ou push deste repo, em especial depois de criar recibo de diagnostico
+- **Como**: adicionar por caminho explicito, nunca -f no diretorio; antes do push, git ls-files .agents/receipts deve devolver 0 linhas e git grep -l -i '<e-mail do dono>' deve devolver 0 arquivos
+- **Quanto**: 2 comandos de conferencia por push
+- **E se??**: E se?? precisar versionar um recibo? → copiar so a parte saneada para um doc em .agents/ e deixar o original local
+
+## 🔥 OPENCODE-GO-CLIENTE-EXTERNO
+
+<!-- dex.gatilho-vivo.v1 -->
+- **Quem**: sessao que for usar o plano OpenCode Go fora do cliente OpenCode (ZCode, proxy, curl)
+- **O quê**: o endpoint e https://opencode.ai/inference/go/openai/v1 (o /go/ e obrigatorio) com o token OAuth do opencode.db e os headers x-opencode-session, x-opencode-project, x-opencode-directory e x-opencode-client; o ZCode aceita isso direto em api.headers, sem proxy
+- **Por que**: sem o /go/ e sem x-opencode-session a resposta e 429 FreeUsageLimitError ou 400 MissingSessionID; os modelos -free do provider sem Go so funcionam dentro do cliente OpenCode
+- **Onde**: [Fonte viva](<scripts%20register_opencode_go_zcode.py,%20register_oc_go_multi_protocol.py%20e%20refresh_opencode_go_token.py%20em%20.agents/scripts/>)
+- **Quando**: cadastrar, renovar ou diagnosticar o acesso ao OpenCode Go
+- **Como**: para modelo bloqueado com 400, ler a mensagem inteira: ela traz o link da configuracao do workspace (regiao Global ou permitir endpoints que treinam) e nao tem a ver com a localizacao da maquina
+- **Quanto**: o token vale cerca de 30 dias
+- **E se??**: E se?? um modelo do Go devolver 400 hosted outside Europe? → e a politica Regions do workspace no console: decidir la, e escolha de privacidade do dono
+
+## 🔥 GRATIS-TODOS-RESSYNC
+
+<!-- dex.gatilho-vivo.v1 -->
+- **Quem**: sessao que mantem o grupo de modelos gratuitos
+- **O quê**: o provider Gratis (todos) do ZCode so tem os modelos que o proxy expoe com alias free-or-* (OpenRouter) e free-oc-* (OpenCode Go); ele nao se atualiza sozinho
+- **Por que**: a lista de :free do OpenRouter muda: em 2026-11-23 cinco ja estavam aposentados (404 no longer available)
+- **Onde**: [Fonte viva](<.agents/scripts/free_aggregator.py>)
+- **Quando**: quando um alias free-* devolver 404, ou depois de cada sync dos free do OpenRouter
+- **Como**: em ordem: free_aggregator.py setup-proxy (consulta o catalogo vivo), start-proxy.ps1 depois de encerrar o proxy (o hot-reload nao remove modelo), free_aggregator.py register-zcode, free_aggregator.py test para o numero medido
+- **Quanto**: a suite dos 14 levou cerca de 15 segundos
+- **E se??**: E se?? a falha for 429 e nao 404? → 429 e lotacao do fornecedor (upstream_provider_shared_pool): o modelo e valido, tentar depois
+
+## 🔥 PROXY-WMI-SEM-JANELA
+
+<!-- dex.gatilho-vivo.v1 -->
+- **Quem**: sessao que precisar do CLIProxyAPI no ar
+- **O quê**: o proxy sobe por start-proxy.ps1, que cria o processo via WMI com ShowWindow=0: fora da job do ZCode e sem janela de console
+- **Por que**: por Start-Process ele morria no restart do ZCode (herda a job do host); por WMI com janela visivel morreu junto com o wrapper cmd minutos depois
+- **Onde**: [Fonte viva](<.agents/scripts/start-proxy.ps1>)
+- **Quando**: antes de usar os providers CLIProxyAPI, xAI (CLIProxyAPI) e Gratis (todos) do ZCode
+- **Como**: powershell -NoProfile -ExecutionPolicy Bypass -File .agents\scripts\start-proxy.ps1 responde JA_ATIVO (ja esta no ar) ou INICIADO com o pid do proxy
+- **Quanto**: menos de 15 segundos
+- **E se??**: E se?? depois de um restart do ZCode responder INICIADO em vez de JA_ATIVO? → o proxy morreu no restart: a hipotese seguinte e tarefa agendada do Windows, que exige decisao do dono

@@ -17,7 +17,7 @@ chato · bruninha-agulha (via burrinha redirector) · critico-cetico · question
 A definir no W0 (upstream router-for-me; branch dev existe no remote).
 
 ## W11 — Instalação + provider ZCode (2026-11-22, tar)
-- **Instalado**: `cli-proxy-api.exe` (build exit 0) + `config.yaml` mínimo (127.0.0.1:8317, key <PROXY-KEY>, gitignored) + OAuth antigravity OK (`auths/antigravity-REDACTED.json`).
+- **Instalado**: `cli-proxy-api.exe` (build exit 0) + `config.yaml` mínimo (127.0.0.1:8317, key <PROXY-KEY>, gitignored) + OAuth antigravity OK (`auths/antigravity-<conta-google>.json`).
 - **Server VIVO** em background (receipt `.agents/receipts/W11-server-run.txt`).
 - **E2E provado**: gemini-3-flash (não-stream), gemini-3.8-flash-high e claude-sonnet-5-5-high (stream "pong") — nomes conferidos corretos contra o catálogo do proxy.
 - **Provider ZCode cadastrado**: CLIProxyAPI (providerId 398edcea…), 12 modelos, backup `provider_config.json.backup-20261122-cliproxyapi`; validado contra doc oficial (api.type enum) + hot-reload (#pollOnce).
@@ -29,3 +29,10 @@ A definir no W0 (upstream router-for-me; branch dev existe no remote).
 - **Causa-raiz final**: system prompt do ZCode (hardcoded no zcode.cjs, NAO no AGENTS.md) contem vocabulario de seguranca ofensiva -> Google devolve 429 RESOURCE_EXHAUSTED enganoso.
 - **Diagnostico**: bodies reais em auths/logs/error-v1-*.log; start desacoplado em .agents/scripts/start-proxy.ps1.
 - Ouro gravado: tema zcode 22/22 + projeto 9/9 validos; ficha ZCODE-ANTIGRAVITY-FILTRO-SYSTEM-PROMPT no hub (10 registros).
+
+## W17 — OpenCode Go direto + grupo "Gratis (todos)" (2026-11-23)
+- **OpenCode Go no ZCode sem proxy**: endpoint `https://opencode.ai/inference/go/openai/v1` + headers `x-opencode-session`, `x-opencode-project`, `x-opencode-directory`, `x-opencode-client` + token OAuth do `opencode.db` (expira em ~30 dias). 3 providers (chat-completions 14, anthropic-messages 5, openai-responses 3). E2E do chat-completions provado por subagente (`glm-5.3-flash`, 3,9s).
+- **Grupo "Gratis (todos)"**: provider unico no ZCode (primeiro da lista) com os 14 gratuitos, apontando para o proxy; o proxy agrega por alias `free-or-*` (OpenRouter) e `free-oc-*` (OpenCode Go). Suite medida: 11/14 OK; os 3 restantes dao 429 de lotacao do fornecedor (transitorio).
+- **Proxy**: sobe por `start-proxy.ps1` (WMI, sem janela, fora da job do ZCode). Sobreviver a restart do ZCode ainda nao provado (estacionado).
+- **Correcao de diagnostico**: DeepSeek do Go nao e bloqueio por localizacao da maquina; e a politica de regiao do workspace no console do OpenCode (ver PENDENTES 8 e 9).
+- **Fork publico**: recebeu e-mail e corpos de requisicao por descuido meu; decisao do dono em 2026-11-23: purgar do historico e force-push. `.agents/receipts/` sai do versionamento e nunca mais volta.
