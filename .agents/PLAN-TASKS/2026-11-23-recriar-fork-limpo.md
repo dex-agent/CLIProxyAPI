@@ -7,7 +7,7 @@ date: '2026-11-23'
 workspace: 'C:\CodexProjetos\CLIProxyAPI'
 abertura:
   contexto: "O fork publico dex-agent/CLIProxyAPI foi apagado pelo dono em 2026-11-23 porque o primeiro push levou e-mail do dono e corpos de requisicao (ficha RECEIPTS-NAO-VERSIONADOS, PENDENTES fork-dados-pessoais, memoria host repo-publico-antes-do-push). Medido antes de agir: gh devolve repositorio inexistente; conta autenticada dex-agent (User) com escopo repo; main local com 14 commits sobre 6eb8554f e arvore limpa; nenhum commit do intervalo toca .agents/receipts (controle positivo: 3 tocam GATILHOS-VIVOS); os refs fork/* apontam para o repositorio morto e nao tem commit unico (fork/dev e ancestral de origin/main); os 6 ramos de rastreamento fork/* mostram que o primeiro era fork verdadeiro. Achado novo do gate: a chave de acesso local do proxy esta fixa em 8 arquivos versionados, em 15 blobs desde o commit de instalacao."
-  ferramentas: "sanitizar-scan.py da skill dex-sanitizar-dados-pessoais (inventario read-only; tinha NameError no validador de CNPJ, corrigido nesta sessao nas 2 copias com harness RED->GREEN); W18-export-new-blobs-scan.py em .agents/receipts (exporta os blobs novos do intervalo, roda o scanner e tria com saida mascarada); git filter-repo a40bce548d2c com --refs 6eb8554f..main (modo parcial: reescreve so os commits da casa e preserva a ancestridade com o upstream, provado em clone descartavel); gh (criar o fork e conferir); spt-kit/preflight.mjs (validacao local deste Trilho; spt_validate MCP ausente nesta sessao); dex-audio-motor, dex-memoria v2 e validate-memory-batch.py no fechamento."
+  ferramentas: "sanitizar-scan.py da skill dex-sanitizar-dados-pessoais (inventario read-only; tinha NameError no validador de CNPJ, corrigido nesta sessao nas 2 copias com harness RED->GREEN); W18-export-new-blobs-scan.py (hoje .agents/scripts/push_gate_scan.py: exporta os blobs novos do intervalo, roda o scanner e tria com saida mascarada) e .agents/scripts/push_gate_credentials.py (credenciais do runtime local em 0 blobs); git filter-repo a40bce548d2c com --refs 6eb8554f..main (modo parcial: reescreve so os commits da casa e preserva a ancestridade com o upstream, provado em clone descartavel); gh (criar o fork e conferir); spt-kit/preflight.mjs (validacao local deste Trilho; spt_validate MCP ausente nesta sessao); dex-audio-motor, dex-memoria v2 e validate-memory-batch.py no fechamento."
   mentor: "mentor-documental-git para duvida de filtro e refs; o comportamento do filter-repo foi medido em clone descartavel e nao presumido da documentacao."
 origin: "GO do dono 2026-11-23: apagou dex-agent/CLIProxyAPI e escreveu que pode criar novamente, sob o workflow base PPIRTV com $chato como comandante."
 goal:
@@ -185,7 +185,7 @@ tasks:
       - id: ER-09
         proves: [C-03, C-04]
         method: command
-        procedure: 'python -I -X utf8 .agents/receipts/W18-export-new-blobs-scan.py C:/CodexProjetos/CLIProxyAPI 6eb8554f..main C:/CodexProjetos/CLIProxyAPI-receipts-local-20261123 | grep -c -e "mail_like_count=0" -e "head_files_not_covered=0 \\[\\]"'
+        procedure: 'python -I -B -X utf8 .agents/scripts/push_gate_scan.py C:/CodexProjetos/CLIProxyAPI 6eb8554f..main C:/CodexProjetos/CLIProxyAPI-receipts-local-20261123 | grep -c -e "mail_like_count=0" -e "head_files_not_covered=0 \\[\\]"'
         expectation:
           kind: command_exit
           expected_exit_code: 0
@@ -269,8 +269,8 @@ execution_prompt: |
 
 Detalhes no frontmatter. Checklist visual:
 
-- [ ] A-01 reescrita parcial do histórico com ramo de segurança
-- [ ] A-02 scripts leem a chave do config.yaml, stop-proxy.ps1 e testes
-- [ ] A-03 gate + recriar o fork + push
-- [ ] A-04 medida de onde o histórico antigo ainda responde e rota de remoção
+- [x] A-01 reescrita parcial do histórico com ramo de segurança — 14 commits, 0 de 14 com mudança fora da chave e do ponteiro; base `6eb8554f`
+- [x] A-02 scripts leem a chave do config.yaml, stop-proxy.ps1 e testes — JA_ATIVO, 401 com chave errada, JA_EXISTE, PARADO/JA_PARADO
+- [x] A-03 gate + recriar o fork + push — 129 blobs verdes; compare da API 16 à frente, 0 atrás
+- [x] A-04 medida de onde o histórico antigo ainda responde e rota de remoção — 9 de 10 commits servidos em cada namespace; pedido ao suporte redigido
 - [ ] A-05 estado vivo, memórias e fechamento

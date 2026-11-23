@@ -156,7 +156,7 @@ Hub quente de retomada: gatilhos promovidos com validação (formato canônico 5
 - **Por que**: Em 2026-11-22 um git add -f .agents/ no atacado publicou o e-mail do dono em 8 arquivos e 23 corpos de requisicao com conversa e o AGENTS.md global; o push foi feito sem olhar o conteudo
 - **Onde**: [Fonte viva](<.agents/receipts/%20%28local%29%20e%20.gitignore%20%28o%20upstream%20ja%20ignora%20.agents%29>)
 - **Quando**: todo commit ou push deste repo, em especial depois de criar recibo de diagnostico
-- **Como**: adicionar por caminho explicito, nunca -f no diretorio; antes do push, git ls-files .agents/receipts deve devolver 0 linhas e git grep -l -i '<e-mail do dono>' deve devolver 0 arquivos
+- **Como**: adicionar por caminho explicito, nunca -f no diretorio; antes de cada push rodar o gate: python -I -B -X utf8 .agents/scripts/push_gate_scan.py <repo> 6eb8554f..main <pasta de recibos local> (scanner da casa sobre os blobs novos) e depois .agents/scripts/push_gate_credentials.py <repo> <pasta exportada pelo primeiro> (chave do proxy, token do OpenCode e token do GitHub em 0 blobs); nunca citar o SHA de um commit do historico antigo
 - **Quanto**: 2 comandos de conferencia por push
 - **E se??**: E se?? precisar versionar um recibo? → copiar so a parte saneada para um doc em .agents/ e deixar o original local
 
@@ -180,7 +180,7 @@ Hub quente de retomada: gatilhos promovidos com validação (formato canônico 5
 - **Por que**: a lista de :free do OpenRouter muda: em 2026-11-23 cinco ja estavam aposentados (404 no longer available)
 - **Onde**: [Fonte viva](<.agents/scripts/free_aggregator.py>)
 - **Quando**: quando um alias free-* devolver 404, ou depois de cada sync dos free do OpenRouter
-- **Como**: em ordem: free_aggregator.py setup-proxy (consulta o catalogo vivo), start-proxy.ps1 depois de encerrar o proxy (o hot-reload nao remove modelo), free_aggregator.py register-zcode, free_aggregator.py test para o numero medido
+- **Como**: em ordem: free_aggregator.py setup-proxy (consulta o catalogo vivo), stop-proxy.ps1 e start-proxy.ps1 (o hot-reload nao remove modelo), free_aggregator.py register-zcode, free_aggregator.py test para o numero medido
 - **Quanto**: a suite dos 14 levou cerca de 15 segundos
 - **E se??**: E se?? a falha for 429 e nao 404? → 429 e lotacao do fornecedor (upstream_provider_shared_pool): o modelo e valido, tentar depois
 
@@ -192,6 +192,6 @@ Hub quente de retomada: gatilhos promovidos com validação (formato canônico 5
 - **Por que**: por Start-Process ele morria no restart do ZCode (herda a job do host); por WMI com janela visivel morreu junto com o wrapper cmd minutos depois
 - **Onde**: [Fonte viva](<.agents/scripts/start-proxy.ps1>)
 - **Quando**: antes de usar os providers CLIProxyAPI, xAI (CLIProxyAPI) e Gratis (todos) do ZCode
-- **Como**: powershell -NoProfile -ExecutionPolicy Bypass -File .agents\scripts\start-proxy.ps1 responde JA_ATIVO (ja esta no ar) ou INICIADO com o pid do proxy
+- **Como**: powershell -NoProfile -ExecutionPolicy Bypass -File .agents\scripts\start-proxy.ps1 responde JA_ATIVO (ja esta no ar) ou INICIADO com o pid do proxy; stop-proxy.ps1 responde PARADO ou JA_PARADO; reiniciar e stop seguido de start; a chave de acesso e lida do config.yaml
 - **Quanto**: menos de 15 segundos
 - **E se??**: E se?? depois de um restart do ZCode responder INICIADO em vez de JA_ATIVO? → o proxy morreu no restart: a hipotese seguinte e tarefa agendada do Windows, que exige decisao do dono

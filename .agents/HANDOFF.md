@@ -3,7 +3,7 @@
 Última atualização: 2026-11-23
 
 ## Estado
-Arqueologia W-1..W10 executada (tier COMPLETO, 2405 fontes Go/143k linhas). O fork tem 13 commits sobre o upstream `6eb8554f` (o upstream já avançou; não mesclado). Estado vivo atual: `ACTIVE.md`.
+Arqueologia W-1..W10 executada (tier COMPLETO, 2405 fontes Go/143k linhas). O fork foi apagado pelo dono e recriado em 2026-11-23 com 16 commits sobre o upstream `6eb8554f` (o upstream já avançou; não mesclado). Estado vivo atual: `ACTIVE.md`.
 
 ## Feito
 - W-1..W5 fechados com receipts em `.agents/receipts/` (W1 inventário, W2 encoding 3 camadas, W3 grafo Tarjan, W4 hidden, W5 segredos).
@@ -15,7 +15,7 @@ Arqueologia W-1..W10 executada (tier COMPLETO, 2405 fontes Go/143k linhas). O fo
 ## Não feito / pendente (owner)
 - Correção do golden drift e das falhas Windows → upstream router-for-me (PENDENTES.md com rota `dex-gerar-issues-git`).
 - `.gitattributes` pin (proposta, decisão upstream).
-- Push não executado — aguarda ordem do dono (upstream público).
+- Histórico antigo com dado pessoal: continua acessível no GitHub (rede de forks). A remoção depende de pedido do dono ao suporte do GitHub — ver W18 abaixo.
 
 ## Retomada
 1. Ler GATILHOS-VIVOS → 2. `source .agents/scripts/go-env.sh` → 3. receipts em `.agents/receipts/` → 4. grafo fresco? `code-review-graph status`.
@@ -36,7 +36,14 @@ Arqueologia W-1..W10 executada (tier COMPLETO, 2405 fontes Go/143k linhas). O fo
 ## W17 (2026-11-23) — OpenCode Go direto + grupo "Gratis (todos)"
 - Subir o proxy: `powershell -NoProfile -ExecutionPolicy Bypass -File .agents\scripts\start-proxy.ps1` (idempotente: responde JA_ATIVO se ja estiver no ar). Nao usar `./cli-proxy-api.exe` direto do shell do ZCode: morre no restart.
 - `debug` e `request-log` do proxy estao DESLIGADOS de novo (gravavam corpo de cada request em disco). Para diagnosticar: ligar, reproduzir, ler `auths/logs/`, desligar.
-- Provider "Gratis (todos)" no ZCode = 14 gratuitos via proxy. Ressincronizar (3 comandos, nesta ordem): `python -I -X utf8 .agents/scripts/free_aggregator.py setup-proxy` -> `start-proxy.ps1` (mata e sobe se a lista mudou; o hot-reload nao remove modelo) -> `register-zcode`. O `setup-proxy` consulta o catalogo vivo do OpenRouter e deixa de fora os aposentados.
+- Provider "Gratis (todos)" no ZCode = 14 gratuitos via proxy. Ressincronizar (3 comandos, nesta ordem): `python -I -X utf8 .agents/scripts/free_aggregator.py setup-proxy` -> `stop-proxy.ps1` e depois `start-proxy.ps1` (o hot-reload nao remove modelo) -> `register-zcode`. O `setup-proxy` consulta o catalogo vivo do OpenRouter e deixa de fora os aposentados.
 - OpenCode Go: token OAuth expira em 2026-12-23. Renovar: `python -I -X utf8 .agents/scripts/refresh_opencode_go_token.py` (atualiza os 3 providers do ZCode e o upstream do proxy; depois reiniciar os dois).
 - Decisoes do dono no console do OpenCode (Settings > Privacy): Regions = Global libera DeepSeek e longcat; Training libera muse-spark e iceman-contributor. Ver PENDENTES 8 e 9.
 - `.agents/receipts/` e local: tem corpo de requisicao e e-mail. Nunca versionar (ficha RECEIPTS-NAO-VERSIONADOS no hub).
+
+## W18 (2026-11-23) — fork recriado limpo; histórico antigo ainda acessível
+- Proxy: ligar `start-proxy.ps1`, desligar `stop-proxy.ps1`, reiniciar = os dois nessa ordem. A chave de acesso é lida do `config.yaml`; nenhum script fixa o valor.
+- Antes de cada push, rodar o gate (ficha `RECEIPTS-NAO-VERSIONADOS`): `.agents/scripts/push_gate_scan.py` sobre os blobs novos e `.agents/scripts/push_gate_credentials.py` sobre a mesma exportação.
+- Para reescrever só os commits da casa: `git filter-repo --force --refs 6eb8554f..main --replace-text <arquivo>`. O modo parcial preserva a ancestridade com o upstream; o modo integral reescreve tudo e rompe o parentesco.
+- Histórico antigo (com e-mail e corpos de requisição) continua acessível no GitHub pelas duas namespaces. Apagar fork não purga rede de forks. Ação do dono: abrir o pedido em https://support.github.com/contact com o texto de `.agents/receipts/W18-support-ticket.txt` (local). Medição em `W18-old-history-reach.txt`.
+- Nunca citar, em arquivo versionado, o SHA de um commit do histórico antigo.
