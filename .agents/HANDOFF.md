@@ -15,7 +15,7 @@ Arqueologia W-1..W10 executada (tier COMPLETO, 2405 fontes Go/143k linhas). O fo
 ## Não feito / pendente (owner)
 - Correção do golden drift e das falhas Windows → upstream router-for-me (PENDENTES.md com rota `dex-gerar-issues-git`).
 - `.gitattributes` pin (proposta, decisão upstream).
-- Histórico antigo com dado pessoal: continua acessível no GitHub (rede de forks). A remoção depende de pedido do dono ao suporte do GitHub — ver W18 abaixo.
+- Histórico antigo: continua acessível no GitHub (rede de forks). O dono decidiu em 2026-11-23 não pedir a remoção ao suporte — ver W18 abaixo.
 
 ## Retomada
 1. Ler GATILHOS-VIVOS → 2. `source .agents/scripts/go-env.sh` → 3. receipts em `.agents/receipts/` → 4. grafo fresco? `code-review-graph status`.
@@ -45,5 +45,5 @@ Arqueologia W-1..W10 executada (tier COMPLETO, 2405 fontes Go/143k linhas). O fo
 - Proxy: ligar `start-proxy.ps1`, desligar `stop-proxy.ps1`, reiniciar = os dois nessa ordem. A chave de acesso é lida do `config.yaml`; nenhum script fixa o valor.
 - Antes de cada push, rodar o gate (ficha `RECEIPTS-NAO-VERSIONADOS`): `.agents/scripts/push_gate_scan.py` sobre os blobs novos e `.agents/scripts/push_gate_credentials.py` sobre a mesma exportação.
 - Para reescrever só os commits da casa: `git filter-repo --force --refs 6eb8554f..main --replace-text <arquivo>`. O modo parcial preserva a ancestridade com o upstream; o modo integral reescreve tudo e rompe o parentesco.
-- Histórico antigo (com e-mail e corpos de requisição) continua acessível no GitHub pelas duas namespaces. Apagar fork não purga rede de forks. Ação do dono: abrir o pedido em https://support.github.com/contact com o texto de `.agents/receipts/W18-support-ticket.txt` (local). Medição em `W18-old-history-reach.txt`.
+- Histórico antigo (com e-mail e corpos de requisição) continua acessível no GitHub pelas duas namespaces. Apagar fork não purga rede de forks. O dono decidiu em 2026-11-23 não pedir a remoção ao suporte (resíduo aceito depois do inventário `W18-exposed-inventory.txt`: nenhuma credencial de serviço externo); o texto do pedido continua em `.agents/receipts/W18-support-ticket.txt` (local) caso reabra. Medição em `W18-old-history-reach.txt`.
 - Nunca citar, em arquivo versionado, o SHA de um commit do histórico antigo.

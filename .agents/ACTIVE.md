@@ -13,7 +13,6 @@
 - **Grafo estrutural (CRG)**: `.agents/CODE-REVIEW-GRAPH/` (local, não versionado). Antes de citar número dele, aplicar a ficha `STALENESS-ARTEFATOS-DERIVADOS`.
 
 ## Ações do dono pendentes (detalhe em `PENDENTES.md`)
-- **Aberto com o dono**: pedir ao suporte do GitHub a remoção do histórico antigo (texto pronto em `.agents/receipts/W18-support-ticket.txt`, local). Apagar o fork não removeu, e o fork recriado volta a servi-lo pela própria namespace.
 - Console do OpenCode (Settings > Privacy): **Regions = Global** libera `deepseek-v4.1-flash`, `deepseek-v4-pro` e `longcat-2.5`; **Training** libera `muse-spark-1.3-contributor` e `iceman-contributor-free`.
 - 5 modelos `:free` aposentados pelo OpenRouter continuam listados no provider `openrouter`.
 - Reiniciar o ZCode para provar por subagente o grupo `Gratis (todos)` e os dois providers novos do OpenCode Go.
@@ -42,5 +41,6 @@ chato · bruninha-agulha · critico-cetico · questionador · interrogador-docum
 ### W18 — Fork recriado limpo + alcance do histórico antigo medido (2026-11-23)
 - O dono apagou o fork. Antes de recriar, o gate achou a chave de acesso local do proxy fixa em 8 arquivos versionados: o histórico da casa foi reescrito só nos commits locais (`git filter-repo --refs 6eb8554f..main`), a chave saiu e os 4 scripts passaram a ler o `config.yaml`.
 - Fork recriado (fork verdadeiro, só a `main`), com o histórico limpo: sem dado pessoal, sem credencial e sem o ponteiro do commit antigo.
-- **Achado**: apagar o fork não removeu o histórico antigo. Ele responde 200 sem login pela API, pela página e pelo raw, na namespace do upstream e, com o fork novo, também na do fork. A rede de forks compartilha o armazém de objetos; a remoção depende de pedido ao suporte do GitHub.
+- **Achado**: apagar o fork não removeu o histórico antigo. Ele responde 200 sem login pela API, pela página e pelo raw, na namespace do upstream e, com o fork novo, também na do fork. A rede de forks compartilha o armazém de objetos; só o suporte do GitHub remove.
+- **Decisão do dono (2026-11-23)**: não pedir a remoção ao suporte do GitHub; resíduo aceito depois do inventário (recibo local `W18-exposed-inventory.txt`): nenhuma credencial de serviço externo; e-mail da conta Google em 8 arquivos; chave local do proxy em 29, que só vale em `127.0.0.1`.
 - `stop-proxy.ps1` criado e testado (o dono perguntou como desligar o proxy).

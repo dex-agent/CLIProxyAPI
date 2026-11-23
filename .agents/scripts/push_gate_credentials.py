@@ -1,6 +1,6 @@
 """Count published blobs that carry a credential from the local runtime. Prints counts only, never a value.
 
-Usage: python -I -B -X utf8 W18-credential-membership.py <repo> <export_dir>
+Usage: python -I -B -X utf8 push_gate_credentials.py <repo> <export_dir>
 Exit 0 when no local credential appears in the export, 1 when at least one does.
 shortcut: covers the proxy access key, the upstream api-keys of config.yaml, the OpenCode OAuth
 token and the GitHub login token; extend the source list when a new credential enters the runtime.
@@ -13,10 +13,11 @@ import subprocess
 import sys
 
 
-def local_secrets(repo):
+def _config_secrets(text):
+    """Access keys and upstream api-keys of the proxy config, in block or list-item form."""
     secrets = {}
     in_access = False
-    for line in (repo / "config.yaml").read_text(encoding="utf-8", errors="replace").splitlines():
+    for line in text.splitlines():
         if re.match(r"^access:\s*$", line):
             in_access = True
             continue
@@ -25,9 +26,15 @@ def local_secrets(repo):
         found = re.match(r'^\s*-\s*["\']?([A-Za-z0-9_\-\.]{8,})["\']?\s*$', line) if in_access else None
         if found:
             secrets[f"proxy-access-key#{len(secrets) + 1}"] = found.group(1)
-        found = re.match(r"^\s*api-key:\s*[\"']?([^\"'\s#]+)[\"']?\s*$", line)
+        # upstream keys arrive as list items ("- api-key: ...") under keys:
+        found = re.match(r"^\s*(?:-\s*)?api-key:\s*[\"']?([^\"'\s#]+)[\"']?\s*$", line)
         if found:
             secrets[f"upstream-api-key#{len(secrets) + 1}"] = found.group(1)
+    return secrets
+
+
+def local_secrets(repo):
+    secrets = _config_secrets((repo / "config.yaml").read_text(encoding="utf-8", errors="replace"))
 
     db = pathlib.Path.home() / ".local" / "share" / "opencode" / "opencode.db"
     try:
