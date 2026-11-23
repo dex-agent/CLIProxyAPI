@@ -1,7 +1,9 @@
-# HANDOFF — CLIProxyAPI (arqueologia 2026-11-22)
+# HANDOFF — CLIProxyAPI
+
+Última atualização: 2026-11-23
 
 ## Estado
-Arqueologia W-1..W10 executada (tier COMPLETO, 2405 fontes Go/143k linhas). HEAD `6eb8554f` (main, após pull ff de 36 commits).
+Arqueologia W-1..W10 executada (tier COMPLETO, 2405 fontes Go/143k linhas). O fork tem 13 commits sobre o upstream `6eb8554f` (o upstream já avançou; não mesclado). Estado vivo atual: `ACTIVE.md`.
 
 ## Feito
 - W-1..W5 fechados com receipts em `.agents/receipts/` (W1 inventário, W2 encoding 3 camadas, W3 grafo Tarjan, W4 hidden, W5 segredos).
