@@ -77,3 +77,6 @@ graphify-out/
 # Arqueologia 2026-11-22: logs de runtime do proxy (gerados)
 .agents/receipts/proxy-run.log
 .agents/receipts/proxy-run.err.log
+
+# Backups locais do config.yaml (tem a chave do proxy e do upstream): nunca versionar
+config.yaml.bak-*
