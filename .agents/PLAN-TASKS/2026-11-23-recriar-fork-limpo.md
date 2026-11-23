@@ -13,10 +13,10 @@ origin: "GO do dono 2026-11-23: apagou dex-agent/CLIProxyAPI e escreveu que pode
 goal:
   id: recriar-fork-limpo-261123
   title: 'Recriar o fork publico dex-agent/CLIProxyAPI sem dado pessoal e sem credencial'
-  objective: "O repositorio publico dex-agent/CLIProxyAPI volta a existir com os commits da casa sobre o upstream 6eb8554f, sem e-mail do dono, sem corpo de requisicao e sem a chave local do proxy, e o historico antigo deixa de responder no GitHub."
+  objective: "O repositorio publico dex-agent/CLIProxyAPI volta a existir com os commits da casa sobre o upstream 6eb8554f, sem e-mail do dono, sem corpo de requisicao, sem a chave local do proxy e sem ponteiro para o historico antigo, e o alcance desse historico no GitHub fica medido com a remocao encaminhada ao dono."
 context: "O repositorio remoto nao existe mais, então a reescrita do historico local custa um comando e nao deixa objeto solto em lugar nenhum. Depois do primeiro push qualquer reescrita volta a exigir force-push. O gate de sanitizacao roda antes de cada push."
-problem: "O fork publico nao existe, e o historico local ainda carrega a chave de acesso local do proxy em texto fixo."
-decision: "Reescrever so os 14 commits da casa trocando a chave por marcador, corrigir os 4 scripts que fixavam a chave para lerem o config.yaml, rodar o gate, recriar como fork verdadeiro do upstream (como era o primeiro) e publicar main."
+problem: "O fork publico nao existe; o historico local ainda carrega a chave de acesso local do proxy em texto fixo e um ponteiro para o commit antigo; e o historico antigo continua acessivel no GitHub pelo namespace do upstream mesmo com o fork apagado."
+decision: "Reescrever so os commits da casa trocando a chave e o ponteiro do commit antigo por marcadores, corrigir os 4 scripts que fixavam a chave para lerem o config.yaml, rodar o gate, recriar como fork verdadeiro do upstream (como era o primeiro) e publicar main. Medido em 2026-11-23 antes de recriar: apagar o fork nao removeu o historico antigo, que segue servido pelo namespace do upstream porque a rede de forks compartilha o armazem de objetos; a remocao depende de pedido ao suporte do GitHub, que so o dono consegue abrir."
 scope:
   include:
     - 'historico local de main no intervalo 6eb8554f..main'
@@ -66,12 +66,12 @@ requirements:
       - id: C-12
         statement: 'gh repo view devolve visibility PUBLIC.'
   - id: REQ-05
-    statement: 'O historico antigo nao responde mais no GitHub.'
+    statement: 'O alcance do historico antigo no GitHub esta medido e a remocao tem rota registrada.'
     criteria:
       - id: C-13
-        statement: 'A API devolve 404 para o commit antigo <commit-antigo> no repositorio novo.'
+        statement: 'Nenhum arquivo de main cita o SHA de um commit do historico antigo.'
       - id: C-14
-        statement: 'O mesmo pedido da API para o SHA de HEAD devolve 200.'
+        statement: 'PENDENTES.md registra o pedido de remocao dos objetos antigos ao suporte do GitHub.'
   - id: REQ-06
     statement: 'O estado vivo registra o desfecho.'
     criteria:
@@ -91,7 +91,7 @@ plan:
   - 'P2: reescrita parcial do historico com ramo de seguranca'
   - 'P3: scripts leem a chave do config.yaml + stop-proxy.ps1 + testes'
   - 'P4: gate de sanitizacao + recriar o fork + push'
-  - 'P5: prova de que o historico antigo sumiu'
+  - 'P5: medida de onde o historico antigo ainda responde e rota de remocao'
   - 'P6: estado vivo, memorias e fechamento'
 tasks:
   - id: A-01
@@ -204,7 +204,7 @@ tasks:
           kind: command_exit
           expected_exit_code: 0
   - id: A-04
-    action: 'Provar que o historico antigo nao responde mais'
+    action: 'Medir onde o historico antigo ainda responde e registrar a rota de remocao'
     covers: [REQ-05]
     done_when: [C-13, C-14]
     depends_on: [A-03]
@@ -212,14 +212,14 @@ tasks:
       - id: ER-12
         proves: [C-13]
         method: command
-        procedure: 'gh api repos/dex-agent/CLIProxyAPI/commits/<commit-antigo>'
+        procedure: 'git grep -l -F -f .agents/receipts/W18-old-sha-patterns.txt main'
         expectation:
           kind: command_exit
           expected_exit_code: 1
       - id: ER-13
         proves: [C-14]
         method: command
-        procedure: 'gh api repos/dex-agent/CLIProxyAPI/commits/$(git rev-parse HEAD) --jq .sha'
+        procedure: 'grep -c "suporte do GitHub" .agents/PENDENTES.md'
         expectation:
           kind: command_exit
           expected_exit_code: 0
@@ -250,10 +250,10 @@ closure_gates:
 risks:
   - 'filter-repo em modo integral reescreve o upstream e rompe a ancestridade: usar so --refs 6eb8554f..main e conferir o merge-base'
   - 'o ramo de seguranca guarda os commits antigos com a chave em texto: e local, nunca e publicado, e sai no fechamento depois do garimpo'
-  - 'objetos do repositorio apagado podem sobreviver em cache do GitHub: medir por API e por URL depois da recriacao'
+  - 'MEDIDO: o historico antigo sobrevive ao apagar o fork e segue acessivel pelo namespace do upstream (API, pagina e raw responderam 200 sem login em 2026-11-23); so o suporte do GitHub remove, e o repositorio novo nao pode carregar o ponteiro'
   - 'stop-proxy.ps1 encerra o proxy: sessoes do ZCode que estejam usando um provider via proxy perdem a conexao ate o start seguinte'
 uncertainties:
-  - 'ressalva residual: o teste por API e URL mede o acesso publico ao historico antigo, nao o que o GitHub guarda internamente'
+  - 'ressalva residual: o fork novo entra na mesma rede do upstream, entao o commit antigo tambem pode responder pelo namespace do fork novo; medir depois da recriacao e informar o dono'
   - 'ressalva residual: o numero de commits publicados cresce com os commits de estado do fechamento, entao a conferencia de ancestridade usa o merge-base e nao uma contagem fixa'
 gates:
   - 'preflight.mjs devolve achados=0 antes de executar (spt_validate MCP ausente nesta sessao: validador local com evidencia registrada).'
@@ -272,5 +272,5 @@ Detalhes no frontmatter. Checklist visual:
 - [ ] A-01 reescrita parcial do histórico com ramo de segurança
 - [ ] A-02 scripts leem a chave do config.yaml, stop-proxy.ps1 e testes
 - [ ] A-03 gate + recriar o fork + push
-- [ ] A-04 prova de que o histórico antigo não responde mais
+- [ ] A-04 medida de onde o histórico antigo ainda responde e rota de remoção
 - [ ] A-05 estado vivo, memórias e fechamento
