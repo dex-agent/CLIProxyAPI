@@ -76,7 +76,7 @@ requirements:
     statement: 'O estado vivo registra o desfecho.'
     criteria:
       - id: C-15
-        statement: 'PENDENTES.md marca fork-dados-pessoais como concluida.'
+        statement: 'PENDENTES.md mantem fork-dados-pessoais aberta com o dono e o quando do pedido ao suporte.'
       - id: C-16
         statement: 'HANDOFF.md tem a secao W18.'
   - id: REQ-07
@@ -178,10 +178,10 @@ tasks:
       - id: ER-08
         proves: [C-01, C-05]
         method: command
-        procedure: 'git grep -l -F -f .agents/receipts/W18-proxy-key-pattern.txt main; git log --oneline 6eb8554f..main -- .agents/receipts'
+        procedure: 'test "$(git log --oneline 6eb8554f..main -- .agents/receipts | wc -l)" -eq 0 && ! git grep -l -F -f .agents/receipts/W18-proxy-key-pattern.txt main'
         expectation:
           kind: command_exit
-          expected_exit_code: 1
+          expected_exit_code: 0
       - id: ER-09
         proves: [C-03, C-04]
         method: command
@@ -232,7 +232,7 @@ tasks:
       - id: ER-14
         proves: [C-15]
         method: command
-        procedure: 'grep -c "\"id\": \"fork-dados-pessoais\", \"status\": \"concluida\"" .agents/PENDENTES.md'
+        procedure: 'grep -c "\"id\": \"fork-dados-pessoais\", \"status\": \"aberta\".*suporte do GitHub" .agents/PENDENTES.md'
         expectation:
           kind: command_exit
           expected_exit_code: 0
@@ -253,7 +253,7 @@ risks:
   - 'MEDIDO: o historico antigo sobrevive ao apagar o fork e segue acessivel pelo namespace do upstream (API, pagina e raw responderam 200 sem login em 2026-11-23); so o suporte do GitHub remove, e o repositorio novo nao pode carregar o ponteiro'
   - 'stop-proxy.ps1 encerra o proxy: sessoes do ZCode que estejam usando um provider via proxy perdem a conexao ate o start seguinte'
 uncertainties:
-  - 'ressalva residual: o fork novo entra na mesma rede do upstream, entao o commit antigo tambem pode responder pelo namespace do fork novo; medir depois da recriacao e informar o dono'
+  - 'ressalva residual: o fork novo responde o commit antigo pela propria namespace (medido depois da recriacao: 9 de 10 commits); o dono foi informado e a remocao depende do suporte do GitHub'
   - 'ressalva residual: o numero de commits publicados cresce com os commits de estado do fechamento, entao a conferencia de ancestridade usa o merge-base e nao uma contagem fixa'
 gates:
   - 'preflight.mjs devolve achados=0 antes de executar (spt_validate MCP ausente nesta sessao: validador local com evidencia registrada).'
@@ -273,4 +273,4 @@ Detalhes no frontmatter. Checklist visual:
 - [x] A-02 scripts leem a chave do config.yaml, stop-proxy.ps1 e testes — JA_ATIVO, 401 com chave errada, JA_EXISTE, PARADO/JA_PARADO
 - [x] A-03 gate + recriar o fork + push — 129 blobs verdes; compare da API 16 à frente, 0 atrás
 - [x] A-04 medida de onde o histórico antigo ainda responde e rota de remoção — 9 de 10 commits servidos em cada namespace; pedido ao suporte redigido
-- [ ] A-05 estado vivo, memórias e fechamento
+- [x] A-05 estado vivo, memórias e fechamento — ACTIVE, HANDOFF, hub (15 fichas) e PENDENTES publicados; memória de projeto gravada pelo dex-memoria (lote 14/14 válidos) e espelhada no host; a ação externa do A-04 (pedido ao suporte) ficou com o dono
