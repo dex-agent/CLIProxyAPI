@@ -7,7 +7,7 @@ payload = {
  "title": "CLIProxyAPI instalado e servindo antigravity; provider cadastrado no ZCode com E2E provado",
  "trigger": "usar/reiniciar o proxy CLIProxyAPI; consumir modelos antigravity pelo ZCode; diagnostico de provider CLIProxyAPI no ZCode; rodar o server local do CLIProxyAPI",
  "body": (
-  "Instalacao viva 2026-11-22 (repo CLIProxyAPI, HEAD 8a3f9dde+): binario cli-proxy-api.exe (build exit 0, "
+  "Instalacao viva 2026-11-22 (repo CLIProxyAPI, fork de dex-agent): binario cli-proxy-api.exe (build exit 0, "
   "CGO_ENABLED=0, toolchain via .agents/scripts/go-env.sh); config.yaml MINIMO v8 (host 127.0.0.1, port 8317, "
   "access.api-keys=[<PROXY-KEY>], auth-dir ./auths) — config.yaml e gitignored, nunca versionar. "
   "Login antigravity: ./cli-proxy-api.exe --config config.yaml --antigravity-login (OAuth Google browser, "
