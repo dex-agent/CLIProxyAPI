@@ -11,3 +11,6 @@ Ideias/táticas brutas desta sessão (promoção → GATILHOS-VIVOS quando valid
 - (W21) `fechar-git.ps1 -Caminhos` com barra invertida no Git Bash vira caminho inválido. Usar `a/b.md` (barra normal).
 - (W21) Primeira tag de um fork sem tags: `release.yaml` monta o changelog de todo o histórico e a release cai com HTTP 422 (`body is too long`). Cura usada: tag de base no commit do upstream + re-executar os jobs que falharam.
 - (W21) Job `darwin-arm64` (runner `macos-15`) fica 15 minutos na fila e é cancelado sem executar passo, neste fork. `macos-15-intel` funciona.
+- (W27) `meta-zcode.mjs` devolve `CLI version probe failed` sem `ZCODE_CLI_PATH`. Exportar `ZCODE_CLI_PATH="$LOCALAPPDATA/Programs/ZCode/resources/glm/zcode.cjs"` antes. Ele lista os modelos que o ZCode expõe aos agents, sem inferência.
+- (W27) `list-zcode-models.mjs --help` não mostra ajuda: executa e grava `artifacts/models.json` dentro do pacote da skill. Ler o cabeçalho do arquivo em vez de chamar `--help`.
+- (W27) Pedido pendente do dono que não vira item no `PENDENTES.md` some na próxima compactação e é reaprendido do zero. Virar item na hora, com dono e quando.

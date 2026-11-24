@@ -1,0 +1,74 @@
+{
+  "contract": "dex.memory.capability.unit-receipt.v2",
+  "capability": "v2-obsidian",
+  "require_obsidian": true,
+  "expected_require_obsidian": true,
+  "ok": true,
+  "errors": [],
+  "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+  "touched_files": [
+    {
+      "path": "lembranca.md",
+      "sha256": "d0a77e9d1bea996236ce276fb3e90306dd725343a013935d89e0de67b17cbac4",
+      "tags": [
+        "#cliproxyapi/opencode",
+        "#cliproxyapi/modelos-free"
+      ]
+    },
+    {
+      "path": "memorias/modelos-free-do-opencode-o-que-ja-foi-medido-e-o-qu-7422a1d2dc60.md",
+      "sha256": "d15956bc4b7c7a07d495355687f48dd3d539af52f8f61bc556c04ecca6b1b74b",
+      "tags": [
+        "#cliproxyapi/opencode",
+        "#cliproxyapi/modelos-free"
+      ]
+    }
+  ],
+  "evidence": {
+    "root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "files": [
+      {
+        "path": "lembranca.md",
+        "sha256": "d0a77e9d1bea996236ce276fb3e90306dd725343a013935d89e0de67b17cbac4",
+        "tags": [
+          "#cliproxyapi/opencode",
+          "#cliproxyapi/modelos-free"
+        ]
+      },
+      {
+        "path": "memorias/modelos-free-do-opencode-o-que-ja-foi-medido-e-o-qu-7422a1d2dc60.md",
+        "sha256": "d15956bc4b7c7a07d495355687f48dd3d539af52f8f61bc556c04ecca6b1b74b",
+        "tags": [
+          "#cliproxyapi/opencode",
+          "#cliproxyapi/modelos-free"
+        ]
+      }
+    ],
+    "block_ids": [
+      "modelos-free-do-opencode-o-que-ja-foi-medido-e-o-qu-7422a1d2dc60",
+      "modelos-free-do-opencode-o-que-ja-foi-medido-e-o-qu-7422a1d2dc60-content"
+    ],
+    "markdown_links": [
+      "lembranca.md -> memorias/modelos-free-do-opencode-o-que-ja-foi-medido-e-o-qu-7422a1d2dc60.md",
+      "memorias/modelos-free-do-opencode-o-que-ja-foi-medido-e-o-qu-7422a1d2dc60.md -> ../lembranca.md"
+    ],
+    "wikilinks": [
+      "lembranca.md -> [[memorias/modelos-free-do-opencode-o-que-ja-foi-medido-e-o-qu-7422a1d2dc60]]",
+      "memorias/modelos-free-do-opencode-o-que-ja-foi-medido-e-o-qu-7422a1d2dc60.md -> [[lembranca]]"
+    ],
+    "backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "required_backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "unresolved_markdown_links": [],
+    "unresolved_wikilinks": [],
+    "cross_vault_links": []
+  },
+  "warnings": [
+    "cross-unit block-id collision audit is separate from this write-unit verdict"
+  ]
+}
