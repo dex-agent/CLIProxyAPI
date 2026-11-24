@@ -47,3 +47,7 @@ Arqueologia W-1..W10 executada (tier COMPLETO, 2405 fontes Go/143k linhas). O fo
 - Para reescrever só os commits da casa: `git filter-repo --force --refs 6eb8554f..main --replace-text <arquivo>`. O modo parcial preserva a ancestridade com o upstream; o modo integral reescreve tudo e rompe o parentesco.
 - Histórico antigo (com e-mail e corpos de requisição) continua acessível no GitHub pelas duas namespaces. Apagar fork não purga rede de forks. O dono decidiu em 2026-11-23 não pedir a remoção ao suporte (resíduo aceito depois do inventário `W18-exposed-inventory.txt`: nenhuma credencial de serviço externo); o texto do pedido continua em `.agents/receipts/W18-support-ticket.txt` (local) caso reabra. Medição em `W18-old-history-reach.txt`.
 - Nunca citar, em arquivo versionado, o SHA de um commit do histórico antigo.
+
+## W19 (2026-11-23 noite) — gate de pré-push com indicação de reuso aberta
+- Os dois scripts do gate têm indicação de reuso aberta no tracker do registry de skills (`~/.agents/skills/.agents/TRACKER`, `ISSUE-LOCAL-0066`, aberto, P2): promovê-los a ferramenta da casa. Enquanto o dono não decidir, eles continuam sendo o gate manual antes de cada push.
+- Rerun do gate em 2026-11-24 00:06 UTC sobre `6eb8554f..HEAD`: exportação completa e nenhuma credencial local nos blobs (recibo local `W19-push-gate-rerun.txt`).
