@@ -1,0 +1,74 @@
+{
+  "contract": "dex.memory.capability.unit-receipt.v2",
+  "capability": "v2-obsidian",
+  "require_obsidian": true,
+  "expected_require_obsidian": true,
+  "ok": true,
+  "errors": [],
+  "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+  "touched_files": [
+    {
+      "path": "lembranca.md",
+      "sha256": "598d83bdab51cdf29b496da7367ad9d9db6c97a704b6a2b9f3479f891d1658a1",
+      "tags": [
+        "#cliproxyapi/opencode",
+        "#cliproxyapi/modelos-free"
+      ]
+    },
+    {
+      "path": "memorias/correcao-modelos-free-do-opencode-no-zcode-o-que-e-ca4cc3ea19f0.md",
+      "sha256": "c11f1b9aa877b84c4042d58c3537a0700e83898b50dbdac7978f269bb80100f1",
+      "tags": [
+        "#cliproxyapi/opencode",
+        "#cliproxyapi/modelos-free"
+      ]
+    }
+  ],
+  "evidence": {
+    "root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "files": [
+      {
+        "path": "lembranca.md",
+        "sha256": "598d83bdab51cdf29b496da7367ad9d9db6c97a704b6a2b9f3479f891d1658a1",
+        "tags": [
+          "#cliproxyapi/opencode",
+          "#cliproxyapi/modelos-free"
+        ]
+      },
+      {
+        "path": "memorias/correcao-modelos-free-do-opencode-no-zcode-o-que-e-ca4cc3ea19f0.md",
+        "sha256": "c11f1b9aa877b84c4042d58c3537a0700e83898b50dbdac7978f269bb80100f1",
+        "tags": [
+          "#cliproxyapi/opencode",
+          "#cliproxyapi/modelos-free"
+        ]
+      }
+    ],
+    "block_ids": [
+      "correcao-modelos-free-do-opencode-no-zcode-o-que-e-ca4cc3ea19f0",
+      "correcao-modelos-free-do-opencode-no-zcode-o-que-e-ca4cc3ea19f0-content"
+    ],
+    "markdown_links": [
+      "lembranca.md -> memorias/correcao-modelos-free-do-opencode-no-zcode-o-que-e-ca4cc3ea19f0.md",
+      "memorias/correcao-modelos-free-do-opencode-no-zcode-o-que-e-ca4cc3ea19f0.md -> ../lembranca.md"
+    ],
+    "wikilinks": [
+      "lembranca.md -> [[memorias/correcao-modelos-free-do-opencode-no-zcode-o-que-e-ca4cc3ea19f0]]",
+      "memorias/correcao-modelos-free-do-opencode-no-zcode-o-que-e-ca4cc3ea19f0.md -> [[lembranca]]"
+    ],
+    "backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "required_backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "unresolved_markdown_links": [],
+    "unresolved_wikilinks": [],
+    "cross_vault_links": []
+  },
+  "warnings": [
+    "cross-unit block-id collision audit is separate from this write-unit verdict"
+  ]
+}
