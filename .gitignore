@@ -80,3 +80,11 @@ graphify-out/
 
 # Backups locais do config.yaml (tem a chave do proxy e do upstream): nunca versionar
 config.yaml.bak-*
+.env.*
+*.log
+*.tmp
+Thumbs.db
+node_modules/
+__pycache__/
+*.pyc
+.agents/TEMP/
