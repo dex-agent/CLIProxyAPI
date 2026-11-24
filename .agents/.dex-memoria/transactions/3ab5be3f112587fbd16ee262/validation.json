@@ -1,0 +1,78 @@
+{
+  "contract": "dex.memory.capability.unit-receipt.v2",
+  "capability": "v2-obsidian",
+  "require_obsidian": true,
+  "expected_require_obsidian": true,
+  "ok": true,
+  "errors": [],
+  "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+  "touched_files": [
+    {
+      "path": "lembranca.md",
+      "sha256": "667d96643adabd13b8e3016b59d2fe365bc0bef5cd751ea32a684c32d4c37de1",
+      "tags": [
+        "#cliproxyapi/opencode",
+        "#cliproxyapi/modelos-free",
+        "#zcode/provider-config"
+      ]
+    },
+    {
+      "path": "memorias/achado-notavel-2026-11-24-provider-opencode-free-hi-2dcc4b2fa888.md",
+      "sha256": "4c7c690ab83b8c2b3b89f7e9eb772fa7eb497bbfc1b500230d269a4fd7e4a20b",
+      "tags": [
+        "#cliproxyapi/opencode",
+        "#cliproxyapi/modelos-free",
+        "#zcode/provider-config"
+      ]
+    }
+  ],
+  "evidence": {
+    "root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "files": [
+      {
+        "path": "lembranca.md",
+        "sha256": "667d96643adabd13b8e3016b59d2fe365bc0bef5cd751ea32a684c32d4c37de1",
+        "tags": [
+          "#cliproxyapi/opencode",
+          "#cliproxyapi/modelos-free",
+          "#zcode/provider-config"
+        ]
+      },
+      {
+        "path": "memorias/achado-notavel-2026-11-24-provider-opencode-free-hi-2dcc4b2fa888.md",
+        "sha256": "4c7c690ab83b8c2b3b89f7e9eb772fa7eb497bbfc1b500230d269a4fd7e4a20b",
+        "tags": [
+          "#cliproxyapi/opencode",
+          "#cliproxyapi/modelos-free",
+          "#zcode/provider-config"
+        ]
+      }
+    ],
+    "block_ids": [
+      "achado-notavel-2026-11-24-provider-opencode-free-hi-2dcc4b2fa888",
+      "achado-notavel-2026-11-24-provider-opencode-free-hi-2dcc4b2fa888-content"
+    ],
+    "markdown_links": [
+      "lembranca.md -> memorias/achado-notavel-2026-11-24-provider-opencode-free-hi-2dcc4b2fa888.md",
+      "memorias/achado-notavel-2026-11-24-provider-opencode-free-hi-2dcc4b2fa888.md -> ../lembranca.md"
+    ],
+    "wikilinks": [
+      "lembranca.md -> [[memorias/achado-notavel-2026-11-24-provider-opencode-free-hi-2dcc4b2fa888]]",
+      "memorias/achado-notavel-2026-11-24-provider-opencode-free-hi-2dcc4b2fa888.md -> [[lembranca]]"
+    ],
+    "backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "required_backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "unresolved_markdown_links": [],
+    "unresolved_wikilinks": [],
+    "cross_vault_links": []
+  },
+  "warnings": [
+    "cross-unit block-id collision audit is separate from this write-unit verdict"
+  ]
+}
