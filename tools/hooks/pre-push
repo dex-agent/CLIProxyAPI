@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# pre-push — secret-value gate (house pattern: committed hook + core.hooksPath)
+# Runs the dex-sanitizar-dados-pessoais range gate through the repo shim on every
+# ref being pushed. It blocks when a declared local secret value shows up in the
+# blobs the push introduces, and fails closed when the gate itself cannot run.
+# Contract: card RECEIPTS-NAO-VERSIONADOS in .agents/GATILHOS-VIVOS.md
+# Git calls this hook with $1 = remote name and $2 = remote URL, and feeds one
+# line per ref on stdin: <local ref> <local sha> <remote ref> <remote sha>.
+# A remote sha of zeroes means the remote does not have that ref yet.
+
+# Declared escape, printed when used.
+if [ "${PUSH_GATE_SKIP:-}" = "1" ]; then
+  echo "push gate: SKIP via PUSH_GATE_SKIP=1 (declared escape; the secret-value check did not run)"
+  exit 0
+fi
+
+if ! command -v python >/dev/null 2>&1; then
+  echo "push gate: BLOQUEIO — python não encontrado; o gate não consegue rodar."
+  echo "como seguir: corrija o PATH, ou envie com PUSH_GATE_SKIP=1 só depois de conferir a faixa à mão."
+  exit 1
+fi
+
+ROOT="$(git rev-parse --show-toplevel)" || exit 1
+REMOTE="$1"
+ZERO=0000000000000000000000000000000000000000
+status=0
+while read -r local_ref local_sha remote_ref remote_sha; do
+  # Deleting a ref pushes no objects.
+  [ "$local_sha" = "$ZERO" ] && continue
+  if [ "$remote_sha" = "$ZERO" ]; then
+    # Ref new on this remote: the range starts where the destination remote ends,
+    # not where the upstream default branch ends.
+    oldest="$(git rev-list --reverse "$local_sha" --not --remotes="$REMOTE" 2>/dev/null | head -n 1)"
+    if [ -z "$oldest" ]; then
+      echo "push gate: nada novo para $REMOTE em $remote_ref; o remote já tem todos os objetos."
+      continue
+    fi
+    remote_sha="$(git rev-parse "$oldest^" 2>/dev/null)" || remote_sha=4b825dc642cb6eb9a060e54bf8d69288fbee4904
+  fi
+  echo "push gate: conferindo valores secretos em $remote_sha..$local_sha ($remote_ref)"
+  (cd "$ROOT" && python -I -B -X utf8 .agents/scripts/push_gate.py . "$remote_sha..$local_sha") || status=1
+done
+if [ "$status" -ne 0 ]; then
+  echo "push gate: BLOQUEIO — push recusado; leia as linhas acima (rótulo, tamanho e contagem; nunca o valor)."
+  echo "como inspecionar: python -I -B -X utf8 .agents/scripts/push_gate.py . <base>..HEAD --triage"
+fi
+exit "$status"
