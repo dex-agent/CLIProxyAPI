@@ -2,7 +2,10 @@
 
 **O que é**: fork `dex-agent/CLIProxyAPI` (público) do upstream `router-for-me/CLIProxyAPI`, com a camada de arqueologia e a integração com o ZCode.
 
-## Estado em 2026-11-23
+## Estado em 2026-11-24
+- **Release `v8.1.1-dex.1` publicada** no fork: 9 pacotes + `checksums.txt`. Falta só `darwin-arm64` (runner `macos-15` não entregue). Instalação em outra máquina: baixar o pacote e conferir o checksum. Detalhe em `HANDOFF.md` (W21).
+- **`.gitignore` recortado**: `.agents/*` é padrão e só o estado vivo é re-incluído. Arquivo novo em `PLAN-TASKS`, `memorias`, `.dex-memoria`, `ESTACIONAMENTO` e `LIXEIRA` aparece no `git status`; `scripts/`, `receipts/` e `TEMP/` seguem ignorados.
+- **Tag de base `upstream-v8.1.1` não deve ser apagada**: sem ela o workflow de release não acha tag anterior e a nota passa do limite.
 - **Arqueologia** W-1..W10 fechada (tier completo: 2405 fontes Go). Grafo interno e 3rd-party em `DEPENDENCIES.md`; recibos em `.agents/receipts/` (local, nunca versionado).
 - **Build do upstream**: verde. **Suíte nativa**: vermelha no Windows (9 falhas: 8 de ambiente, 1 golden drift real) — ver `PENDENTES.md`.
 - **Proxy local** (`127.0.0.1:8317`): liga com `powershell -NoProfile -ExecutionPolicy Bypass -File .agents\scripts\start-proxy.ps1` (idempotente) e desliga com `stop-proxy.ps1`; reiniciar é os dois nessa ordem. A chave de acesso é lida do `config.yaml`. Sobreviver a um restart do ZCode ainda não foi provado (estacionado).

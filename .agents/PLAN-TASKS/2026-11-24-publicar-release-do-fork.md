@@ -1,7 +1,7 @@
 ---
 dex_contract: spt
 version: 3
-status: 'RASCUNHO'
+status: 'CONCLUÍDO'
 owner: 'sessao zcode (Chato comandando)'
 date: '2026-11-24'
 workspace: 'C:\CodexProjetos\CLIProxyAPI'
@@ -164,10 +164,23 @@ execution_prompt: |
 
 Checklist (atualizado pela sessao):
 
-- [ ] A-01 .gitignore padrao + commit por caminho explicito
-- [ ] A-02 tag anotada v8.1.1-dex.1 (apos confirmacao do dono)
-- [ ] A-03 push da tag para fork + workflow vigiado
-- [ ] A-04 nota curta + gate de faixa
+- [x] A-01 .gitignore padrao + commit por caminho explicito (`d0d1ed08d`)
+- [x] A-02 tag anotada v8.1.1-dex.1 (apos confirmacao do dono; objeto `ec55e2b8d`, alvo `ec7670aa0`)
+- [x] A-03 push da tag para fork + workflow vigiado (run 45491486971, attempt 2)
+- [x] A-04 nota curta (29 linhas) + gate de faixa (exit 0; recibo local `W21-range-gate-tag.txt`)
+
+Veredito: PRONTO COM RESSALVA. 9 de 9 criterios verdes; o pacote `darwin-arm64` nao foi gerado.
+
+Ocorrencias do bloco (medidas):
+
+- **Revisao do dex-git-fechamento**: 8 entradas padrao faltavam no `.gitignore` (`.env.local` e `*.log` nao ignorados). Corrigidas em `d0d1ed08d`.
+- **A skill recusou o `git add`** de `.agents/lembranca.md` (exit 1). Causa na regra do repo, nao na ferramenta: `.agents` e `.agents/*` ignoravam a pasta inteira com 94 arquivos versionados. Corrigido em `ec7670aa0` (ver abaixo).
+- **Recorte do `.agents` com a dex-ignore**: removida a regra nua `.agents`; `.agents/*` segue como padrao; re-inclusos so os arquivos da raiz, `ESTACIONAMENTO`, `LIXEIRA`, `PLAN-TASKS`, `memorias` e `.dex-memoria`. `scripts`, `receipts`, `TEMP` e os grafos seguem ignorados: 7 dos 12 scripts nao versionados trazem caminho local ou linha com cara de credencial. Prova: `git add -- .agents/lembranca.md` exit 0 sem `-f`.
+- **O primeiro push da tag nao disparou o Actions** (0 runs; o check suite do CodeRabbit foi criado, o do Actions nao). Causa nao identificada. A permissao de Actions foi reaplicada com os mesmos valores e a tag foi reenviada sob aprovacao do dono; o segundo push disparou em 30s. Nao ha prova de que a permissao tenha sido a causa.
+- **`prepare-release` caiu com HTTP 422** (`body is too long`, limite de 125000 caracteres): sem tag anterior no fork, o changelog tinha 4969 entradas e 402975 caracteres.
+- **Cura aprovada pelo dono**: tag de base `upstream-v8.1.1` (`a6126416d`, alvo `6eb8554f0`) e re-execucao dos jobs que falharam. O changelog caiu para 27 entradas e 2905 caracteres. O run proprio da tag de base falhou com o mesmo 422, como previsto.
+- **`build darwin-arm64` cancelado 2 vezes** (exatos 15 minutos na fila, zero passos executados): o runner `macos-15` nao foi entregue. O runner `macos-15-intel` funcionou. Limite declarado; nao tentar de novo sem decisao do dono.
+- **`docker-image`**: vermelho, como previsto (fork sem os segredos do Docker Hub).
 
 Revisao do dex-git-fechamento (2026-11-24, -Status e -DryRun):
 

@@ -1,0 +1,74 @@
+{
+  "contract": "dex.memory.capability.unit-receipt.v2",
+  "capability": "v2-obsidian",
+  "require_obsidian": true,
+  "expected_require_obsidian": true,
+  "ok": true,
+  "errors": [],
+  "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+  "touched_files": [
+    {
+      "path": "lembranca.md",
+      "sha256": "65192cdf4492248e53a15989c5add05c0d785342b9e9abea1ded354ec8112325",
+      "tags": [
+        "#cliproxyapi/release",
+        "#cliproxyapi/gitignore"
+      ]
+    },
+    {
+      "path": "memorias/primeira-release-do-fork-cinco-armadilhas-medidas-e5cc1ad236ca.md",
+      "sha256": "281ed85698b508c801bf0228c22558732e58e9b2a1a98899b43745ff6f01f88f",
+      "tags": [
+        "#cliproxyapi/release",
+        "#cliproxyapi/gitignore"
+      ]
+    }
+  ],
+  "evidence": {
+    "root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "files": [
+      {
+        "path": "lembranca.md",
+        "sha256": "65192cdf4492248e53a15989c5add05c0d785342b9e9abea1ded354ec8112325",
+        "tags": [
+          "#cliproxyapi/release",
+          "#cliproxyapi/gitignore"
+        ]
+      },
+      {
+        "path": "memorias/primeira-release-do-fork-cinco-armadilhas-medidas-e5cc1ad236ca.md",
+        "sha256": "281ed85698b508c801bf0228c22558732e58e9b2a1a98899b43745ff6f01f88f",
+        "tags": [
+          "#cliproxyapi/release",
+          "#cliproxyapi/gitignore"
+        ]
+      }
+    ],
+    "block_ids": [
+      "primeira-release-do-fork-cinco-armadilhas-medidas-e5cc1ad236ca",
+      "primeira-release-do-fork-cinco-armadilhas-medidas-e5cc1ad236ca-content"
+    ],
+    "markdown_links": [
+      "lembranca.md -> memorias/primeira-release-do-fork-cinco-armadilhas-medidas-e5cc1ad236ca.md",
+      "memorias/primeira-release-do-fork-cinco-armadilhas-medidas-e5cc1ad236ca.md -> ../lembranca.md"
+    ],
+    "wikilinks": [
+      "lembranca.md -> [[memorias/primeira-release-do-fork-cinco-armadilhas-medidas-e5cc1ad236ca]]",
+      "memorias/primeira-release-do-fork-cinco-armadilhas-medidas-e5cc1ad236ca.md -> [[lembranca]]"
+    ],
+    "backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "required_backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "unresolved_markdown_links": [],
+    "unresolved_wikilinks": [],
+    "cross_vault_links": []
+  },
+  "warnings": [
+    "cross-unit block-id collision audit is separate from this write-unit verdict"
+  ]
+}
