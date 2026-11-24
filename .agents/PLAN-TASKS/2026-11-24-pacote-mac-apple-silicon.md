@@ -1,7 +1,7 @@
 ---
 dex_contract: spt
 version: 3
-status: 'RASCUNHO'
+status: 'CONCLUÍDO'
 owner: 'sessao zcode (Chato comandando)'
 date: '2026-11-24'
 workspace: 'C:\CodexProjetos\CLIProxyAPI'
@@ -115,6 +115,8 @@ execution_prompt: |
 
 Checklist (atualizado pela sessao):
 
-- [ ] A-01 runner do alvo darwin-arm64 + guarda de arquitetura
-- [ ] A-02 tag v8.1.1-dex.2 (apos confirmacao do dono)
-- [ ] A-03 pacote conferido (checksum + cabecalho Mach-O)
+- [x] A-01 runner do alvo darwin-arm64 + guarda de arquitetura (`ba8f8c3b`)
+- [x] A-02 tag v8.1.1-dex.2 (apos confirmacao do dono; objeto `5914ffaca`, alvo `c1d3add94`; run 45506695907, 12 de 12 jobs verdes)
+- [x] A-03 pacote conferido: sha256 igual ao checksums.txt; cabecalho Mach-O 64 com cputype arm64 (recibo local `W30-dex2/`)
+
+Veredito: PRONTO. 5 de 5 criterios verdes. Release https://github.com/dex-agent/CLIProxyAPI/releases/tag/v8.1.1-dex.2 com 10 pacotes + checksums.txt e nota curta. Limite declarado: o binario arm64 nao foi executado num Mac Apple Silicon.

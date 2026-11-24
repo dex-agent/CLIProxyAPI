@@ -99,6 +99,7 @@ Não faça a pergunta de providers antes de o servidor estar rodando.
 
 ## Estado da instalação (atualizar junto com a release)
 
-- Última release: `v8.1.1-dex.1` (2026-11-24). Tem 9 pacotes. Não tem `darwin_aarch64`: Mac Apple Silicon instala compilando do clone.
+- Última release: `v8.1.1-dex.2` (2026-11-24). Tem 10 pacotes + `checksums.txt`, incluindo `darwin_aarch64` (Mac Apple Silicon). A `v8.1.1-dex.1` ficou sem o pacote de Mac Apple Silicon.
+- O pacote de Mac Apple Silicon foi compilado num runner Intel e conferido pelo cabeçalho do binário. Não foi executado num Mac Apple Silicon.
 - O binário do fork é o mesmo do upstream v8.1.1: o fork não altera nenhum arquivo Go.
 - O painel de gerenciamento compara a versão com a última release do upstream e mostra aviso de atualização.
