@@ -1,0 +1,78 @@
+{
+  "contract": "dex.memory.capability.unit-receipt.v2",
+  "capability": "v2-obsidian",
+  "require_obsidian": true,
+  "expected_require_obsidian": true,
+  "ok": true,
+  "errors": [],
+  "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+  "touched_files": [
+    {
+      "path": "lembranca.md",
+      "sha256": "b4e914dd941b6014bfc4663c6ecfa8b44a7fda6647bb9f2c62f703b9aa1f54e4",
+      "tags": [
+        "#cliproxyapi/gratis-todos",
+        "#openrouter/free",
+        "#zcode/provider-config"
+      ]
+    },
+    {
+      "path": "memorias/grupo-gratis-todos-os-14-modelos-gratuitos-num-prov-d1682ea28e59.md",
+      "sha256": "64858e69e77cc06203136fe5add069e75d82f62fb39fa4c8b5323367e1233ec9",
+      "tags": [
+        "#cliproxyapi/gratis-todos",
+        "#openrouter/free",
+        "#zcode/provider-config"
+      ]
+    }
+  ],
+  "evidence": {
+    "root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "files": [
+      {
+        "path": "lembranca.md",
+        "sha256": "b4e914dd941b6014bfc4663c6ecfa8b44a7fda6647bb9f2c62f703b9aa1f54e4",
+        "tags": [
+          "#cliproxyapi/gratis-todos",
+          "#openrouter/free",
+          "#zcode/provider-config"
+        ]
+      },
+      {
+        "path": "memorias/grupo-gratis-todos-os-14-modelos-gratuitos-num-prov-d1682ea28e59.md",
+        "sha256": "64858e69e77cc06203136fe5add069e75d82f62fb39fa4c8b5323367e1233ec9",
+        "tags": [
+          "#cliproxyapi/gratis-todos",
+          "#openrouter/free",
+          "#zcode/provider-config"
+        ]
+      }
+    ],
+    "block_ids": [
+      "grupo-gratis-todos-os-14-modelos-gratuitos-num-prov-d1682ea28e59",
+      "grupo-gratis-todos-os-14-modelos-gratuitos-num-prov-d1682ea28e59-content"
+    ],
+    "markdown_links": [
+      "lembranca.md -> memorias/grupo-gratis-todos-os-14-modelos-gratuitos-num-prov-d1682ea28e59.md",
+      "memorias/grupo-gratis-todos-os-14-modelos-gratuitos-num-prov-d1682ea28e59.md -> ../lembranca.md"
+    ],
+    "wikilinks": [
+      "lembranca.md -> [[memorias/grupo-gratis-todos-os-14-modelos-gratuitos-num-prov-d1682ea28e59]]",
+      "memorias/grupo-gratis-todos-os-14-modelos-gratuitos-num-prov-d1682ea28e59.md -> [[lembranca]]"
+    ],
+    "backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "required_backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "unresolved_markdown_links": [],
+    "unresolved_wikilinks": [],
+    "cross_vault_links": []
+  },
+  "warnings": [
+    "cross-unit block-id collision audit is separate from this write-unit verdict"
+  ]
+}

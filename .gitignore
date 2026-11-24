@@ -47,7 +47,9 @@ AGENTS.override.md
 .gemini/*
 .serena/*
 .agent/*
-.agents
+# The bare `.agents` rule was removed in the dex-agent fork: it ignored the
+# directory itself, which blocks the re-inclusions at the end of this file.
+# `.agents/*` below stays as the default deny for that directory.
 .pi
 .agents/*
 .opencode/*
@@ -88,3 +90,22 @@ node_modules/
 __pycache__/
 *.pyc
 .agents/TEMP/
+
+# dex-agent fork: living project state under .agents is versioned (94 files were
+# already tracked while the whole directory was ignored). Default deny stays above;
+# only these paths are re-included. scripts/, receipts/, TEMP/ and the generated
+# graphs remain ignored: untracked scripts there carry local paths and
+# credential-shaped lines, and new scripts are added one by one with `git add -f`.
+!.agents/ACTIVE.md
+!.agents/CODE-REVIEW-GRAPH-INDEX.md
+!.agents/GATILHOS-VIVOS.md
+!.agents/HANDOFF.md
+!.agents/INDEX.md
+!.agents/PENDENTES.md
+!.agents/lembranca.md
+!.agents/napkin.md
+!.agents/ESTACIONAMENTO/
+!.agents/LIXEIRA/
+!.agents/PLAN-TASKS/
+!.agents/memorias/
+!.agents/.dex-memoria/

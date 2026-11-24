@@ -1,0 +1,74 @@
+{
+  "contract": "dex.memory.capability.unit-receipt.v2",
+  "capability": "v2-obsidian",
+  "require_obsidian": true,
+  "expected_require_obsidian": true,
+  "ok": true,
+  "errors": [],
+  "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+  "touched_files": [
+    {
+      "path": "lembranca.md",
+      "sha256": "fb907640b6686614bb1019f79e06cedf128675c8220c0a5451f76860293f9741",
+      "tags": [
+        "#cliproxyapi/release",
+        "#cliproxyapi/push-gate"
+      ]
+    },
+    {
+      "path": "memorias/publica-pra-mim-release-do-fork-dex-agent-cliproxya-c35d60b73557.md",
+      "sha256": "79aa0dca42d276d897eb57bf381e73ab31adcb56d58eee1897f09fbf847ee19b",
+      "tags": [
+        "#cliproxyapi/release",
+        "#cliproxyapi/push-gate"
+      ]
+    }
+  ],
+  "evidence": {
+    "root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "files": [
+      {
+        "path": "lembranca.md",
+        "sha256": "fb907640b6686614bb1019f79e06cedf128675c8220c0a5451f76860293f9741",
+        "tags": [
+          "#cliproxyapi/release",
+          "#cliproxyapi/push-gate"
+        ]
+      },
+      {
+        "path": "memorias/publica-pra-mim-release-do-fork-dex-agent-cliproxya-c35d60b73557.md",
+        "sha256": "79aa0dca42d276d897eb57bf381e73ab31adcb56d58eee1897f09fbf847ee19b",
+        "tags": [
+          "#cliproxyapi/release",
+          "#cliproxyapi/push-gate"
+        ]
+      }
+    ],
+    "block_ids": [
+      "publica-pra-mim-release-do-fork-dex-agent-cliproxya-c35d60b73557",
+      "publica-pra-mim-release-do-fork-dex-agent-cliproxya-c35d60b73557-content"
+    ],
+    "markdown_links": [
+      "lembranca.md -> memorias/publica-pra-mim-release-do-fork-dex-agent-cliproxya-c35d60b73557.md",
+      "memorias/publica-pra-mim-release-do-fork-dex-agent-cliproxya-c35d60b73557.md -> ../lembranca.md"
+    ],
+    "wikilinks": [
+      "lembranca.md -> [[memorias/publica-pra-mim-release-do-fork-dex-agent-cliproxya-c35d60b73557]]",
+      "memorias/publica-pra-mim-release-do-fork-dex-agent-cliproxya-c35d60b73557.md -> [[lembranca]]"
+    ],
+    "backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "required_backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "unresolved_markdown_links": [],
+    "unresolved_wikilinks": [],
+    "cross_vault_links": []
+  },
+  "warnings": [
+    "cross-unit block-id collision audit is separate from this write-unit verdict"
+  ]
+}

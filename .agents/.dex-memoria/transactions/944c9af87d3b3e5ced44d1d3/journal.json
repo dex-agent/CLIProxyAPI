@@ -1,0 +1,70 @@
+{
+  "contract": "dex.memory.route.journal.v2",
+  "state": "COMMITTED",
+  "request_hash": "8fd6ffde548a82295d7a1994c6a659737bbb65a69c90a998ab1974373632a6b1",
+  "route": {
+    "scope": "project",
+    "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "operation_id": "remember-d1682ea28e59e74eb0171c48",
+    "idempotency_key": "dex-memoria:remember-d1682ea28e59e74eb0171c48:project",
+    "transaction_id": "944c9af87d3b3e5ced44d1d3",
+    "receipt_id": "d46cbfd71328e163295e4439"
+  },
+  "candidate": {
+    "contract": "dex.memory.write.candidate.v2",
+    "target_layer": "L2",
+    "slug": "grupo-gratis-todos-os-14-modelos-gratuitos-num-prov-d1682ea28e59",
+    "trigger": "usar, ressincronizar ou diagnosticar o provider Gratis (todos) do ZCode; um alias free-or ou free-oc devolver 404 ou 429; modelos free do OpenRouter e do OpenCode Go",
+    "title": "Grupo Gratis (todos): os 14 modelos gratuitos num provider so do ZCode, agregados pelo proxy",
+    "body": "O ZCode agrupa modelos por provider e um provider tem uma base URL e uma chave só, então os gratuitos de origens diferentes só ficam juntos por meio do proxy. O provider Gratis (todos) aponta para o proxy local e o proxy agrega dois upstreams em api-keys.openai-compatibility: openrouter-free (os modelos com sufixo free do provider openrouter do ZCode, mais o roteador openrouter/free) com alias free-or-nome, e opencode-go (hy4-flash-free e beam-free) com alias free-oc-nome. O script free_aggregator.py tem as rotas setup-proxy, register-zcode e test; o setup-proxy consulta o catalogo público do OpenRouter e deixa fora os aposentados, porque a lista do ZCode guarda modelos que o OpenRouter já retirou (cinco em 2026-11-23: cohere/north-mini-code, liquid/lfm-2.5-2.6b, poolside/laguna-xs-2.1, thinkingmachines/inkling-small e xingchen-agi/xing4.0-29b-a4b, todos com 404 no longer available). Suíte medida em 2026-11-23: 11 de 14 responderam; gemma-4-26b-a4b-it, gemma-4-31b-it e particle-1 deram 429 com provider_error_code 429 e limit_source upstream_provider_shared_pool, que é lotação do fornecedor e não cota da conta. O hot-reload do proxy adiciona modelo mas não remove, então depois de mudar a lista é preciso reiniciar pelo start-proxy.ps1. Ressincronizar na ordem: setup-proxy, reiniciar o proxy, register-zcode e test. O alias não pode terminar em sufixo de esforço do ZCode (high, low, medium, max, xhigh), porque a interface do ZCode tira esse sufixo do nome e o proxy passa a não conhecer o modelo.",
+    "tags": [
+      "#cliproxyapi/gratis-todos",
+      "#openrouter/free",
+      "#zcode/provider-config"
+    ]
+  },
+  "paths": {
+    "l1": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\lembranca.md",
+    "destination": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\memorias\\grupo-gratis-todos-os-14-modelos-gratuitos-num-prov-d1682ea28e59.md",
+    "receipt": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\944c9af87d3b3e5ced44d1d3\\receipt.json"
+  },
+  "before": {
+    "l1": {
+      "exists": true,
+      "bytes_base64": "IyBMZW1icmFuw6dhcw0KDQoNCi0gcm9kYXIgYnVpbGQvdGVzdGUgR28gbm8gQ0xJUHJveHlBUEkgLT4gW0dvIHRvb2xjaGFpbiBmb3JhIGRvIFBBVEggKENMSVByb3h5QVBJKV0obWVtb3JpYXMvZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmYubWQpIFtbbWVtb3JpYXMvZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmZ8R28gdG9vbGNoYWluIGZvcmEgZG8gUEFUSCAoQ0xJUHJveHlBUEkpXV0gI3Rvb2xjaGFpbi9nbyAjYnVpbGQvd2luZG93cyBeZ28tdG9vbGNoYWluLWZvcmEtZG8tcGF0aC1jbGlwcm94eWFwaS1iZDMyYmJkMDNkZmYNCg0KLSByb2RhciBnbyB0ZXN0IC4vLi4uIGUgdmVyIDkgZmFsaGFzIC8gNiBwYWNvdGVzIC0+IFtTdWl0ZSBnbyB0ZXN0IC4vLi4uIHZlcm1lbGhhIG5vIFdpbmRvd3MgKENMSVByb3h5QVBJKV0obWVtb3JpYXMvc3VpdGUtZ28tdGVzdC12ZXJtZWxoYS1uby13aW5kb3dzLWNsaXByb3h5YXBpLTBlYjg5NzhlNTc4NS5tZCkgW1ttZW1vcmlhcy9zdWl0ZS1nby10ZXN0LXZlcm1lbGhhLW5vLXdpbmRvd3MtY2xpcHJveHlhcGktMGViODk3OGU1Nzg1fFN1aXRlIGdvIHRlc3QgLi8uLi4gdmVybWVsaGEgbm8gV2luZG93cyAoQ0xJUHJveHlBUEkpXV0gI2J1aWxkL2dvLXRlc3RzICNwbGF0YWZvcm1hL3dpbmRvd3MgXnN1aXRlLWdvLXRlc3QtdmVybWVsaGEtbm8td2luZG93cy1jbGlwcm94eWFwaS0wZWI4OTc4ZTU3ODUNCg0KLSBkZWJ1ZyBkZSBmYWxoYSBUZXN0VG9vbFNlYXJjaERpc2FibGVkTWF0Y2hlc0RldkdvbGRlbiAtPiBbR29sZGVuIGRyaWZ0IHJlYWwgbm8gdHJhbnNsYXRvciBjbGF1ZGUvb3BlbmFpLXJlc3BvbnNlc10obWVtb3JpYXMvZ29sZGVuLWRyaWZ0LXJlYWwtbm8tdHJhbnNsYXRvci1jbGF1ZGUtb3BlbmFpLXJlc3BvLTliYTc4OGYxMjU3Ny5tZCkgW1ttZW1vcmlhcy9nb2xkZW4tZHJpZnQtcmVhbC1uby10cmFuc2xhdG9yLWNsYXVkZS1vcGVuYWktcmVzcG8tOWJhNzg4ZjEyNTc3fEdvbGRlbiBkcmlmdCByZWFsIG5vIHRyYW5zbGF0b3IgY2xhdWRlL29wZW5haS1yZXNwb25zZXNdXSAjYnVpbGQvZ29sZGVuLWRyaWZ0ICN0cmFuc2xhdG9yL2NsYXVkZSBeZ29sZGVuLWRyaWZ0LXJlYWwtbm8tdHJhbnNsYXRvci1jbGF1ZGUtb3BlbmFpLXJlc3BvLTliYTc4OGYxMjU3Nw0KDQotIHJldmlldyBlc3RydXR1cmFsIG91IGltcGFjdG8gbm8gQ0xJUHJveHlBUEkgLT4gW0dyYWZvIGVzdHJ1dHVyYWwgbG9jYWwgZG8gQ0xJUHJveHlBUEkgKENSRyldKG1lbW9yaWFzL2dyYWZvLWVzdHJ1dHVyYWwtbG9jYWwtZG8tY2xpcHJveHlhcGktY3JnLTY2ZTkwNDgyZTc0Ni5tZCkgW1ttZW1vcmlhcy9ncmFmby1lc3RydXR1cmFsLWxvY2FsLWRvLWNsaXByb3h5YXBpLWNyZy02NmU5MDQ4MmU3NDZ8R3JhZm8gZXN0cnV0dXJhbCBsb2NhbCBkbyBDTElQcm94eUFQSSAoQ1JHKV1dICNjb2RlLXJldmlldy1ncmFwaC9sb2NhbCAjYXJxdWVvbG9naWEvY2xpcHJveHlhcGkgXmdyYWZvLWVzdHJ1dHVyYWwtbG9jYWwtZG8tY2xpcHJveHlhcGktY3JnLTY2ZTkwNDgyZTc0Ng0KDQotIGNvbmZpYXIgZW0gQ0kgdmVyZGUgZG8gQ0xJUHJveHlBUEkgLT4gW0NJIGRvIENMSVByb3h5QVBJIHJvZGEgYXBlbmFzIGJ1aWxkIChzZW0gdGVzdGVzKV0obWVtb3JpYXMvY2ktZG8tY2xpcHJveHlhcGktcm9kYS1hcGVuYXMtYnVpbGQtc2VtLXRlc3Rlcy0yZTk4YWY1MzQwY2QubWQpIFtbbWVtb3JpYXMvY2ktZG8tY2xpcHJveHlhcGktcm9kYS1hcGVuYXMtYnVpbGQtc2VtLXRlc3Rlcy0yZTk4YWY1MzQwY2R8Q0kgZG8gQ0xJUHJveHlBUEkgcm9kYSBhcGVuYXMgYnVpbGQgKHNlbSB0ZXN0ZXMpXV0gI2NpL2dhcHMgI2J1aWxkL2dvIF5jaS1kby1jbGlwcm94eWFwaS1yb2RhLWFwZW5hcy1idWlsZC1zZW0tdGVzdGVzLTJlOThhZjUzNDBjZA0KDQotIGVkaXRhciBmb250ZSBkbyBDTElQcm94eUFQSSBvdSBpbnZlc3RpZ2FyIEVPTCAtPiBbRW5jb2RpbmcgZG8gcmVwbyBDTElQcm94eUFQSTogd29ya2luZyBDUkxGIC8gbG9qYSBMRiBzZW0gcGluXShtZW1vcmlhcy9lbmNvZGluZy1kby1yZXBvLWNsaXByb3h5YXBpLXdvcmtpbmctY3JsZi1sb2phLWxmLXMtNWNiM2MzMDUwMzkxLm1kKSBbW21lbW9yaWFzL2VuY29kaW5nLWRvLXJlcG8tY2xpcHJveHlhcGktd29ya2luZy1jcmxmLWxvamEtbGYtcy01Y2IzYzMwNTAzOTF8RW5jb2RpbmcgZG8gcmVwbyBDTElQcm94eUFQSTogd29ya2luZyBDUkxGIC8gbG9qYSBMRiBzZW0gcGluXV0gI2VuY29kaW5nL3JlcG8gI2dpdC93aW5kb3dzIF5lbmNvZGluZy1kby1yZXBvLWNsaXByb3h5YXBpLXdvcmtpbmctY3JsZi1sb2phLWxmLXMtNWNiM2MzMDUwMzkxDQoNCi0gcmVmYXRvcmFyIHRyYW5zbGF0b3IgZ2VtaW5pIG91IGVzY29saGVyIGFsdm8gZGUgcmVmYWN0b3IgLT4gW0hvdHNwb3RzIGRlIHRveGljaWRhZGUgZG8gQ0xJUHJveHlBUEkgKHBvZGlvIFc4KV0obWVtb3JpYXMvaG90c3BvdHMtZGUtdG94aWNpZGFkZS1kby1jbGlwcm94eWFwaS1wb2Rpby13OC0xMDZiZTQxZTc2MDMubWQpIFtbbWVtb3JpYXMvaG90c3BvdHMtZGUtdG94aWNpZGFkZS1kby1jbGlwcm94eWFwaS1wb2Rpby13OC0xMDZiZTQxZTc2MDN8SG90c3BvdHMgZGUgdG94aWNpZGFkZSBkbyBDTElQcm94eUFQSSAocG9kaW8gVzgpXV0gI2FycXVlb2xvZ2lhL2hvdHNwb3QgI21ldHJpY2FzL2dvIF5ob3RzcG90cy1kZS10b3hpY2lkYWRlLWRvLWNsaXByb3h5YXBpLXBvZGlvLXc4LTEwNmJlNDFlNzYwMw0KDQotIHVzYXIvcmVpbmljaWFyIG8gcHJveHkgQ0xJUHJveHlBUEk7IGNvbnN1bWlyIG1vZGVsb3MgYW50aWdyYXZpdHkgcGVsbyBaQ29kZTsgZGlhZ25vc3RpY28gZGUgcHJvdmlkZXIgQ0xJUHJveHlBUEkgbm8gWkNvZGU7IHJvZGFyIG8gc2VydmVyIGxvY2FsIGRvIENMSVByb3h5QVBJIC0+IFtDTElQcm94eUFQSSBpbnN0YWxhZG8gZSBzZXJ2aW5kbyBhbnRpZ3Jhdml0eTsgcHJvdmlkZXIgY2FkYXN0cmFkbyBubyBaQ29kZSBjb20gRTJFIHByb3ZhZG9dKG1lbW9yaWFzL2NsaXByb3h5YXBpLWluc3RhbGFkby1lLXNlcnZpbmRvLWFudGlncmF2aXR5LXByb3ZpZC1lMDlmODQzZDJkODMubWQpIFtbbWVtb3JpYXMvY2xpcHJveHlhcGktaW5zdGFsYWRvLWUtc2VydmluZG8tYW50aWdyYXZpdHktcHJvdmlkLWUwOWY4NDNkMmQ4M3xDTElQcm94eUFQSSBpbnN0YWxhZG8gZSBzZXJ2aW5kbyBhbnRpZ3Jhdml0eTsgcHJvdmlkZXIgY2FkYXN0cmFkbyBubyBaQ29kZSBjb20gRTJFIHByb3ZhZG9dXSAjaW5zdGFsYWNhby9jbGlwcm94eWFwaSAjemNvZGUvcHJvdmlkZXIgI2FudGlncmF2aXR5L2UyZSBeY2xpcHJveHlhcGktaW5zdGFsYWRvLWUtc2VydmluZG8tYW50aWdyYXZpdHktcHJvdmlkLWUwOWY4NDNkMmQ4Mw0KDQotIHJlY29uZmlndXJhci9kaWFnbm9zdGljYXIgbyBwcm92aWRlciBDTElQcm94eUFQSSBubyBaQ29kZTsgY2hhdCBkbyBaQ29kZSBmYWxoYW5kbyBjb20gUmVjb25uZWN0aW5nOyA0MjkgbWVzbW8gY29tIHF1b3RhOyBtb2RlbG8gbmFvIGxpc3RhZG8gLT4gW1Byb3ZpZGVyIENMSVByb3h5QVBJIG5vIFpDb2RlOiA1IGNhbWFkYXMgZW1waWxoYWRhcyBhdMOpIG8gRTJFIHZlcmRlXShtZW1vcmlhcy9wcm92aWRlci1jbGlwcm94eWFwaS1uby16Y29kZS01LWNhbWFkYXMtZW1waWxoYWRhcy1lOTgxOTZiZjA0OTEubWQpIFtbbWVtb3JpYXMvcHJvdmlkZXItY2xpcHJveHlhcGktbm8temNvZGUtNS1jYW1hZGFzLWVtcGlsaGFkYXMtZTk4MTk2YmYwNDkxfFByb3ZpZGVyIENMSVByb3h5QVBJIG5vIFpDb2RlOiA1IGNhbWFkYXMgZW1waWxoYWRhcyBhdMOpIG8gRTJFIHZlcmRlXV0gI2luc3RhbGFjYW8vY2xpcHJveHlhcGktcHJvdmlkZXIgI3pjb2RlL3Byb3ZpZGVyICNhbnRpZ3Jhdml0eS9lMmUgXnByb3ZpZGVyLWNsaXByb3h5YXBpLW5vLXpjb2RlLTUtY2FtYWRhcy1lbXBpbGhhZGFzLWU5ODE5NmJmMDQ5MQ0KDQotIGZhemVyIG1lcmdlIGRlIGJyYW5jaGVzIG5vIENMSVByb3h5QVBJIC0+IFtDTElQcm94eUFQSSBtZXJnZS1jaGVjayBnYXRlXShtZW1vcmlhcy9jbGlwcm94eWFwaS1tZXJnZS1jaGVjay1nYXRlLWQwMGVhNjFlMjI0NS5tZCkgW1ttZW1vcmlhcy9jbGlwcm94eWFwaS1tZXJnZS1jaGVjay1nYXRlLWQwMGVhNjFlMjI0NXxDTElQcm94eUFQSSBtZXJnZS1jaGVjayBnYXRlXV0gI2NsaXByb3h5YXBpL21lcmdlLWdhdGUgI2dpdC9ob29rcyBeY2xpcHJveHlhcGktbWVyZ2UtY2hlY2stZ2F0ZS1kMDBlYTYxZTIyNDUNCg0KLSBjaXRhciBudW1lcm8gZGUgYXJ0ZWZhdG8gZGVyaXZhZG8gKGdyYWZvIENSRywgZ3JhcGhpZnksIElOREVYKSBubyBDTElQcm94eUFQSSAtPiBbQ0xJUHJveHlBUEkgc3RhbGVuZXNzIGRlcml2YWRvc10obWVtb3JpYXMvY2xpcHJveHlhcGktc3RhbGVuZXNzLWRlcml2YWRvcy1kNTYwZGY2MTY1MTYubWQpIFtbbWVtb3JpYXMvY2xpcHJveHlhcGktc3RhbGVuZXNzLWRlcml2YWRvcy1kNTYwZGY2MTY1MTZ8Q0xJUHJveHlBUEkgc3RhbGVuZXNzIGRlcml2YWRvc11dICNjbGlwcm94eWFwaS9zdGFsZW5lc3MgI2FydGVmYXRvcy9kZXJpdmFkb3MgXmNsaXByb3h5YXBpLXN0YWxlbmVzcy1kZXJpdmFkb3MtZDU2MGRmNjE2NTE2DQoNCi0gY3JpYXIgb3UgZWRpdGFyIHByb3ZpZGVyL21vZGVsb3MvYWdlbnRzIGRvIFpDb2RlIHBhcmEgbyBDTElQcm94eUFQSSAtPiBbWkNvZGUgcHJvdmlkZXIgY29uZmlnIGUgYWdlbnRzXShtZW1vcmlhcy96Y29kZS1wcm92aWRlci1jb25maWctZS1hZ2VudHMtN2VjNTI3ZGI5NzEwLm1kKSBbW21lbW9yaWFzL3pjb2RlLXByb3ZpZGVyLWNvbmZpZy1lLWFnZW50cy03ZWM1MjdkYjk3MTB8WkNvZGUgcHJvdmlkZXIgY29uZmlnIGUgYWdlbnRzXV0gI3pjb2RlL3Byb3ZpZGVyLWNvbmZpZyAjYWdlbnRzL2NyaWFjYW8gXnpjb2RlLXByb3ZpZGVyLWNvbmZpZy1lLWFnZW50cy03ZWM1MjdkYjk3MTANCg=="
+    },
+    "destination": {
+      "exists": false,
+      "bytes_base64": ""
+    }
+  },
+  "receipt": {
+    "contract": "dex.memory.route.receipt.v2",
+    "status": "COMMITTED",
+    "scope": "project",
+    "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "operation_id": "remember-d1682ea28e59e74eb0171c48",
+    "idempotency_key": "dex-memoria:remember-d1682ea28e59e74eb0171c48:project",
+    "transaction_id": "944c9af87d3b3e5ced44d1d3",
+    "receipt_id": "d46cbfd71328e163295e4439",
+    "receipt_path": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\944c9af87d3b3e5ced44d1d3\\receipt.json",
+    "validation_receipt_path": "C:\\CodexProjetos\\CLIProxyAPI\\.agents\\.dex-memoria\\transactions\\944c9af87d3b3e5ced44d1d3\\validation.json",
+    "validation_receipt_hash": "ff82db3fc9813520f00d97d9c09c24b8b9f9d148e07d2736a3062eeac6bfe1ea",
+    "validation_contract": "dex.memory.capability.unit-receipt.v2",
+    "validation_ok": true,
+    "candidate_id": "2e6e4d67fe32db17b1d519f31f1b5486b286295376b680cac7ec629602b3abcb",
+    "content_hash": "64858e69e77cc06203136fe5add069e75d82f62fb39fa4c8b5323367e1233ec9",
+    "route_identity": "b1f38fa3861f8cc90a75dc61970e330506869847fae32161207986778189b1ca",
+    "deduplicated": false,
+    "write_set_hash": "bb5b7a95d943cbd4142df0e09be76e26b369f67601b2a4c7140d53d5ed4cf5d2",
+    "target_hashes": {
+      "l1": "b4e914dd941b6014bfc4663c6ecfa8b44a7fda6647bb9f2c62f703b9aa1f54e4",
+      "destination": "64858e69e77cc06203136fe5add069e75d82f62fb39fa4c8b5323367e1233ec9"
+    },
+    "receipt_revision": 2,
+    "producer_provenance": {
+      "entrypoint_realpath": "C:\\CodexProjetos\\dex-memoria\\bin\\dex-memoria.js",
+      "entrypoint_sha256": "bb53fb76bd55872e83dbac3118a014630462f49dc542d410f6ce4a4160adb842"
+    }
+  }
+}

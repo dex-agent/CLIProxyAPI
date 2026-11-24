@@ -1,0 +1,78 @@
+{
+  "contract": "dex.memory.capability.unit-receipt.v2",
+  "capability": "v2-obsidian",
+  "require_obsidian": true,
+  "expected_require_obsidian": true,
+  "ok": true,
+  "errors": [],
+  "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+  "touched_files": [
+    {
+      "path": "lembranca.md",
+      "sha256": "c230793ec0d000ac3461ebf15d5099146b4f395f0fa9789de667fc53ab8c1ea7",
+      "tags": [
+        "#cliproxyapi/fork-publico",
+        "#git/historico-exposto",
+        "#github/rede-de-forks"
+      ]
+    },
+    {
+      "path": "memorias/apagar-um-fork-nao-remove-o-historico-antigo-a-rede-d4b87d5bc57a.md",
+      "sha256": "c8795572e96def64a04f8af8eabe27bf0420f06b0062b3b61c427eff4c196ce1",
+      "tags": [
+        "#cliproxyapi/fork-publico",
+        "#git/historico-exposto",
+        "#github/rede-de-forks"
+      ]
+    }
+  ],
+  "evidence": {
+    "root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "files": [
+      {
+        "path": "lembranca.md",
+        "sha256": "c230793ec0d000ac3461ebf15d5099146b4f395f0fa9789de667fc53ab8c1ea7",
+        "tags": [
+          "#cliproxyapi/fork-publico",
+          "#git/historico-exposto",
+          "#github/rede-de-forks"
+        ]
+      },
+      {
+        "path": "memorias/apagar-um-fork-nao-remove-o-historico-antigo-a-rede-d4b87d5bc57a.md",
+        "sha256": "c8795572e96def64a04f8af8eabe27bf0420f06b0062b3b61c427eff4c196ce1",
+        "tags": [
+          "#cliproxyapi/fork-publico",
+          "#git/historico-exposto",
+          "#github/rede-de-forks"
+        ]
+      }
+    ],
+    "block_ids": [
+      "apagar-um-fork-nao-remove-o-historico-antigo-a-rede-d4b87d5bc57a",
+      "apagar-um-fork-nao-remove-o-historico-antigo-a-rede-d4b87d5bc57a-content"
+    ],
+    "markdown_links": [
+      "lembranca.md -> memorias/apagar-um-fork-nao-remove-o-historico-antigo-a-rede-d4b87d5bc57a.md",
+      "memorias/apagar-um-fork-nao-remove-o-historico-antigo-a-rede-d4b87d5bc57a.md -> ../lembranca.md"
+    ],
+    "wikilinks": [
+      "lembranca.md -> [[memorias/apagar-um-fork-nao-remove-o-historico-antigo-a-rede-d4b87d5bc57a]]",
+      "memorias/apagar-um-fork-nao-remove-o-historico-antigo-a-rede-d4b87d5bc57a.md -> [[lembranca]]"
+    ],
+    "backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "required_backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "unresolved_markdown_links": [],
+    "unresolved_wikilinks": [],
+    "cross_vault_links": []
+  },
+  "warnings": [
+    "cross-unit block-id collision audit is separate from this write-unit verdict"
+  ]
+}
