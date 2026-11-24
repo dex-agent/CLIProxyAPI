@@ -106,7 +106,9 @@ jobs:
             asset_arch: amd64
             archive_format: tar.gz
           - target: darwin-arm64
-            runner: macos-15
+            # The arm64 runner was never delivered to this fork (15 min queue,
+            # cancelled twice). Apple clang on the Intel runner cross-compiles arm64.
+            runner: macos-15-intel
             goos: darwin
             goarch: arm64
             asset_arch: aarch64
@@ -176,6 +178,14 @@ jobs:
           CGO_ENABLED=1 GOOS="$GOOS" GOARCH="$GOARCH" go build \
             -ldflags="-s -w -X main.Version=${RELEASE_VERSION} -X main.Commit=${COMMIT} -X main.BuildDate=${BUILD_DATE}" \
             -o "$archive_dir/$binary_name" ./cmd/server/
+
+          if [[ "$GOOS" == "darwin" ]]; then
+            expected_arch="arm64"
+            if [[ "$GOARCH" == "amd64" ]]; then
+              expected_arch="x86_64"
+            fi
+            file "$archive_dir/$binary_name" | tee /dev/stderr | grep -q "Mach-O 64-bit executable ${expected_arch}"
+          fi
 
           cp LICENSE README.md README_CN.md config.example.yaml "$archive_dir/"
           if [[ "$ARCHIVE_FORMAT" == "zip" ]]; then
