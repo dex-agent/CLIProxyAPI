@@ -1,6 +1,6 @@
 # HANDOFF — CLIProxyAPI
 
-Última atualização: 2026-11-23
+Última atualização: 2026-11-24
 
 ## Estado
 Arqueologia W-1..W10 executada (tier COMPLETO, 2405 fontes Go/143k linhas). O fork foi apagado pelo dono e recriado em 2026-11-23 com os commits da casa sobre o upstream `6eb8554f` (o upstream já avançou; não mesclado). Estado vivo atual: `ACTIVE.md`.
@@ -43,11 +43,18 @@ Arqueologia W-1..W10 executada (tier COMPLETO, 2405 fontes Go/143k linhas). O fo
 
 ## W18 (2026-11-23) — fork recriado limpo; histórico antigo ainda acessível
 - Proxy: ligar `start-proxy.ps1`, desligar `stop-proxy.ps1`, reiniciar = os dois nessa ordem. A chave de acesso é lida do `config.yaml`; nenhum script fixa o valor.
-- Antes de cada push, rodar o gate (ficha `RECEIPTS-NAO-VERSIONADOS`): `.agents/scripts/push_gate_scan.py` sobre os blobs novos e `.agents/scripts/push_gate_credentials.py` sobre a mesma exportação.
+- O gate antes do push virou hook em 2026-11-24 (ficha `RECEIPTS-NAO-VERSIONADOS`): `tools/hooks/pre-push` chama o shim `.agents/scripts/push_gate.py`, que roda a ferramenta da casa `range_gate.py` (skill dex-sanitizar-dados-pessoais) sobre os blobs novos. Os dois scripts antigos do gate saíram do repo.
 - Para reescrever só os commits da casa: `git filter-repo --force --refs 6eb8554f..main --replace-text <arquivo>`. O modo parcial preserva a ancestridade com o upstream; o modo integral reescreve tudo e rompe o parentesco.
 - Histórico antigo (com e-mail e corpos de requisição) continua acessível no GitHub pelas duas namespaces. Apagar fork não purga rede de forks. O dono decidiu em 2026-11-23 não pedir a remoção ao suporte (resíduo aceito depois do inventário `W18-exposed-inventory.txt`: nenhuma credencial de serviço externo); o texto do pedido continua em `.agents/receipts/W18-support-ticket.txt` (local) caso reabra. Medição em `W18-old-history-reach.txt`.
 - Nunca citar, em arquivo versionado, o SHA de um commit do histórico antigo.
 
 ## W19 (2026-11-23 noite) — gate de pré-push com indicação de reuso aberta
-- Os dois scripts do gate têm indicação de reuso aberta no tracker do registry de skills (`~/.agents/skills/.agents/TRACKER`, `ISSUE-LOCAL-0066`, aberto, P2): promovê-los a ferramenta da casa. Enquanto o dono não decidir, eles continuam sendo o gate manual antes de cada push.
+- Indicação de reuso do gate aberta no tracker do registry de skills (`~/.agents/skills/.agents/TRACKER`, `ISSUE-LOCAL-0066`, P2).
 - Rerun do gate em 2026-11-24 00:06 UTC sobre `6eb8554f..HEAD`: exportação completa e nenhuma credencial local nos blobs (recibo local `W19-push-gate-rerun.txt`).
+- Indicação de reuso aberta no tracker do registry de skills (`~/.agents/skills/.agents/TRACKER`, `ISSUE-LOCAL-0066`). O dono deu GO PADRAO na mesma noite; a execução está em W20.
+
+## W20 (2026-11-24) — gate de pré-push é ferramenta da casa e virou hook
+- O gate virou ferramenta da casa: `range_gate.py` na skill `dex-sanitizar-dados-pessoais` (núcleo genérico, 24 testes). Este repo guarda só o shim `.agents/scripts/push_gate.py`, com as fontes de segredo desta máquina: chave e api-keys do `config.yaml`, token do OpenCode e token do `gh`.
+- Hook `tools/hooks/pre-push` (`core.hooksPath` já aponta para lá): bloqueia o push quando um valor secreto declarado aparece nos blobs novos e falha fechado se o gate não rodar. Ele roda também no `git push --dry-run`. Escape declarado: `PUSH_GATE_SKIP=1`.
+- Triagem de dado pessoal antes de um push arriscado: `python -I -B -X utf8 .agents/scripts/push_gate.py . 6eb8554f..HEAD --triage`. A saída é mascarada; o julgamento é da sessão.
+- Teste do hook: `git push --dry-run fork main` (verde). `PUSH_GATE_EXTRA_ENV=PG_TEST PG_TEST=ISSUE-LOCAL-0066 git push --dry-run fork main` (vermelho; nada é enviado). O valor do controle precisa estar nos commits novos, não no que o remoto já tem.

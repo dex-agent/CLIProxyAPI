@@ -157,9 +157,9 @@ Hub quente de retomada: gatilhos promovidos com validação (formato canônico 5
 - **Por que**: Em 2026-11-22 um git add -f .agents/ no atacado publicou o e-mail do dono em 8 arquivos e 23 corpos de requisicao com conversa e o AGENTS.md global; o push foi feito sem olhar o conteudo
 - **Onde**: [Fonte viva](<.agents/receipts/%20%28local%29%20e%20.gitignore%20%28o%20upstream%20ja%20ignora%20.agents%29>)
 - **Quando**: todo commit ou push deste repo, em especial depois de criar recibo de diagnostico
-- **Como**: adicionar por caminho explicito, nunca -f no diretorio; antes de cada push rodar o gate: python -I -B -X utf8 .agents/scripts/push_gate_scan.py <repo> 6eb8554f..main <pasta de recibos local> (scanner da casa sobre os blobs novos) e depois .agents/scripts/push_gate_credentials.py <repo> <pasta exportada pelo primeiro> (chave do proxy, token do OpenCode e token do GitHub em 0 blobs); nunca citar o SHA de um commit do historico antigo
-- **Quanto**: 2 comandos de conferencia por push
-- **E se??**: E se?? precisar versionar um recibo? → copiar so a parte saneada para um doc em .agents/ e deixar o original local
+- **Como**: adicionar por caminho explicito, nunca -f no diretorio; o hook pre-push (tools/hooks/pre-push) roda sozinho o gate de valor secreto pelo shim .agents/scripts/push_gate.py, que chama a ferramenta da casa range_gate.py (skill dex-sanitizar-dados-pessoais); para a triagem de dado pessoal antes de um push arriscado: python -I -B -X utf8 .agents/scripts/push_gate.py . 6eb8554f..HEAD --triage; nunca citar o SHA de um commit do historico antigo
+- **Quanto**: o hook e automatico; 1 comando de triagem por push arriscado
+- **E se??**: E se?? precisar versionar um recibo? → copiar so a parte saneada para um doc em .agents/ e deixar o original local · E se?? o hook bloquear o push? → ler o rotulo, o tamanho e a contagem impressos (nunca o valor); remover o valor do commit ou trocar o segredo; nao empurrar com PUSH_GATE_SKIP=1 sem conferir a faixa a mao
 
 ## 🔥 OPENCODE-GO-CLIENTE-EXTERNO
 
