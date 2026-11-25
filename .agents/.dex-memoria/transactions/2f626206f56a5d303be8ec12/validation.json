@@ -1,0 +1,78 @@
+{
+  "contract": "dex.memory.capability.unit-receipt.v2",
+  "capability": "v2-obsidian",
+  "require_obsidian": true,
+  "expected_require_obsidian": true,
+  "ok": true,
+  "errors": [],
+  "resolved_root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+  "touched_files": [
+    {
+      "path": "lembranca.md",
+      "sha256": "d28e284a337cd0939869aa7dc55ec45b350901eb56939e02f059eca821756eac",
+      "tags": [
+        "#cliproxyapi/antigravity",
+        "#cliproxyapi/proxy",
+        "#cliproxyapi/painel"
+      ]
+    },
+    {
+      "path": "memorias/antigravity-suspenso-por-tos-violation-e-o-painel-d-c39b5e48e305.md",
+      "sha256": "b15c080d4841cdbd2d0dc9b274c1b288df3d563abfebc4b4501cfb387691d5c0",
+      "tags": [
+        "#cliproxyapi/antigravity",
+        "#cliproxyapi/proxy",
+        "#cliproxyapi/painel"
+      ]
+    }
+  ],
+  "evidence": {
+    "root": "C:\\CodexProjetos\\CLIProxyAPI\\.agents",
+    "files": [
+      {
+        "path": "lembranca.md",
+        "sha256": "d28e284a337cd0939869aa7dc55ec45b350901eb56939e02f059eca821756eac",
+        "tags": [
+          "#cliproxyapi/antigravity",
+          "#cliproxyapi/proxy",
+          "#cliproxyapi/painel"
+        ]
+      },
+      {
+        "path": "memorias/antigravity-suspenso-por-tos-violation-e-o-painel-d-c39b5e48e305.md",
+        "sha256": "b15c080d4841cdbd2d0dc9b274c1b288df3d563abfebc4b4501cfb387691d5c0",
+        "tags": [
+          "#cliproxyapi/antigravity",
+          "#cliproxyapi/proxy",
+          "#cliproxyapi/painel"
+        ]
+      }
+    ],
+    "block_ids": [
+      "antigravity-suspenso-por-tos-violation-e-o-painel-d-c39b5e48e305",
+      "antigravity-suspenso-por-tos-violation-e-o-painel-d-c39b5e48e305-content"
+    ],
+    "markdown_links": [
+      "lembranca.md -> memorias/antigravity-suspenso-por-tos-violation-e-o-painel-d-c39b5e48e305.md",
+      "memorias/antigravity-suspenso-por-tos-violation-e-o-painel-d-c39b5e48e305.md -> ../lembranca.md"
+    ],
+    "wikilinks": [
+      "lembranca.md -> [[memorias/antigravity-suspenso-por-tos-violation-e-o-painel-d-c39b5e48e305]]",
+      "memorias/antigravity-suspenso-por-tos-violation-e-o-painel-d-c39b5e48e305.md -> [[lembranca]]"
+    ],
+    "backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "required_backlinks": [
+      "L1->L2",
+      "L2->L1"
+    ],
+    "unresolved_markdown_links": [],
+    "unresolved_wikilinks": [],
+    "cross_vault_links": []
+  },
+  "warnings": [
+    "cross-unit block-id collision audit is separate from this write-unit verdict"
+  ]
+}
